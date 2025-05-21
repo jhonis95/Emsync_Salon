@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    </head>
+    <body>
+        <section class=" w-full h-full flex justify-center items-center">
+            <div class=" w-[500px] h-[300px] gap-7 flex flex-col justify-center items-cente rounded-lg border-2 bg-linear-to-br from-white to-gray-300">
+                <div class="flex flex-col justify-center items-center">
+                    <img
+                        sizes="(max-width: 30em) 100vw, (max-width: 50em) 50vw, calc(33vw - 100px)"
+                        loading=lazy
+                        srcset="swing-200.jpg 200w, swing-400.jpg 400w, swing-800.jpg 800w, swing-1600.jpg 1600w"
+                        src="" alt="logo"
+                    />
+                    <h1 class=" text-2xl ">Bem vindo ao Emsynx Salon</h1>
+                    <p>{{user}}</p>
+                </div>
+                <form method="post" class="flex flex-col gap-2">
+                    <label for="User" class="flex justify-center items-center gap-5">
+                        <p class="min-w-[80px]">User</p>
+                        <input class="border-2 rounded-sm bg-white" style="padding-left: 4px; padding-right: 4px" type="email" name="Email" id="User"/>
+                    </label>
+                    <label for="Password" class="flex justify-center items-center gap-5">
+                        <p class="min-w-[80px]">Password</p>
+                        <input class="border-2 rounded-sm bg-white" style="padding-left: 4px; padding-right: 4px" type="password" name="Password" id="Password"/>
+                    </label>
+                    <button>
+
+                    </button>
+                </form>
+                <div class="flex flex-col justify-center items-center">
+                    <p>não possui uma conta?</p>
+                    <p><a class=" cursor-pointer underline">cadaste-se agora</a></p>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
