@@ -1,5 +1,16 @@
+
+/* solution for daisyui and flowbite
+@import "tailwindcss/utilities"; 
+@import "tailwindcss";  */
+
+@import "tailwindcss/utilities"; 
 @import "tailwindcss";
-@source "../views";
+
+/* @import "bulma"; */
+/* @import 'flowbite'; */
+/* @plugin "daisyui"; */
+
+
 
 * {
   margin: 0;

@@ -1,2 +1,8 @@
-console.log('Hello World')
 import 'htmx.org';
+import 'flowbite';
+
+import Alpine from 'alpinejs'
+ 
+window.Alpine = Alpine
+ 
+Alpine.start()
