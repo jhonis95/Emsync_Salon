@@ -8,7 +8,7 @@ export default class Tenant extends BaseModel {
   @column({ isPrimary: true })
   declare id: string
 
-  @column({ columnName: 'store_name'})// nome no banco de dados: "store_name"
+  @column({ columnName: 'store_name' }) // nome no banco de dados: "store_name"
   declare storeName: string
 
   @column()
@@ -23,14 +23,14 @@ export default class Tenant extends BaseModel {
   @column()
   declare email: string
 
-  @column({columnName: 'logo_url'})// nome no banco de dados: "store_name"
+  @column({ columnName: 'logo_url' }) // nome no banco de dados: "store_name"
   declare logoUrl: string | null
-  
-  @column({columnName: 'owner'}) // nome no banco de dados: "owner"
+
+  @column({ columnName: 'owner' }) // nome no banco de dados: "owner"
   declare ownerId: string //no orm retorna o id caso orm use tenant.ownerId
-  
-  @belongsTo(()=>User,{
-    foreignKey:'ownerId'
+
+  @belongsTo(() => User, {
+    foreignKey: 'ownerId',
   })
   declare ownerData: BelongsTo<typeof User> //no orm retorna a model relacionado(user) junto caso orm use: tenant.ownerData.fullName
 

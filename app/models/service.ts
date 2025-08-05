@@ -23,7 +23,7 @@ export default class Service extends BaseModel {
   @column()
   declare duration: number
 
-  @column({columnName: 'store'})// nome no banco de dados: "store"
+  @column({ columnName: 'store' }) // nome no banco de dados: "store"
   declare storeId: string //no orm retorna o id caso orm use user.storeId
 
   @column.dateTime({ autoCreate: true })
@@ -32,8 +32,8 @@ export default class Service extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  @belongsTo(()=>Tenant,{
-    foreignKey:'storeId'
+  @belongsTo(() => Tenant, {
+    foreignKey: 'storeId',
   })
   declare storeData: BelongsTo<typeof Tenant>
 

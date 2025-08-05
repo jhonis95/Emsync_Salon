@@ -12,25 +12,26 @@ import router from '@adonisjs/core/services/router'
 // Update the import path to match your project's structure, for example:
 const tenantController = () => import('../app/controllers/tenants_controller.js')
 const userController = () => import('../app/controllers/users_controller.js')
-const testController= () => import('../app/controllers/tests_controller.js')
+const testController = () => import('../app/controllers/tests_controller.js')
 
 router.on('/').render('pages/home')
 // router.on('/auth').render('pages/auth',{user:'jonatan de oliveira'})
-router.group(()=>{
-    router.get('/auth',async ({ view })=>{
-        return view.render('pages/auth',{user:'jonatan de oliveira'})
-    }).as('auth')
+router.group(() => {
+  router
+    .get('/auth', async ({ view }) => {
+      return view.render('pages/auth', { user: 'jonatan de oliveira' })
+    })
+    .as('auth')
 })
-router.group(()=>{
-    router.post('/api/tenant/create',[tenantController,'createTenant'])
-    router.get('/api/tenant/users',[tenantController,'allUsers'])
+router.group(() => {
+  router.post('/api/tenant/create', [tenantController, 'createTenant'])
+  router.get('/api/tenant/users', [tenantController, 'allUsers'])
 })
 //.use(middleware.auth({guards:['web']})) use to make sure the router group just allow authenticade user to get that route
-router.group(()=>{
-    router.post('/api/user/create',[userController,'createUser'])
-    router.get('/api/user/tanant',[userController,'getTenant'])
-
+router.group(() => {
+  router.post('/api/user/create', [userController, 'createUser'])
+  router.get('/api/user/tanant', [userController, 'getTenant'])
 })
-router.group(()=>{
-    router.post('/test',[testController,'testHandle'])
+router.group(() => {
+  router.post('/test', [testController, 'testHandle'])
 })

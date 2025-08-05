@@ -5,7 +5,7 @@ import TenantDto from './tenant.js'
 export default class UserDto extends BaseModelDto {
   declare id: string
   declare tenantId: string
-  declare fullName: string | null
+  declare fullName: string | undefined
   declare email: string
   declare password: string
   declare createdAt: string
@@ -17,12 +17,12 @@ export default class UserDto extends BaseModelDto {
 
     if (!user) return
     this.id = user.id
-    this.tenantId = user.tenantId
+    this.tenantId = user.storeId
     this.fullName = user.fullName
     this.email = user.email
     this.password = user.password
     this.createdAt = user.createdAt.toISO()!
     this.updatedAt = user.updatedAt?.toISO()!
-    this.tenant = user.tenant && new TenantDto(user.tenant)
+    this.tenant = user.storeData && new TenantDto(user.storeData)
   }
 }
