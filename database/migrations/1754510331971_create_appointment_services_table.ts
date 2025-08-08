@@ -1,7 +1,7 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
-  protected tableName = 'appointment_services'
+  protected tableName = 'appointment_service' //[fix] name is wrong
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {

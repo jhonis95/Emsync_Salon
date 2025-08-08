@@ -12,10 +12,10 @@ export default class ScheduledProduct extends BaseModel {
   @column({ columnName: 'pick_date' })
   declare pickupDate: DateTime
 
-  @column()
+  @column({columnName: 'order'})
   declare orderId: string
 
-  @column()
+  @column({columnName: 'product'})
   declare productId: string
 
   @column.dateTime({ autoCreate: true })
