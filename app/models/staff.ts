@@ -19,7 +19,7 @@ export default class Staff extends BaseModel {
   @column({ columnName: 'end_time' })
   declare endTime: DateTime
 
-  @column({columnName:'employer'})
+  @column({ columnName: 'employer' })
   declare employerId: string
 
   @column({ columnName: 'store' })

@@ -9,7 +9,7 @@ export default class ScheduledProduct extends BaseModel {
   @column({ isPrimary: true })
   declare id: string
 
-  @column({columnName: 'pick_date'})
+  @column({ columnName: 'pick_date' })
   declare pickupDate: DateTime
 
   @column()

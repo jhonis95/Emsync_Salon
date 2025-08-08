@@ -9,25 +9,25 @@ export default class Contract extends BaseModel {
   @column({ isPrimary: true })
   declare id: string
 
-  @column({columnName:'start_day'})
+  @column({ columnName: 'start_day' })
   declare startDay: DateTime
 
-  @column({columnName: 'end_day'})
+  @column({ columnName: 'end_day' })
   declare endDay: DateTime
 
-  @column({columnName: 'document_link'})
+  @column({ columnName: 'document_link' })
   declare documentLink: string
 
-  @column({columnName: 'receipt_link'})
+  @column({ columnName: 'receipt_link' })
   declare receiptLink: string | null
 
-  @column({columnName: 'payment_method'})
+  @column({ columnName: 'payment_method' })
   declare paymentMethod: string //[fix] add enum for the types
 
-  @column({columnName: 'contract_status'})
+  @column({ columnName: 'contract_status' })
   declare contractStatus: string //[fix] add enum for the types
 
-  @column({columnName: 'signed_by_user'})
+  @column({ columnName: 'signed_by_user' })
   declare signedByUserId: string
 
   @column({ columnName: 'store' }) // nome no banco de dados: "store"
