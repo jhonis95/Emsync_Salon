@@ -5,6 +5,7 @@ import Tenant from './tenant.js'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 
 export default class Service extends BaseModel {
+  public static table = 'service'
   @column({ isPrimary: true })
   declare id: string
 

@@ -6,16 +6,17 @@ import Order from './order.js'
 import Product from './product.js'
 
 export default class ScheduledProduct extends BaseModel {
+  public static table = 'scheduled_product'
   @column({ isPrimary: true })
   declare id: string
 
   @column({ columnName: 'pick_date' })
   declare pickupDate: DateTime
 
-  @column({columnName: 'order'})
+  @column({ columnName: 'order' })
   declare orderId: string
 
-  @column({columnName: 'product'})
+  @column({ columnName: 'product' })
   declare productId: string
 
   @column.dateTime({ autoCreate: true })

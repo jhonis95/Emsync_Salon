@@ -5,13 +5,13 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.binary('id',16).primary()
+      table.string('id', 36).primary()
       table
         .enu('status', ['finalizado', 'agendado', 'atrazado'])
         .notNullable()
         .defaultTo('agendado')
-      table.binary('client',16).nullable()
-      table.binary('store',16).nullable()
+      table.string('client', 36).nullable()
+      table.string('store', 36).nullable()
 
       table.timestamp('created_at', { useTz: false }).notNullable().defaultTo(this.now())
       table

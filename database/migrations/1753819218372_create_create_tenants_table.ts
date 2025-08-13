@@ -5,15 +5,15 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.binary('id', 16).primary() // corresponde ao @column({ isPrimary: true })
+      table.string('id', 36).primary() // corresponde ao @column({ isPrimary: true })
       table.string('store_name').notNullable() // @column({ columnName: 'store_name' })
       table.bigInteger('cnpj').notNullable()
       table.string('domain').nullable()
-      table.bigInteger('phone').notNullable()
+      table.string('phone').notNullable()
       table.string('email').notNullable()
       table.string('logo_url').nullable() // @column({ columnName: 'logo_url' })
 
-      table.binary('owner', 16).nullable()
+      table.string('owner', 36).nullable()
       // corresponde ao @column({ columnName: 'owner' }) e @belongsTo(() => User)
 
       table.timestamp('created_at', { useTz: false }).notNullable().defaultTo(this.now())

@@ -4,6 +4,7 @@ import { Status } from '../../contracts/enums/status.js'
 import { v4 as uuidv4 } from 'uuid'
 
 export default class Order extends BaseModel {
+  public static table = 'order'
   @column({ isPrimary: true })
   declare id: string
 

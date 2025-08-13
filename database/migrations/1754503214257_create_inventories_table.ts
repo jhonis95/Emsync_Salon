@@ -5,13 +5,13 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.binary('id',16).primary()
+      table.string('id', 36).primary()
       table.integer('quantaty').notNullable().defaultTo(0)
       table.integer('min_stock').defaultTo(0)
       table.enu('unit', ['ml', 'l', 'g', 'kg', 'unit', 'box']).notNullable().defaultTo('unit')
-      table.binary('category',16).nullable()
-      table.binary('store',16).nullable()
-      table.binary('product',16).nullable()
+      table.string('category', 36).nullable()
+      table.string('store', 36).nullable()
+      table.string('product', 36).nullable()
 
       table.timestamp('created_at', { useTz: false }).notNullable().defaultTo(this.now())
       table

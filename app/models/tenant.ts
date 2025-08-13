@@ -5,6 +5,8 @@ import User from './user.js'
 import { v4 as uuidv4 } from 'uuid'
 
 export default class Tenant extends BaseModel {
+  public static table = 'tenant'
+
   @column({ isPrimary: true })
   declare id: string
 
@@ -18,7 +20,7 @@ export default class Tenant extends BaseModel {
   declare domain: string
 
   @column()
-  declare phone: number
+  declare phone: string
 
   @column()
   declare email: string
@@ -27,7 +29,7 @@ export default class Tenant extends BaseModel {
   declare logoUrl: string | null
 
   @column({ columnName: 'owner' }) // nome no banco de dados: "owner"
-  declare ownerId: string //no orm retorna o id caso orm use tenant.ownerId
+  declare ownerId: string | null //no orm retorna o id caso orm use tenant.ownerId
 
   @belongsTo(() => User, {
     foreignKey: 'ownerId',

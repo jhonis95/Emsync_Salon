@@ -3,6 +3,7 @@ import { BaseModel, column, beforeCreate } from '@adonisjs/lucid/orm'
 import { v4 as uuidv4 } from 'uuid'
 
 export default class Category extends BaseModel {
+  public static table = 'category'
   @column({ isPrimary: true })
   declare id: string
 

@@ -5,15 +5,15 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.binary('id',16).primary()
-      table.timestamp('start_day',{ useTz: false }).notNullable()
-      table.timestamp('end_day',{ useTz: false }).notNullable()
+      table.string('id', 36).primary()
+      table.timestamp('start_day', { useTz: false }).notNullable()
+      table.timestamp('end_day', { useTz: false }).notNullable()
       table.string('document_link').notNullable()
       table.string('receipt_link').nullable()
-      table.string('payment_method').nullable()//[fix] create a new enum
-      table.string('contract_status').nullable()//[fix] create a new enum
-      table.binary('signed_by_user',16).nullable()
-      table.binary('store',16).nullable()
+      table.string('payment_method').nullable() //[fix] create a new enum
+      table.string('contract_status').nullable() //[fix] create a new enum
+      table.string('signed_by_user', 36).nullable()
+      table.string('store', 36).nullable()
 
       table.timestamp('created_at', { useTz: false }).notNullable().defaultTo(this.now())
       table

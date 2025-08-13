@@ -6,8 +6,10 @@ import Tenant from './tenant.js'
 import Product from './product.js'
 import { v4 as uuidv4 } from 'uuid'
 import emitter from '@adonisjs/core/services/emitter'
+import { Unit } from '../../contracts/enums/unit.js'
 
 export default class Inventory extends BaseModel {
+  public static table = 'inventory'
   @column({ isPrimary: true })
   declare id: string
 
@@ -18,7 +20,7 @@ export default class Inventory extends BaseModel {
   declare minStock: number
 
   @column()
-  declare unit: string | null //[fix] need to maybe create a enum with units that can be use
+  declare unit: Unit | null
 
   @column({ columnName: 'category' })
   declare categoryId: string | null

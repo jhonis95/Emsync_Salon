@@ -1,6 +1,8 @@
 /* solution for daisyui and flowbite
 @import "tailwindcss/utilities"; 
 @import "tailwindcss";  */
+/* Google Fonts ------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
 @import 'tailwindcss/utilities';
 @import 'tailwindcss';
@@ -33,9 +35,6 @@ body {
 html {
   scroll-behavior: smooth;
 }
-
-/* Google Fonts ------------------------------------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
 /* Root Variables ---------------------------------------------*/
 :root {

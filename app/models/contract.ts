@@ -6,6 +6,8 @@ import Tenant from './tenant.js'
 import User from './user.js'
 
 export default class Contract extends BaseModel {
+  public static table = 'contact'
+
   @column({ isPrimary: true })
   declare id: string
 

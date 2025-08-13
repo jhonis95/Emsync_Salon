@@ -5,10 +5,10 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.binary('id',16).primary()
-      table.timestamp('pick_date',{ useTz: false }).notNullable()
-      table.binary('order',16).nullable()
-      table.binary('product',16).nullable()
+      table.string('id', 36).primary()
+      table.timestamp('pick_date', { useTz: false }).notNullable()
+      table.string('order', 36).nullable()
+      table.string('product', 36).nullable()
 
       table.timestamp('created_at', { useTz: false }).notNullable().defaultTo(this.now())
       table

@@ -5,13 +5,13 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.binary('id', 16).primary()
+      table.string('id', 36).primary()
       table.string('name').notNullable()
       table.integer('price').notNullable()
       table.string('image').nullable()
       table.text('description').nullable()
       table.integer('duration').nullable()
-      table.binary('store', 16).nullable()
+      table.string('store', 36).nullable()
 
       table.timestamp('created_at', { useTz: false }).notNullable().defaultTo(this.now())
       table

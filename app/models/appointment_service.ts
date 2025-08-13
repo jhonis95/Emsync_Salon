@@ -7,6 +7,7 @@ import Service from './service.js'
 import User from './user.js'
 
 export default class AppointmentService extends BaseModel {
+  public static table = 'appointment_service'
   @column({ isPrimary: true })
   declare id: string
 
@@ -19,13 +20,13 @@ export default class AppointmentService extends BaseModel {
   @column({ columnName: 'last_change' })
   declare lastChenge: DateTime
 
-  @column({columnName:'provider'})
+  @column({ columnName: 'provider' })
   declare providerId: string
 
-  @column({columnName:'service'})
+  @column({ columnName: 'service' })
   declare serviceId: string
 
-  @column({columnName:'order'})
+  @column({ columnName: 'order' })
   declare orderId: string
 
   @column.dateTime({ autoCreate: true })

@@ -6,6 +6,7 @@ import User from './user.js'
 import Tenant from './tenant.js'
 
 export default class Review extends BaseModel {
+  public static table = 'review'
   @column({ isPrimary: true })
   declare id: string
 
