@@ -1,7 +1,7 @@
 import Tenant from '#models/tenant'
 import User from '#models/user'
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
-import Hash from '@adonisjs/core/services/hash'
+import hash from '@adonisjs/core/services/hash'
 
 export default class extends BaseSeeder {
   public async run() {
@@ -18,7 +18,7 @@ export default class extends BaseSeeder {
         fullName: `Owner - ${tenant.storeName}`,
         notes: 'Usuário proprietário',
         email: `owner@${tenant.domain || 'example.com'}`,
-        password: await Hash.make('senha123'),
+        password: await hash.make('senha123'),
         storeId: tenant.id,
       })
 
@@ -48,7 +48,7 @@ export default class extends BaseSeeder {
       for (const data of extraUsersData) {
         await User.create({
           ...data,
-          password: await Hash.make('senha123'),
+          password: await hash.make('senha123'),
           storeId: tenant.id,
         })
       }

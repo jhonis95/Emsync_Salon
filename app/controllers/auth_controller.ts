@@ -8,12 +8,12 @@ export default class AuthController {
   /**
    * Display a list of resource
    */
-  async index({ view,tenant }: HttpContext) {
-    const storeData= tenant
-    return view.render('pages/auth',{
-      store:{
+  async index({ view, tenant }: HttpContext) {
+    const storeData = tenant
+    return view.render('pages/auth', {
+      store: {
         name: storeData?.$attributes.storeName,
-        logo: storeData?.$attributes.logoUrl
+        logo: storeData?.$attributes.logoUrl,
       },
     })
   }

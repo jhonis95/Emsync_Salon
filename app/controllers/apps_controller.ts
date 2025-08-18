@@ -4,9 +4,9 @@ export default class AppsController {
   /**
    * Display a list of resource
    */
-  async index({session,view}: HttpContext) {
+  async index({ session, view }: HttpContext) {
     const pagedata = session.get('pagedata')
-    return view.render('pages/app',pagedata)
+    return view.render('pages/app', { pagedata })
   }
 
   /**

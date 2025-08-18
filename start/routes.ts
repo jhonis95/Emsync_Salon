@@ -26,8 +26,8 @@ router.group(() => {
   router.post('/auth', [authController, 'login']).as('auth.login')
 })
 
-router.group(()=>{
-  router.get('/app',[AppsController,'index'])
+router.group(() => {
+  router.get('/app', [AppsController, 'index'])
 })
 
 // router.group(() => {
