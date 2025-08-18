@@ -9,7 +9,7 @@ type TCreateTenantProps = {
 export class TenantService {
   public async createTenant(data: TCreateTenantProps) {
     return await Tenant.create({
-      company_name: data.company_name,
+      storeName: data.company_name,
     })
   }
   public async getAllUsers(id: TenantDto['id'] | undefined) {

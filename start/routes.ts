@@ -7,6 +7,8 @@
 |
 */
 
+import AppsController from '#controllers/apps_controller'
+import TenentsHomepagesController from '#controllers/tenents_homepages_controller'
 import router from '@adonisjs/core/services/router'
 // import { middleware } from './kernel.js'
 // Update the import path to match your project's structure, for example:
@@ -14,13 +16,18 @@ import router from '@adonisjs/core/services/router'
 // const userController = () => import('../app/controllers/users_controller.js')
 // const testController = () => import('../app/controllers/tests_controller.js')
 const authController = () => import('../app/controllers/auth_controller.js')
+// const AppsController = () => import('../app/controllers/apps_controller.js')
 
-router.on('/').render('pages/home')
+router.get('/', [TenentsHomepagesController, 'index'])
 // router.on('/auth').render('pages/auth',{user:'jonatan de oliveira'})
 
 router.group(() => {
-  router.get('/auth', [authController, 'index'])
-  router.post('/auth', [authController, 'login'])
+  router.get('/auth', [authController, 'index']).as('auth.login.show')
+  router.post('/auth', [authController, 'login']).as('auth.login')
+})
+
+router.group(()=>{
+  router.get('/app',[AppsController,'index'])
 })
 
 // router.group(() => {

@@ -1,19 +1,26 @@
+import { LoginService } from '#services/login_service'
 import type { HttpContext } from '@adonisjs/core/http'
+import { inject } from '@adonisjs/core'
 
+@inject()
 export default class AuthController {
+  constructor(protected loginService: LoginService) {}
   /**
    * Display a list of resource
    */
-  async index({ view }: HttpContext) {
-    
+  async index({ view,tenant }: HttpContext) {
+    const storeData= tenant
     return view.render('pages/auth',{
       store:{
-        name:'Estilo Baleza',
-        logo: ''
-      }
+        name: storeData?.$attributes.storeName,
+        logo: storeData?.$attributes.logoUrl
+      },
     })
   }
 
+  async login(ctx: HttpContext) {
+    await this.loginService.login(ctx)
+  }
   /**
    * Display form to create a new record
    */
@@ -23,7 +30,6 @@ export default class AuthController {
    * Handle form submission for the create action
    */
   // async store({ request }: HttpContext) {}
-  async login({ request }: HttpContext) {}
   /**
    * Show individual record
    */

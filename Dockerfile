@@ -1,5 +1,5 @@
 # Etapa 1: Build
-FROM node:20 AS build
+FROM node:22-alpine AS build
 WORKDIR /app
 
 COPY package*.json ./
@@ -9,7 +9,7 @@ COPY . .
 RUN npm run build
 
 # Etapa 2: Produção
-FROM node:20-slim
+FROM node:22-alpine
 WORKDIR /app
 
 COPY --from=build /app/build ./build
