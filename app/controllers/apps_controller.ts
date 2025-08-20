@@ -6,7 +6,7 @@ export default class AppsController {
    */
   async index({ session, view }: HttpContext) {
     const pagedata = session.get('pagedata')
-    return view.render('pages/app', { pagedata })
+    return view.render('pages/clientPortal', { pagedata })
   }
 
   /**

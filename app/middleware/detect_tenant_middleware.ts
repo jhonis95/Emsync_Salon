@@ -17,6 +17,11 @@ export default class DetectTenantMiddleware {
       return ctx.response.status(400).send('Hostname não fornecido')
     }
 
+    // 🔹 Se for o domínio principal (do SaaS), não tenta detectar tenant
+    if (hostname === 'emsyncsalon.com.br') {
+      return next()
+    }
+
     const tenant = await Tenant.findBy('domain', hostname)
     if (!tenant) {
       return ctx.response.status(404).send('Tenant não encontrado')

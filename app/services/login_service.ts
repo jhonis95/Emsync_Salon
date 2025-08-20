@@ -27,7 +27,7 @@ export class LoginService {
     try {
       await auth.use('web').login(user)
       session.put('pagedata', { storeName: tenant?.$attributes.storeName, userName: user.fullName })
-      return response.redirect('/app')
+      return response.redirect('/portaldocliente')
     } catch (error) {
       session.flash('error', 'Não foi possível logar')
       return response.redirect().back()
