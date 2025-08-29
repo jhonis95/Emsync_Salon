@@ -62,6 +62,7 @@
     "@adonisjs/shield": "^8.1.2",
     "@adonisjs/static": "^1.1.1",
     "@adonisjs/vite": "^4.0.0",
+    "@imacrayon/alpine-ajax": "^0.12.4",
     "@tailwindcss/vite": "^4.1.6",
     "@vinejs/vine": "^3.0.0",
     "alpinejs": "^3.14.9",
@@ -70,7 +71,9 @@
     "edge.js": "^6.2.1",
     "flowbite": "^3.1.2",
     "htmx.org": "^1.9.12",
+    "lucide": "^0.542.0",
     "luxon": "^3.6.1",
+    "motion": "^12.23.12",
     "mysql2": "^3.14.1",
     "reflect-metadata": "^0.2.2",
     "uuid": "^11.1.0"

@@ -8,19 +8,22 @@ export default class SaasController {
   /**
    * Display a list of resource
    */
-  async index({view}: HttpContext) {
-    return view.render('pages/saasWebpage',)
+  async index({ view }: HttpContext) {
+    return view.render('pages/saasWebpage')
   }
 
-  async app({view,session}: HttpContext) {
+  async app({ view, session }: HttpContext) {
     const saasData = session.get('saasData')
-    return view.render('pages/app/saas',{saasData})
+    return view.render('pages/app/saas', { saasData })
   }
 
-  async login({view}: HttpContext) {
-    return view.render('pages/app/login',)
+  async login({ view, session }: HttpContext) {
+    console.log(session.flashMessages.all())
+    const flash = session.flashMessages.get('errorsBag') // CORRETO: após redirect, no próximo request
+    console.log('flashs', flash)
+    return view.render('pages/app/login',{flash})
   }
-  async auth(ctx:HttpContext){
+  async auth(ctx: HttpContext) {
     await this.saasService.login(ctx)
   }
   /**
@@ -51,5 +54,5 @@ export default class SaasController {
   /**
    * Delete record
    */
-  async destroy({ params }: HttpContext) {}
+  // async destroy({ params }: HttpContext) {}
 }

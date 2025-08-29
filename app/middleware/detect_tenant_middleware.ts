@@ -12,6 +12,12 @@ declare module '@adonisjs/core/http' {
 export default class DetectTenantMiddleware {
   async handle(ctx: HttpContext, next: NextFn) {
     const hostname = ctx.request.hostname()
+    const path = ctx.request.url()
+
+    // Skip tenant detection for Alpine ajax views
+    if(path.startsWith(`${hostname}/portaldocliente/view/`)) {
+      return next()
+    }
 
     if (!hostname) {
       return ctx.response.status(400).send('Hostname não fornecido')

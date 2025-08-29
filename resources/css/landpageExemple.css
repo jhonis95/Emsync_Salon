@@ -1,0 +1,338 @@
+/* top is default  botton style from figma */
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+/* ==========================================================
+   1. CSS RESET + BASE TOKENS
+   ============================================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* Root Variables ---------------------------------------------*/
+:root {
+  /* fonts */
+  --ff-heading: 'Playfair Display', serif;
+  --ff-body: 'Poppins', sans-serif;
+
+  /* colors */
+  --c-bg: #ffffff;
+  --c-text: #111111;
+  --c-muted: #666666;
+  --c-accent: #ecb79b; /* peach accent (buttons, quote bg, etc.) */
+  --c-accent-light: #f7e8de;
+  --c-gray-100: #f5f5f5;
+
+  /* sizing */
+  --container-max: 1160px;
+  --gutter: 1.5rem;
+  --radius: 6px;
+  --shadow: 0 2px 12px rgb(0 0 0 / 0.05);
+}
+
+/* Typography --------------------------------------------------*/
+body {
+  font-family: var(--ff-body);
+  font-size: 0.9375rem; /* 15 px */
+  line-height: 1.6;
+  color: var(--c-text);
+  background: var(--c-bg);
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--ff-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--c-text);
+}
+h1 {
+  font-size: clamp(2.2rem, 5vw + 0.5rem, 3.25rem);
+}
+h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.25em;
+}
+small {
+  font-size: 0.75rem;
+  color: var(--c-muted);
+}
+
+/* Links & Buttons --------------------------------------------*/
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+a:hover {
+  opacity: 0.8;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius);
+  background: var(--c-accent);
+  color: #fff;
+  font-weight: 500;
+  border: 0;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--c-text);
+  color: var(--c-text);
+}
+.btn-outline:hover {
+  background: var(--c-text);
+  color: #fff;
+}
+
+/* Layout Helpers ---------------------------------------------*/
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.grid {
+  display: grid;
+  gap: var(--gutter);
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section {
+  padding-block: 4.5rem;
+}
+
+/* ==========================================================
+   2. NAVBAR
+   ============================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--c-bg);
+  border-bottom: 1px solid #eee;
+}
+.navbar .inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+.language-switch,
+.icon-btn {
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* ==========================================================
+   3. HERO / SLIDER
+   ============================================================== */
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: center;
+  gap: 2rem;
+  padding-block: 4.5rem 3rem;
+}
+.hero-img {
+  position: relative;
+  isolation: isolate;
+}
+.hero-img img {
+  width: 100%;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+.hero-badge {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: var(--c-accent-light);
+  color: var(--c-text);
+  padding: 0.9rem 1.2rem;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: var(--shadow);
+  font-size: 0.65rem;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================
+   4. ABOUT / IMAGE MOSAIC
+   ============================================================== */
+.mosaic-wrapper {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--gutter);
+}
+.mosaic-wrapper .text-block {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-inline: 0.5rem;
+}
+.mosaic-wrapper .mosaic-img {
+  overflow: hidden;
+  border-radius: var(--radius);
+  grid-column: span 2;
+  height: 180px;
+}
+.mosaic-wrapper .mosaic-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.mosaic-wrapper .mosaic-img:hover img {
+  transform: scale(1.05);
+}
+
+/* ==========================================================
+   5. FEATURE / SERVICE SPOTLIGHT
+   ============================================================== */
+.package {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  align-items: center;
+}
+.package .thumb-holder {
+  overflow: hidden;
+  border-radius: var(--radius);
+  max-height: 440px;
+}
+.package .thumb-holder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.package-content h3 {
+  margin-bottom: 1.1rem;
+}
+.package-content .price {
+  font-size: 1.65rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+.package-content .btn {
+  margin-top: 1.5rem;
+}
+
+/* ==========================================================
+   6. TESTIMONIALS
+   ============================================================== */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 3rem 2rem;
+}
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 360px;
+}
+.testimonial-card img {
+  width: 100%;
+  border-radius: var(--radius);
+  object-fit: cover;
+  aspect-ratio: 3/4;
+}
+.quote-mark {
+  width: 42px;
+  height: 42px;
+  background: var(--c-accent);
+  color: #fff;
+  font-size: 1.5rem;
+  border-radius: var(--radius);
+  display: grid;
+  place-items: center;
+  margin-left: auto;
+}
+
+/* ==========================================================
+   7. FOOTER
+   ============================================================== */
+footer {
+  padding-block: 4rem 2.5rem;
+  background: var(--c-gray-100);
+  color: var(--c-muted);
+  font-size: 0.85rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2.5rem 1.5rem;
+}
+footer h4 {
+  font-family: var(--ff-heading);
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  color: var(--c-text);
+}
+footer ul {
+  list-style: none;
+}
+footer li + li {
+  margin-top: 0.65rem;
+}
+.newsletter input {
+  width: 100%;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid #cfcfcf;
+  border-radius: var(--radius);
+  background: #fff;
+  font-family: var(--ff-body);
+}
+.copyright {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+/* ==========================================================
+   8. MEDIA QUERIES
+   ============================================================== */
+@media (max-width: 640px) {
+  .navbar .nav-links {
+    display: none;
+  } /* collapsible on mobile */
+  .mosaic-wrapper .text-block {
+    grid-column: span 6;
+  }
+  .mosaic-wrapper .mosaic-img {
+    grid-column: span 3;
+  }
+}
