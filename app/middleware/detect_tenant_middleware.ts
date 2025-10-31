@@ -13,9 +13,11 @@ export default class DetectTenantMiddleware {
   async handle(ctx: HttpContext, next: NextFn) {
     const hostname = ctx.request.hostname()
     const path = ctx.request.url()
+    const tenant = await Tenant.findBy('domain', hostname)
 
     // Skip tenant detection for Alpine ajax views
-    if(path.startsWith(`${hostname}/portaldocliente/view/`)) {
+    if (path.startsWith(`${hostname}/portaldocliente/view/`)) {
+      ctx.tenant = tenant ?? undefined
       return next()
     }
 
@@ -28,7 +30,6 @@ export default class DetectTenantMiddleware {
       return next()
     }
 
-    const tenant = await Tenant.findBy('domain', hostname)
     if (!tenant) {
       return ctx.response.status(404).send('Tenant não encontrado')
     }

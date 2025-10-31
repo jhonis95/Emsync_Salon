@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>
+      App
+    </title>
+  </head>
+  <body>
+    {{-- [tip]: caso data seja so o nome da pagina podemos trocar par um partial em vez de component --}}
+
+    @include('partials/portal/navbar')
+
+    <main class="flex">
+      <section
+        id="main-content"
+        class="w-full mx-5 my-7"
+        hx-get="/portaldocliente/view/service"
+        hx-trigger="load"
+        hx-target="#main-content"
+      >
+        {{-- menu skeleton loader --}}
+        <div class="animate-pulse ">
+          <h1 class=" flex-1 space-y-6 py-1 bg-gray-200">
+          </h1>
+          <div class="flex flex-col">
+            <div class="flex flex-col">
+              <div class="flex justify-between">
+                <p class=" flex-1 space-y-6 py-1 bg-gray-200">
+                </p>
+                <i class="w-[20px] h-[20px]" data-lucide="panel-top-open"></i>
+              </div>
+              <div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

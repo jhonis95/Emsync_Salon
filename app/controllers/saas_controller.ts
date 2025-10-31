@@ -9,7 +9,7 @@ export default class SaasController {
    * Display a list of resource
    */
   async index({ view }: HttpContext) {
-    return view.render('pages/saasWebpage')
+    return view.render('pages/app/saasWebpage')
   }
 
   async app({ view, session }: HttpContext) {
@@ -21,7 +21,7 @@ export default class SaasController {
     console.log(session.flashMessages.all())
     const flash = session.flashMessages.get('errorsBag') // CORRETO: após redirect, no próximo request
     console.log('flashs', flash)
-    return view.render('pages/app/login',{flash})
+    return view.render('pages/auth/login', { flash })
   }
   async auth(ctx: HttpContext) {
     await this.saasService.login(ctx)

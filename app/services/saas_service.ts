@@ -23,7 +23,7 @@ export class SaasService {
       return response.redirect('/auth')
     }
   }
-  
+
   public async logout({ auth, response, session }: HttpContext) {
     await auth.use('web').logout()
     session.clear()

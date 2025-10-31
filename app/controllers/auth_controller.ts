@@ -10,7 +10,7 @@ export default class AuthController {
    */
   async index({ view, tenant }: HttpContext) {
     const storeData = tenant
-    return view.render('pages/auth', {
+    return view.render('pages/auth/authportal', {
       store: {
         name: storeData?.$attributes.storeName,
         logo: storeData?.$attributes.logoUrl,

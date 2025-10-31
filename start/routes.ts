@@ -21,27 +21,27 @@ import PortalsController from '#controllers/portals_controller'
 router.get('/', [TenentsHomepagesController, 'index'])
 
 // SaaS principal
-router
-  .group(() => {
+router.group(() => {
     router.get('/', [SaasController, 'index'])
     router.get('/auth', [SaasController, 'login']).as('saas.auth.login.show')
     router.post('/auth', [SaasController, 'auth']).as('saas.auth.login')
     router.get('/app', [SaasController, 'app']).use([middleware.auth({ guards: ['web'] })])
-  })
-  .domain('emsyncsalon.com.br')
+})
+.domain('emsyncsalon.com.br')
 // Portal do cliente (tenant)
-router
-  .group(() => {
-    router.get('/auth', [authController, 'index']).as('portal.auth.login.show')
-    router.post('/auth', [authController, 'login']).as('portal.auth.login')
-    router.group(()=>{
+router.group(() => {
+  router.get('/auth', [authController, 'index']).as('portal.auth.login.show')
+  router.post('/auth', [authController, 'login']).as('portal.auth.login')
+  router
+    .group(() => {
       router.get('/', [PortalsController, 'index']).as('portal.index')
       router
-          .group(() => {
-            router.get('/:page', [PortalsController, 'view']).as('portal.view')
-          })
-          .prefix('view')
-          
-    }).prefix('portaldocliente')
-      .use([middleware.auth({ guards: ['web'] })])
-  })
+        .group(() => {
+          router.get('/:page', [PortalsController, 'view']).as('portal.view')
+          router.get('/service/appoiment', [PortalsController, 'appoiment']).as('portal.view.service')
+        })
+        .prefix('view')
+    })
+    .prefix('portaldocliente')
+    .use([middleware.auth({ guards: ['web'] })])
+})
