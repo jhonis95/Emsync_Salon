@@ -18,9 +18,7 @@ export default class SaasController {
   }
 
   async login({ view, session }: HttpContext) {
-    console.log(session.flashMessages.all())
     const flash = session.flashMessages.get('errorsBag') // CORRETO: após redirect, no próximo request
-    console.log('flashs', flash)
     return view.render('pages/auth/login', { flash })
   }
   async auth(ctx: HttpContext) {

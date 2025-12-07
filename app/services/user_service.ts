@@ -1,18 +1,13 @@
 import User from '#models/user'
+import { TcreatUserInputs } from '#validators/user'
 import UserDto from '../dtos/user.js'
-
-type TCreateUserProps = {
-  fullname: UserDto['fullName']
-  email: UserDto['email']
-  password: UserDto['password']
-}
 
 export class UserService {
   public async getUser(id: UserDto['id']) {
     return await User.find(id)
   }
-
-  public async createUser(data: TCreateUserProps) {
+  // [fix]correção de TCreateUserProps, melhor chamar pelo validator TcreatUserInputs
+  public async createUser(data: TcreatUserInputs) {
     return await User.create({
       fullName: data.fullname,
       email: data.email,

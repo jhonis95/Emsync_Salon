@@ -18,14 +18,15 @@ import PortalsController from '#controllers/portals_controller'
 
 // const saasDomain = env.get('SAAS_DOMAIN_LOCAL', '') as string
 
-router.get('/', [TenentsHomepagesController, 'index'])
+//router.get('/', [TenentsHomepagesController, 'index'])
 
 // SaaS principal
 router.group(() => {
     router.get('/', [SaasController, 'index'])
     router.get('/auth', [SaasController, 'login']).as('saas.auth.login.show')
     router.post('/auth', [SaasController, 'auth']).as('saas.auth.login')
-    router.get('/app', [SaasController, 'app']).use([middleware.auth({ guards: ['web'] })])
+    router.get('/app', [SaasController, 'app'])
+    //.use([middleware.auth({ guards: ['web'] })])
 })
 .domain('emsyncsalon.com.br')
 // Portal do cliente (tenant)
@@ -43,5 +44,5 @@ router.group(() => {
         .prefix('view')
     })
     .prefix('portaldocliente')
-    .use([middleware.auth({ guards: ['web'] })])
+    //.use([middleware.auth({ guards: ['web'] })])
 })

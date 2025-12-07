@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, beforeCreate, belongsTo, column } from '@adonisjs/lucid/orm'
-import type { BelongsTo } from '@adonisjs/lucid/types/relations'
-import User from './user.js'
+import { BaseModel, beforeCreate, column } from '@adonisjs/lucid/orm'
+//import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+//import User from './user.js'
 import { v4 as uuidv4 } from 'uuid'
 
 export default class Tenant extends BaseModel {
@@ -31,10 +31,10 @@ export default class Tenant extends BaseModel {
   @column({ columnName: 'owner' }) // nome no banco de dados: "owner"
   declare ownerId: string | null //no orm retorna o id caso orm use tenant.ownerId
 
-  @belongsTo(() => User, {
-    foreignKey: 'ownerId',
-  })
-  declare ownerData: BelongsTo<typeof User> //no orm retorna a model relacionado(user) junto caso orm use: tenant.ownerData.fullName
+  // @belongsTo(() => User, {
+  //   foreignKey: 'ownerId',
+  // })
+  //declare ownerData: BelongsTo<typeof User> //no orm retorna a model relacionado(user) junto caso orm use: tenant.ownerData.fullName
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

@@ -2,8 +2,10 @@
   x-data="{dropdownOpen:false}"
   class=" relative flex justify-center gap-x-2 rounded-lg border-b border-x border-gray-200 bg-white shadow-2xs"
 >
-  <nav class=" max-w-[85rem] w-full mx-2">
+  <nav class=" max-w-[85rem] w-full mx-2 my-1">
     <div class=" flex justify-between items-center">
+
+      {{-- container logo e texto --}}
       <div class="flex gap-2">
         <img
           class=" object-contain"
@@ -13,12 +15,15 @@
           height="35"
         />
         <div class="flex flex-col text-2xl text-wrap gap-0">
-          {{ pagedata.storeName  }}
+          {{-- {{ pagedata.storeName  }} --}}
+          Nome da loja
           <span class=" text-base">
             portal do cliente
           </span>
         </div>
       </div>
+
+      {{-- container navbar links e meu --}}
       <div>
         <button
           x-on:click="dropdownOpen = !dropdownOpen;
@@ -71,7 +76,7 @@
         <div
           x-cloak
           x-show="dropdownOpen"
-          class=" z-10 absolute text-2xl flex flex-col items-center justify-center w-5/6 inset-x-2 gap-2 py-2 left-1/2 right-1/2 -translate-x-1/2 rounded-lg border border-gray-200 bg-white"
+          class=" z-10 absolute text-2xl flex flex-col items-center justify-center w-5/6 inset-x-2 gap-2 py-2 top-[70px] left-1/2 right-1/2 -translate-x-1/2 rounded-lg border border-gray-200 bg-white"
           x-transition:enter="transition ease-out duration-300"
           x-transition:enter-start="opacity-0 transform -translate-y-2"
           x-transition:enter-end="opacity-100 transform translate-y-0"
@@ -84,27 +89,38 @@
             <a
               class="text-base text-center w-full py-1 cursor-pointer"
               hx-target="#main-content"
+              hx-get="/portaldocliente/view/home"
+              x-on:click="dropdownOpen=false"
+            >Home</a>
+            <a
+              class="text-base text-center w-full py-1 cursor-pointer"
+              hx-target="#main-content"
               hx-get="/portaldocliente/view/service"
+              x-on:click="dropdownOpen=false"
             >Serviços</a>
             <a
               class="text-base text-center w-full py-1 cursor-pointer"
               hx-target="#main-content"
               hx-get="/portaldocliente/view/product"
+              x-on:click="dropdownOpen=false"
             >Produtos</a>
             <a
               class="text-base text-center w-full py-1 cursor-pointer"
               hx-target="#main-content"
               hx-get="/portaldocliente/view/order"
+              x-on:click="dropdownOpen=false"
             >Meus Pedidos</a>
             <a
               class="text-base text-center w-full py-1 cursor-pointer"
               hx-target="#main-content"
               hx-get="/portaldocliente/view/review"
+              x-on:click="dropdownOpen=false"
             >Avaliações</a>
             <a
               class="text-base text-center w-full py-1 cursor-pointer"
               hx-target="#main-content"
               hx-get="/portaldocliente/view/setting"
+              x-on:click="dropdownOpen=false"
             >Configurações</a>
           </div>
         </div>

@@ -1,0 +1,15 @@
+<section>
+    <div>
+        <h1>{{ content.greetings.title }}</h1>
+        <h4>{{content.greetings.subtitle }}</h4>
+    </div>
+    <div>
+        @each(card in content.cards)
+            <div>
+                <h4>{{ card.title}}</h4>
+                <p>{{ card.content }}</p>
+                <img src={{card.image}} alt="">
+            </div>
+        @end
+    </div>
+</section>

@@ -3,16 +3,70 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/saas.css', 'resources/js/saas.js'])
     <title>
       Emsync Salon App
     </title>
   </head>
   <body>
-    <main class="w-full h-full flex flex-col justify-center items-center">
-      <h1>
-        welcome to our saas {{saasData.tenantName}}, {{saasData.userName}}
-      </h1>
+    <header>
+      <nav>
+
+      </nav>
+    </header>
+    <main class="w-full h-full flex">
+      <aside>
+        <div>
+          <h3>menu</h3>
+        </div>
+        <div>
+          <ul>
+            <li>
+              home
+            </li>
+            <li>
+              serviços
+            </li>
+            <li>
+              inventario
+            </li>
+            <li>
+              gerenciamento de staff
+            </li>
+            <li>
+              agendamentos
+            </li>
+            <li>
+              clientes
+            </li>
+            <li>
+              configurções
+            </li>
+          </ul>
+        </div>
+        <div></div>
+      </aside>
+      <section>
+        <div>
+          <h2>Home Dashboard</h2>
+        </div>
+        <div class="">
+          <h4>Aplicações</h4>
+          <div class="flex justify-center items-center gap-3.5 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs">
+            <button>
+              <img class=" size-9" src="" alt="">
+            </button>
+            <button>
+              <img class=" size-9" src="" alt="">
+            </button>
+          </div>
+        </div>
+        <div></div>
+        <div></div>
+      </section>
     </main>
+    <footer>
+
+    </footer>
   </body>
 </html>

@@ -13,7 +13,6 @@ export default class PortalsController {
 
   async view({ params, view, tenant }: HttpContext) {
     const content = await this.portalService.defineContentMain(params.page, tenant)
-
     return view.render(`components/app/portal/${params.page}`, { content })
   }
 
