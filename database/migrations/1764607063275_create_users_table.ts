@@ -6,8 +6,8 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.uuid('id').primary()
-      table.foreign('role').references('id').inTable('roles').onDelete('SET NULL')
-      table.foreign('status').references('id').inTable('user_status').onDelete('SET NULL')
+      table.foreign('role_id').references('id').inTable('roles').onDelete('SET NULL')
+      table.foreign('status_id').references('id').inTable('user_status').onDelete('SET NULL')
       table.string('full_name').notNullable()
       table.string('email').notNullable()
       table.string('password').notNullable()
