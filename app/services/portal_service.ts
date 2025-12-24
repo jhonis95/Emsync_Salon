@@ -6,11 +6,11 @@ export class PortalService {
   public async defineContentMain(menu: string, tenant:Tenant|undefined) {
     if (menu=='home'){
       return {
-        greetings: {
+        headerText: {
           title: 'Bem-vindo, Cliente!',
           subtitle: 'Aqui está um resumo das suas atividades e agendamentos.'
         },
-        cards:[
+        infoCards:[
           {
             title:'Suas Avaliações',
             content:'00',
@@ -26,7 +26,39 @@ export class PortalService {
             content:'00',
             image:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJveC1pY29uIGx1Y2lkZS1ib3giPjxwYXRoIGQ9Ik0yMSA4YTIgMiAwIDAgMC0xLTEuNzNsLTctNGEyIDIgMCAwIDAtMiAwbC03IDRBMiAyIDAgMCAwIDMgOHY4YTIgMiAwIDAgMCAxIDEuNzNsNyA0YTIgMiAwIDAgMCAyIDBsNy00QTIgMiAwIDAgMCAyMSAxNloiLz48cGF0aCBkPSJtMy4zIDcgOC43IDUgOC43LTUiLz48cGF0aCBkPSJNMTIgMjJWMTIiLz48L3N2Zz4='
           }
-        ]
+        ],
+        quickActionCards:[
+          {
+            title:'Suas Agender Serviço',
+            text:'Reserve um horário para seu serviços',
+            image:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNhbGVuZGFyLWNoZWNrMi1pY29uIGx1Y2lkZS1jYWxlbmRhci1jaGVjay0yIj48cGF0aCBkPSJNOCAydjQiLz48cGF0aCBkPSJNMTYgMnY0Ii8+PHBhdGggZD0iTTIxIDE0VjZhMiAyIDAgMCAwLTItMkg1YTIgMiAwIDAgMC0yIDJ2MTRhMiAyIDAgMCAwIDIgMmg4Ii8+PHBhdGggZD0iTTMgMTBoMTgiLz48cGF0aCBkPSJtMTYgMjAgMiAyIDQtNCIvPjwvc3ZnPg==',
+            buttonText:'Agendar Agora'
+          },
+          {
+            title:'Comprar Produtos',
+            text:'Adquira produtos profissionais',
+            image:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWhhbmQtY29pbnMtaWNvbiBsdWNpZGUtaGFuZC1jb2lucyI+PHBhdGggZD0iTTExIDE1aDJhMiAyIDAgMSAwIDAtNGgtM2MtLjYgMC0xLjEuMi0xLjQuNkwzIDE3Ii8+PHBhdGggZD0ibTcgMjEgMS42LTEuNGMuMy0uNC44LS42IDEuNC0uNmg0YzEuMSAwIDIuMS0uNCAyLjgtMS4ybDQuNi00LjRhMiAyIDAgMCAwLTIuNzUtMi45MWwtNC4yIDMuOSIvPjxwYXRoIGQ9Im0yIDE2IDYgNiIvPjxjaXJjbGUgY3g9IjE2IiBjeT0iOSIgcj0iMi45Ii8+PGNpcmNsZSBjeD0iNiIgY3k9IjUiIHI9IjMiLz48L3N2Zz4=',
+            buttonText:'Ver Produtos'
+          }
+        ],
+        nextAppointment:[
+          {
+            image:'',
+            title:'Nome Do Serviço',
+            text:'Profissional: ainda não registrado',
+            date:'00/00',
+            time:'00:00'
+          }
+        ],
+        orders:[
+          {
+            image:'https://img.freepik.com/fotos-gratis/garrafa-de-oleo-para-o-cabelo-no-cabelo-castanho_23-2151968681.jpg?t=st=1766538548~exp=1766542148~hmac=2d2bc3a9fa14e21325b6160280fafca9b453d54f1206fb59c5157c4d7c8a2167&w=1060',
+            title:'Nome do Produto',
+            status:'status',
+            date:'00/00',
+            time:'00:00'
+          }
+        ],
       }
     }
     if (menu == 'product') {
@@ -39,7 +71,7 @@ export class PortalService {
 
     if (menu == 'service') {
       return {
-        sectionTitle: {
+        headerText: {
           title:'Agendar Serviços',
           subtitle:'Escolha seu serviço e horário em poucos passos'
         },

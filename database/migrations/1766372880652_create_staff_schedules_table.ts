@@ -8,10 +8,9 @@ export default class extends BaseSchema {
       table.uuid('id').primary()
       // Relacionamento com o Staff (usando o ID integer que você definiu)
       table
-        .integer('staff_id')
-        .unsigned()
+        .uuid('staff_id')
         .references('id')
-        .inTable('staffs')
+        .inTable('staff')
         .onDelete('CASCADE')
         .notNullable()
 

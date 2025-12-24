@@ -5,9 +5,9 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
-      table.foreign('tenant_id').references('id').inTable('tenants').onDelete('CASCADE')
-      table.foreign('user_id').references('id').inTable('users').onDelete('CASCADE')
+      table.uuid('id').primary()
+      table.uuid('tenant_id').references('id').inTable('tenants').onDelete('CASCADE').notNullable()
+      table.uuid('user_id').references('id').inTable('users').onDelete('CASCADE').notNullable()
       table.unique(['user_id','tenant_id'])
 
       table.timestamp('created_at', { useTz: false }).defaultTo(this.now())

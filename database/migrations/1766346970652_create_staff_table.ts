@@ -25,7 +25,7 @@ export default class extends BaseSchema {
 
       // Departamento
       table
-        .uuid('staff_department_id')
+        .uuid('staff_departments_id')
         .references('id')
         .inTable('staff_departments')
         .onDelete('SET NULL')

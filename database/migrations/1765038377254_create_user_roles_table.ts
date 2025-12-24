@@ -7,8 +7,8 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.uuid('id').primary()
-      table.foreign('user_tenant_id').references('id').inTable('user_tenants').onDelete('CASCADE')
-      table.foreign('role_id').references('id').inTable('roles').onDelete('CASCADE')
+      table.uuid('user_tenant_id').references('id').inTable('user_tenants').onDelete('CASCADE').notNullable()
+      table.uuid('role_id').references('id').inTable('roles').onDelete('CASCADE').notNullable()
       table.unique(['user_tenant_id','role_id'])
 
       table.timestamp('created_at', { useTz: false }).defaultTo(this.now())

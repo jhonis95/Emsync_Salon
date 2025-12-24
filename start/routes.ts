@@ -18,7 +18,7 @@ import PortalsController from '#controllers/portals_controller'
 
 // const saasDomain = env.get('SAAS_DOMAIN_LOCAL', '') as string
 
-//router.get('/', [TenentsHomepagesController, 'index'])
+router.get('/', [TenentsHomepagesController, 'index'])
 
 // SaaS principal
 router.group(() => {

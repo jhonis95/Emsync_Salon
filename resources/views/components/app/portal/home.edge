@@ -1,15 +1,17 @@
-<section>
-    <div>
-        <h1>{{ content.greetings.title }}</h1>
-        <h4>{{content.greetings.subtitle }}</h4>
-    </div>
-    <div>
-        @each(card in content.cards)
-            <div>
-                <h4>{{ card.title}}</h4>
-                <p>{{ card.content }}</p>
-                <img src={{card.image}} alt="">
-            </div>
+<section class=" flex flex-col gap-7">
+    @include('partials/portal/titleLg')
+    <div class=" flex flex-col gap-2.5">
+        @each(card in content.infoCards)
+            @include('partials/portal/homeInfoCard')
         @end
+    </div>
+    <div class="flex flex-col gap-3">
+        @each(card in content.quickActionCards)
+            @include('partials/portal/homeQuickActionCard')
+        @end
+    </div>
+    <div class="flex flex-col gap-3">
+        @include('partials/portal/homeNextAppoitment')
+        @include('partials/portal/homeOrders')
     </div>
 </section>
