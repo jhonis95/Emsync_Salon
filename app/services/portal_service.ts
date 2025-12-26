@@ -48,7 +48,7 @@ export class PortalService {
             text:'Profissional: ainda não registrado',
             date:'00/00',
             time:'00:00'
-          }
+          },
         ],
         orders:[
           {

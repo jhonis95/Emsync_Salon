@@ -1,8 +1,9 @@
 import { DateTime } from 'luxon'
-import { BaseModel, beforeCreate, column } from '@adonisjs/lucid/orm'
-//import type { BelongsTo } from '@adonisjs/lucid/types/relations'
-//import User from './user.js'
+import { BaseModel, beforeCreate, column, manyToMany, hasMany} from '@adonisjs/lucid/orm'
+import type { ManyToMany, HasMany } from '@adonisjs/lucid/types/relations'
 import { v4 as uuidv4 } from 'uuid'
+import User from './user.js'
+import Contract from './contract.js'
 
 export default class Tenant extends BaseModel {
   public static table = 'tenant'
@@ -10,37 +11,47 @@ export default class Tenant extends BaseModel {
   @column({ isPrimary: true })
   declare id: string
 
-  @column({ columnName: 'store_name' }) // nome no banco de dados: "store_name"
+  @column()
   declare storeName: string
+
+  @column()
+  declare storeDescriprion: string // Mantive o erro de digitação da migração para manter a consistência
 
   @column()
   declare cnpj: number
 
   @column()
-  declare domain: string
+  declare domain: string | null
 
   @column()
-  declare phone: string
+  declare phone: string | null
 
   @column()
-  declare email: string
+  declare email: string | null
 
-  @column({ columnName: 'logo_url' }) // nome no banco de dados: "store_name"
+  @column()
+  declare adress: string | null
+
+  @column()
   declare logoUrl: string | null
-
-  @column({ columnName: 'owner' }) // nome no banco de dados: "owner"
-  declare ownerId: string | null //no orm retorna o id caso orm use tenant.ownerId
-
-  // @belongsTo(() => User, {
-  //   foreignKey: 'ownerId',
-  // })
-  //declare ownerData: BelongsTo<typeof User> //no orm retorna a model relacionado(user) junto caso orm use: tenant.ownerData.fullName
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
+
+  @manyToMany(() => User, {
+    pivotTable: 'user_tenants', // Nome da tabela de ligação
+    pivotForeignKey: 'tenant_id', // FK do model atual na pivot
+    pivotRelatedForeignKey: 'user_id', // FK do model relacionado na pivot
+  })
+  declare users: ManyToMany<typeof User>
+
+  @hasMany(() => Contract, {
+    foreignKey: 'tenantId', // Nome da propriedade no Model Contract que guarda o ID
+  })
+  declare contracts: HasMany<typeof Contract>
 
   @beforeCreate()
   static assignUuid(tenant: Tenant) {

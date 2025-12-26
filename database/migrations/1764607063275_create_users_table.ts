@@ -6,13 +6,13 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.uuid('id').primary()
-
-      table.uuid('role_id').references('id').inTable('roles').onDelete('SET NULL')
+      
       table.uuid('status_id').references('id').inTable('user_status').onDelete('SET NULL')
 
       table.string('full_name').notNullable()
       table.string('email').notNullable()
       table.string('password').notNullable()
+      table.string('phone').notNullable()
       table.text('observation')
       table.text('internal_note')
       table.enum('gender', ['homem', 'mulher']).nullable()

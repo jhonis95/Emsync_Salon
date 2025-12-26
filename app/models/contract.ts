@@ -4,36 +4,40 @@ import { v4 as uuidv4 } from 'uuid'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import Tenant from './tenant.js'
 import User from './user.js'
+import Plan from './plan.js'
 
 export default class Contract extends BaseModel {
-  public static table = 'contact'
+  public static table = 'contracts'
 
   @column({ isPrimary: true })
   declare id: string
 
-  @column({ columnName: 'start_day' })
-  declare startDay: DateTime
-
-  @column({ columnName: 'end_day' })
-  declare endDay: DateTime
-
-  @column({ columnName: 'document_link' })
-  declare documentLink: string
-
-  @column({ columnName: 'receipt_link' })
-  declare receiptLink: string | null
-
-  @column({ columnName: 'payment_method' })
-  declare paymentMethod: string //[fix] add enum for the types
-
-  @column({ columnName: 'contract_status' })
-  declare contractStatus: string //[fix] add enum for the types
-
-  @column({ columnName: 'signed_by_user' })
+  @column({ columnName: 'signed_by_user_id' })
   declare signedByUserId: string
 
-  @column({ columnName: 'store' }) // nome no banco de dados: "store"
-  declare storeId: string //no orm retorna o id caso orm use user.storeId
+  @column({ columnName: 'tenant_id' })
+  declare tenantId: string
+
+  @column({ columnName: 'plan_id' })
+  declare planId: string | null
+
+  @column.dateTime()
+  declare startDay: DateTime
+
+  @column.dateTime()
+  declare endDay: DateTime
+
+  @column()
+  declare documentLink: string
+
+  @column()
+  declare receiptLink: string | null
+
+  @column()
+  declare paymentMethod: 'pix' | 'credito' | 'debito'
+
+  @column()
+  declare contractStatus: 'pago' | 'nao_pago'
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
@@ -41,15 +45,21 @@ export default class Contract extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
+  // Relacionamentos
   @belongsTo(() => User, {
     foreignKey: 'signedByUserId',
   })
-  declare signedByUserData: BelongsTo<typeof User>
+  declare signer: BelongsTo<typeof User>
 
   @belongsTo(() => Tenant, {
-    foreignKey: 'storeId',
+    foreignKey: 'tenantId',
   })
-  declare storeData: BelongsTo<typeof Tenant> //no orm retorna a model relacionado(user) junto caso orm use: user.storeData.fullName
+  declare tenant: BelongsTo<typeof Tenant>
+
+  @belongsTo(() => Plan, {
+    foreignKey: 'planId',
+  })
+  declare plan: BelongsTo<typeof Plan>
 
   @beforeCreate()
   static assignUuid(contract: Contract) {
