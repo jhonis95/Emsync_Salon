@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import Order from './order.js'
 import Service from './service.js'
-import User from './user.js'
 
 export default class AppointmentService extends BaseModel {
   public static table = 'appointment_service'
@@ -20,9 +19,6 @@ export default class AppointmentService extends BaseModel {
   @column({ columnName: 'last_change' })
   declare lastChenge: DateTime
 
-  @column({ columnName: 'provider' })
-  declare providerId: string
-
   @column({ columnName: 'service' })
   declare serviceId: string
 
@@ -34,11 +30,6 @@ export default class AppointmentService extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
-
-  @belongsTo(() => User, {
-    foreignKey: 'providerId',
-  })
-  declare providerData: BelongsTo<typeof User>
 
   @belongsTo(() => Service, {
     foreignKey: 'serviceId',

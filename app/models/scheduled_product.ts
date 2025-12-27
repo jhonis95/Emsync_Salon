@@ -9,16 +9,16 @@ export default class ScheduledProduct extends BaseModel {
   public static table = 'scheduled_product'
   @column({ isPrimary: true })
   declare id: string
-
-  @column({ columnName: 'pick_date' })
-  declare pickupDate: DateTime
-
-  @column({ columnName: 'order' })
+  
+  @column({ columnName: 'order_id' })
   declare orderId: string
-
-  @column({ columnName: 'product' })
+  
+  @column({ columnName: 'product_id' })
   declare productId: string
 
+  @column({ columnName: 'pickup_date' })
+  declare pickupDate: DateTime
+  
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
@@ -28,12 +28,12 @@ export default class ScheduledProduct extends BaseModel {
   @belongsTo(() => Order, {
     foreignKey: 'orderId',
   })
-  declare orderData: BelongsTo<typeof Order>
+  declare order: BelongsTo<typeof Order>
 
   @belongsTo(() => Product, {
     foreignKey: 'productId',
   })
-  declare productData: BelongsTo<typeof Product>
+  declare product: BelongsTo<typeof Product>
 
   @beforeCreate()
   static assignUuid(scheduledProduct: ScheduledProduct) {

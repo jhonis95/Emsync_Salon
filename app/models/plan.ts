@@ -1,7 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, beforeCreate, hasMany } from '@adonisjs/lucid/orm'
 import { v4 as uuidv4 } from 'uuid'
-import Tenant from './tenant.js'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
 import Contract from './contract.js'
 

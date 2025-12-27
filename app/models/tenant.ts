@@ -4,6 +4,10 @@ import type { ManyToMany, HasMany } from '@adonisjs/lucid/types/relations'
 import { v4 as uuidv4 } from 'uuid'
 import User from './user.js'
 import Contract from './contract.js'
+import Service from './service.js'
+import Product from './product.js'
+import Order from './order.js'
+import Inventory from './inventory.js'
 
 export default class Tenant extends BaseModel {
   public static table = 'tenant'
@@ -52,6 +56,26 @@ export default class Tenant extends BaseModel {
     foreignKey: 'tenantId', // Nome da propriedade no Model Contract que guarda o ID
   })
   declare contracts: HasMany<typeof Contract>
+
+  @hasMany(() => Service, {
+    foreignKey: 'tenantId', // Nome da propriedade no Model Service que guarda o ID
+  })
+  declare services: HasMany<typeof Service>
+
+  @hasMany(() => Product, {
+    foreignKey: 'tenantId', // Nome da propriedade no Model Service que guarda o ID
+  })
+  declare products: HasMany<typeof Product>
+
+  @hasMany(() => Order, {
+    foreignKey: 'tenantId', // Nome da propriedade no Model Service que guarda o ID
+  })
+  declare orders: HasMany<typeof Order>
+
+  @hasMany(() => Inventory, {
+    foreignKey: 'tenantId',
+  })
+  declare inventories: HasMany<typeof Inventory>
 
   @beforeCreate()
   static assignUuid(tenant: Tenant) {

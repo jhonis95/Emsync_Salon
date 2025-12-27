@@ -1,35 +1,42 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, beforeCreate, belongsTo, afterSave } from '@adonisjs/lucid/orm'
-import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import { BaseModel, column, beforeCreate, belongsTo, afterSave, hasMany } from '@adonisjs/lucid/orm'
+import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 import Category from './category.js'
 import Tenant from './tenant.js'
 import Product from './product.js'
 import { v4 as uuidv4 } from 'uuid'
-import emitter from '@adonisjs/core/services/emitter'
-import { Unit } from '../../contracts/enums/unit.js'
+import InventoryStatus from './inventory_status.js'
+//import emitter from '@adonisjs/core/services/emitter'
+//import { Unit } from '../../contracts/enums/unit.js'
 
 export default class Inventory extends BaseModel {
   public static table = 'inventory'
   @column({ isPrimary: true })
   declare id: string
 
+  @column({ columnName: 'tenant_id' })
+  declare tenantId: string
+
+  @column({ columnName: 'product_id' })
+  declare productId: string
+
+  @column({ columnName: 'status_id' })
+  declare statusId: string | null
+
   @column()
-  declare quantaty: number
+  declare quantity: number
 
   @column({ columnName: 'min_stock' })
   declare minStock: number
 
+  @column({ columnName: 'min_stock_alert' })
+  declare minStockAlert: number
+
   @column()
-  declare unit: Unit | null
+  declare unit: 'pack' | 'box' | 'unit'
 
-  @column({ columnName: 'category' })
-  declare categoryId: string | null
-
-  @column({ columnName: 'store' })
-  declare storeId: string
-
-  @column({ columnName: 'product' })
-  declare productId: string
+  @column()
+  declare active: boolean
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
@@ -37,30 +44,30 @@ export default class Inventory extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  @belongsTo(() => Category, {
-    foreignKey: 'categoryId',
+  @belongsTo(() => InventoryStatus, {
+    foreignKey: 'statusId',
   })
-  declare categoryData: BelongsTo<typeof Category>
+  declare status: BelongsTo<typeof InventoryStatus>
 
   @belongsTo(() => Tenant, {
-    foreignKey: 'storeId',
+    foreignKey: 'tenantId',
   })
-  declare storeData: BelongsTo<typeof Tenant>
+  declare tenant: BelongsTo<typeof Tenant>
 
   @belongsTo(() => Product, {
     foreignKey: 'productId',
   })
-  declare productData: BelongsTo<typeof Product>
+  declare product: BelongsTo<typeof Product>
 
   @beforeCreate()
   static assignUuid(inventory: Inventory) {
     inventory.id = uuidv4()
   }
 
-  @afterSave()
-  public static async checkLowStock(inventory: Inventory) {
-    if (inventory.quantaty <= inventory.minStock) {
-      emitter.emit('stock:low', inventory)
-    }
-  }
+  // @afterSave()
+  // public static async checkLowStock(inventory: Inventory) {
+  //   if (inventory.quantaty <= inventory.minStock) {
+  //     emitter.emit('stock:low', inventory)
+  //   }
+  // }
 }
