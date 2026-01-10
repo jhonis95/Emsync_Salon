@@ -1,8 +1,8 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, beforeCreate, belongsTo, hasMany } from '@adonisjs/lucid/orm'
+import { BaseModel, column, beforeCreate, hasMany } from '@adonisjs/lucid/orm'
 import { v4 as uuidv4 } from 'uuid'
 import Inventory from './inventory.js'
-import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
+import type { HasMany } from '@adonisjs/lucid/types/relations'
 
 export default class InventoryStatus extends BaseModel {
   @column({ isPrimary: true })

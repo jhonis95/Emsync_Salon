@@ -17,6 +17,9 @@ export default class Plan extends BaseModel {
   @column({ columnName: 'subscription_value' })
   declare subscriptionValue: number
 
+  @column({columnName:'billing_cycle'})
+  declare billingCycle: 'mensal' | 'anual'
+
   @column()
   declare details: string
 

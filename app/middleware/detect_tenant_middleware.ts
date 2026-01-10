@@ -5,7 +5,7 @@ import type { NextFn } from '@adonisjs/core/types/http'
 // Extender o HttpContext para incluir tenant
 declare module '@adonisjs/core/http' {
   interface HttpContext {
-    tenant?: typeof Tenant.prototype
+    tenant: typeof Tenant.prototype
   }
 }
 

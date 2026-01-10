@@ -9,6 +9,7 @@ export default class extends BaseSchema {
       table.string('plan_name')
       table.decimal('setup_value', 10, 2)
       table.decimal('subscription_value', 10, 2)
+      table.enum('billing_cycle',['mensal','anual'])
       table.text('details')
 
       table.timestamp('created_at', { useTz: false }).defaultTo(this.now())

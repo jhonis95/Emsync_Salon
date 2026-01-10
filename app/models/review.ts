@@ -9,15 +9,15 @@ export default class Review extends BaseModel {
   public static table = 'review'
   @column({ isPrimary: true })
   declare id: string
+  
+  @column({ columnName: 'tenant_id' })
+  declare tenantId: string
+
+  @column({ columnName: 'user_id' })
+  declare userId: string
 
   @column()
   declare content: string
-
-  @column({ columnName: 'client' })
-  declare clientId: string
-
-  @column({ columnName: 'store_review' })
-  declare storeReviewId: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
@@ -26,12 +26,12 @@ export default class Review extends BaseModel {
   declare updatedAt: DateTime
 
   @belongsTo(() => User, {
-    foreignKey: 'clientID',
+    foreignKey: 'userId',
   })
   declare storeData: BelongsTo<typeof User>
 
   @belongsTo(() => Tenant, {
-    foreignKey: 'storeReviewId',
+    foreignKey: 'tenantId',
   })
   declare storeReviewData: BelongsTo<typeof Tenant>
 

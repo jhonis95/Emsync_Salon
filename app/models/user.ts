@@ -10,6 +10,7 @@ import UserStatus from './user_status.js'
 import Role from './role.js'
 import Contract from './contract.js'
 import Order from './order.js'
+import Review from './review.js'
 
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
@@ -36,7 +37,7 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare password: string
 
   @column()
-  declare phone: number
+  declare phone: string
 
   @column()
   declare observation: string | null
@@ -86,6 +87,11 @@ export default class User extends compose(BaseModel, AuthFinder) {
     foreignKey: 'userId', // Nome da propriedade no Model Contract que guarda o ID
   })
   declare ordens: HasMany<typeof Order>
+
+  @hasMany(() => Review, {
+    foreignKey: 'userId', // Nome da propriedade no Model Contract que guarda o ID
+  })
+  declare reviews: HasMany<typeof Review>
 
   @beforeCreate()
   static assignUuid(user: User) {

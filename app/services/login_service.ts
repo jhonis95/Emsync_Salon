@@ -9,7 +9,7 @@ export class LoginService {
     const { email, password } = request.only(['email', 'password'])
 
     const user = await User.query()
-      .where('store', tenant?.$attributes.id) // tenant.id, não o objeto inteiro
+      .where('store', tenant.id) // tenant.id, não o objeto inteiro
       .andWhere('email', email) // filtra também pelo email
       .first()
 

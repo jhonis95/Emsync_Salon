@@ -8,9 +8,10 @@ import Service from './service.js'
 import Product from './product.js'
 import Order from './order.js'
 import Inventory from './inventory.js'
+import Review from './review.js'
 
 export default class Tenant extends BaseModel {
-  public static table = 'tenant'
+  public static table = 'tenants'
 
   @column({ isPrimary: true })
   declare id: string
@@ -76,6 +77,11 @@ export default class Tenant extends BaseModel {
     foreignKey: 'tenantId',
   })
   declare inventories: HasMany<typeof Inventory>
+
+  @hasMany(() => Review, {
+    foreignKey: 'tenantId',
+  })
+  declare reviews: HasMany<typeof Review>
 
   @beforeCreate()
   static assignUuid(tenant: Tenant) {
