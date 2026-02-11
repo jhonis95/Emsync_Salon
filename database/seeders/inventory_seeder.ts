@@ -1,4 +1,3 @@
-import Category from '#models/category'
 import Inventory from '#models/inventory'
 import Product from '#models/product'
 import Tenant from '#models/tenant'
@@ -19,16 +18,13 @@ export default class InventorySeeder extends BaseSeeder {
       return
     }
 
-    const categories = await Category.all()
-
     // Para cada tenant cria alguns itens no estoque
     for (const tenant of tenants) {
       for (const product of products.slice(0, 3)) {
         await Inventory.create({
-          quantaty: Math.floor(Math.random() * 50) + 10, // estoque inicial aleatório
+          quantity: Math.floor(Math.random() * 50) + 10, // estoque inicial aleatório
           unit: Unit.UNIT, // depende do seu enum Unit
-          categoryId: categories.length ? categories[0].id : null,
-          storeId: tenant.id,
+          tenantId: tenant.id,
           productId: product.id,
         })
       }

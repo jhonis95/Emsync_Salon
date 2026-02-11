@@ -1,9 +1,15 @@
 {
   "extends": "@adonisjs/tsconfig/tsconfig.app.json",
-  "compilerOptions": {
+  /*"compilerOptions": {
     "moduleResolution": "node16", // ou "nodenext"
     "module": "Node16",
     "rootDir": "./",
     "outDir": "./build"
+  }*/
+  "compilerOptions": {
+    "jsx": "react",
+    "jsxFactory": "Html.createElement",
+    "jsxFragmentFactory": "Html.Fragment",
+    "types": ["@kitajs/html"]
   }
 }

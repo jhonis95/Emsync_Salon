@@ -1,0 +1,99 @@
+<div id="signupContent" class=" flex flex-col gap-7 justify-center items-center p-7 h-full">
+    <img class="animate-in size-20" src="" alt="">
+    <div class="animate-in flex flex-col justify-center items-center">
+        <h1 class=" text-4xl text-center text-main-blue">Bem vindo ao Emsync salon</h1>
+        <p class=" text-xl text-main-blue">Entre com seu email e senha</p>
+    </div>
+    <form 
+        action="http://emsyncsalon.com.br/auth"
+        method="POST" 
+        class="animate-in flex flex-col gap-5 w-full"
+    >
+        <div class="flex flex-col gap-0.5">
+            <label class=" text-[12px]" for="userEmail">Email</label>
+            <input 
+                class=" border-[0.5px] py-1 px-2 rounded-lg bg-main-gray text-main-blue focus:outline-none focus:border-main"
+                :class="$store.signup.emailError ? 'border-red-500' : 'border-gray-300'"
+                type="email" 
+                name="userEmail" 
+                id="userEmail" 
+                required 
+                autocomplete="email"
+                placeholder="exemplo@email.com"
+                x-model="$store.signup.userEmail"
+                @input="$store.signup.validateEmail($event.target.value)"
+                @blur="$store.signup.validateEmail($event.target.value)"
+            >
+            <span 
+                x-show="$store.signup.emailError" 
+                class="text-red-500 text-[10px] mt-1" 
+                x-text="$store.signup.emailError">
+            </span>
+        </div>
+        <div class=" flex flex-col gap-0.5 no-stagger">
+            <label class=" text-[12px]" for="">Senha</label>
+            <div class=" relative">
+                <input 
+                    :type="$store.signup.showPassword ? 'text' : 'password'" 
+                    class="border-[0.5px] py-1 px-2 rounded-lg w-full pr-10 bg-main-gray text-main-blue focus:outline-none focus:border-main" 
+                    :class="$store.signup.passwordError ? 'border-red-500' : 'border-gray-300'"
+                    x-model="$store.signup.userPassword"
+                    @input="$store.signup.validatePassword($event.target.value)"
+                >
+            
+                <button 
+                    type="button" 
+                    @click="$store.signup.showPassword = !$store.signup.showPassword"
+                    class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                    <span x-show="!$store.signup.showPassword" class="text-xs">
+                        <img class="size-6 opacity-25" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWV5ZS1pY29uIGx1Y2lkZS1leWUiPjxwYXRoIGQ9Ik0yLjA2MiAxMi4zNDhhMSAxIDAgMCAxIDAtLjY5NiAxMC43NSAxMC43NSAwIDAgMSAxOS44NzYgMCAxIDEgMCAwIDEgMCAuNjk2IDEwLjc1IDEwLjc1IDAgMCAxLTE5Ljg3NiAwIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMyIvPjwvc3ZnPg==" alt="open-eyes">
+                    </span>
+                    <span x-show="$store.signup.showPassword" class="text-xs">
+                        <img class="size-6 opacity-25" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWV5ZS1jbG9zZWQtaWNvbiBsdWNpZGUtZXllLWNsb3NlZCI+PHBhdGggZD0ibTE1IDE4LS43MjItMy4yNSIvPjxwYXRoIGQ9Ik0yIDhhMTAuNjQ1IDEwLjY0NSAwIDAgMCAyMCAwIi8+PHBhdGggZD0ibTIwIDE1LTEuNzI2LTIuMDUiLz48cGF0aCBkPSJtNCAxNSAxLjcyNi0yLjA1Ii8+PHBhdGggZD0ibTkgMTggLjcyMi0zLjI1Ii8+PC9zdmc+" alt="close-eyes">
+                    </span>
+                </button>
+            </div>
+            <span 
+                x-show="$store.signup.passwordError" 
+                class="text-red-500 text-[10px] mt-1" 
+                x-text="$store.signup.passwordError">
+            </span>
+        </div>
+        <div class="animate-in text-main-blue">
+            <div class=" flex items-center gap-1">
+                <input class=" size-4" type="checkbox" name="checkboxConected" id="checkboxConected">
+                <label class="text-base" for="checkboxConected">Marter conectado</label>
+            </div>
+            <button
+                class=" border-[0.5px] text-lg bg-main border-gray-300 py-2 px-4 w-full rounded-sm"
+                type="submit"
+            >
+                Entrar
+            </button>
+        </div>
+        <div class="animate-in text-main-blue">
+            <p class="text-base">Fazer o login com:</p>
+            <button
+                class=" border-[0.5px] text-lg border-gray-300 bg-white py-2 px-4 w-full rounded-sm flex justify-center items-center gap-1"
+                type="submit"
+            >
+               <img class=" size-5" src="" alt="">
+               Google
+            </button>
+        </div>
+    </form>
+    <div class="animate-in flex flex-col justify-center items-center">
+        <p class="text-base">Ainda não tem cadastro?</p>
+        <a 
+            class="text-base font-semibold text-main underline"
+            hx-get="/signup/view/signup" 
+            hx-trigger="click"
+            hx-swap="outerHTML"
+            hx-target="#signupContent"
+            placeholder="loading..."
+        >
+           ir para a pagina de cadastro
+        </a>
+    </div>
+</div>

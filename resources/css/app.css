@@ -19,6 +19,11 @@
 /* @import "bulma"; */
 
 @layer base {
+  html,body {
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+  }
     *, *::before, *::after {
         box-sizing: border-box;
     }
@@ -33,14 +38,20 @@
   --font-poppins: 'Poppins', sans-serif;
   --font-grotesk: 'Space Grotesk', sans-serif;
   --font-dm: "DM Sans", sans-serif;
-  --color-borderGray: #D9D9D9
+  --color-borderGray: #D9D9D9;
+  --color-main:#FCA311;
+  --color-main-blue:#14213D;
+  --color-main-gray:#E5E5E5;
+  
 }
 
 /* @import 'flowbite'; */
 /* @plugin "daisyui"; */
 
-/* 
-html {
+
+/* html {
+  height: 100vh;
+  width: 100vw;
   box-sizing: border-box;
 }
 *,

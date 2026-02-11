@@ -1,0 +1,31 @@
+<div id="signupContent" class=" flex flex-col gap-7 justify-center items-center p-7 h-full">
+    <img class=" size-20" src="" alt="">
+    <div>
+        <h1 class=" text-2xl text-center"><span x-text="$store.signup.userName"></span>, Confirmação de plano</h1>
+    </div>
+    <div class="w-full">
+        <h3>Escolha o seu plano</h3>
+    </div>
+    <div class=" w-full flex justify-evenly gap-3">
+        <button 
+            class=" border-[0.5px] border-gray-300 bg-gray-100 py-2 px-4 w-full rounded-sm" 
+            hx-get="/signup/view/store" 
+            hx-trigger="click"
+            hx-swap="outerHTML"
+            hx-target="#signupContent"
+            placeholder="loading..."
+        >
+            Voltar
+        </button>
+        <button
+            class=" border-[0.5px] border-gray-300 bg-gray-100 py-2 px-4 w-full rounded-sm" 
+            hx-get="/signup/view/card"
+            hx-trigger="click"
+            hx-swap="outerHTML"
+            hx-target="#signupContent"
+            placeholder="loading..."
+        >
+            Continuar
+        </button>
+    </div>
+</div>
