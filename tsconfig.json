@@ -7,9 +7,7 @@
     "outDir": "./build"
   }*/
   "compilerOptions": {
-    "jsx": "react",
-    "jsxFactory": "Html.createElement",
-    "jsxFragmentFactory": "Html.Fragment",
-    "types": ["@kitajs/html"]
+    "rootDir": "./",
+    "outDir": "./build"
   }
 }
