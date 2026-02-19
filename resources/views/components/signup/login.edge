@@ -62,11 +62,11 @@
         </div>
         <div class="animate-in text-main-blue">
             <div class=" flex items-center gap-1">
-                <input class=" size-4" type="checkbox" name="checkboxConected" id="checkboxConected">
+                <input class=" size-4 cursor-pointer" type="checkbox" name="checkboxConected" id="checkboxConected">
                 <label class="text-base" for="checkboxConected">Marter conectado</label>
             </div>
             <button
-                class=" border-[0.5px] text-lg bg-main border-gray-300 py-2 px-4 w-full rounded-sm"
+                class=" border-[0.5px] text-lg bg-main border-gray-300 py-2 px-4 w-full rounded-sm cursor-pointer"
                 type="submit"
             >
                 Entrar
@@ -75,7 +75,7 @@
         <div class="animate-in text-main-blue">
             <p class="text-base">Fazer o login com:</p>
             <button
-                class=" border-[0.5px] text-lg border-gray-300 bg-white py-2 px-4 w-full rounded-sm flex justify-center items-center gap-1"
+                class=" border-[0.5px] text-lg border-gray-300 bg-white py-2 px-4 w-full rounded-sm flex justify-center items-center gap-1 cursor-pointer"
                 type="submit"
             >
                <img class=" size-5" src="" alt="">
@@ -86,7 +86,7 @@
     <div class="animate-in flex flex-col justify-center items-center">
         <p class="text-base">Ainda não tem cadastro?</p>
         <a 
-            class="text-base font-semibold text-main underline"
+            class="text-base font-semibold text-main underline cursor-pointer"
             hx-get="/signup/view/signup" 
             hx-trigger="click"
             hx-swap="outerHTML"
