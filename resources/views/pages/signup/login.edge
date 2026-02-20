@@ -1,7 +1,7 @@
-<div id="signupContent" class=" flex flex-col gap-7 justify-center items-center p-7 h-full">
+<div id="signupContent" class=" flex flex-col gap-7 justify-center font-ubuntu items-center p-7 h-full">
     <img class="animate-in size-20" src="" alt="">
     <div class="animate-in flex flex-col justify-center items-center">
-        <h1 class=" text-4xl text-center text-main-blue">Bem vindo ao Emsync salon</h1>
+        <h1 class=" text-4xl text-center text-main-blue font-poppins">Bem vindo ao Emsync salon</h1>
         <p class=" text-xl text-main-blue">Entre com seu email e senha</p>
     </div>
     <form 
@@ -44,13 +44,13 @@
                 <button 
                     type="button" 
                     @click="$store.signup.showPassword = !$store.signup.showPassword"
-                    class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    class="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer"
                 >
                     <span x-show="!$store.signup.showPassword" class="text-xs">
-                        <img class="size-6 opacity-25" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWV5ZS1pY29uIGx1Y2lkZS1leWUiPjxwYXRoIGQ9Ik0yLjA2MiAxMi4zNDhhMSAxIDAgMCAxIDAtLjY5NiAxMC43NSAxMC43NSAwIDAgMSAxOS44NzYgMCAxIDEgMCAwIDEgMCAuNjk2IDEwLjc1IDEwLjc1IDAgMCAxLTE5Ljg3NiAwIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMyIvPjwvc3ZnPg==" alt="open-eyes">
+                        <img class="size-6 opacity-25" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWV5ZS1pY29uIGx1Y2lkZS1leWUiPjxwYXRoIGQ9Ik0yLjA2MiAxMi4zNDhhMSAxIDAgMCAxIDAtLjY5NiAxMC43NSAxMC43NSAwIDAgMSAxOS44NzYgMCAxIDEgMCAwIDEgMCAuNjk2IDEwLjc1IDEwLjc1IDAgMCAxLTE5Ljg3NiAwIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMyIvPjwvc3ZnPg==" alt="open-eyes"/>
                     </span>
                     <span x-show="$store.signup.showPassword" class="text-xs">
-                        <img class="size-6 opacity-25" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWV5ZS1jbG9zZWQtaWNvbiBsdWNpZGUtZXllLWNsb3NlZCI+PHBhdGggZD0ibTE1IDE4LS43MjItMy4yNSIvPjxwYXRoIGQ9Ik0yIDhhMTAuNjQ1IDEwLjY0NSAwIDAgMCAyMCAwIi8+PHBhdGggZD0ibTIwIDE1LTEuNzI2LTIuMDUiLz48cGF0aCBkPSJtNCAxNSAxLjcyNi0yLjA1Ii8+PHBhdGggZD0ibTkgMTggLjcyMi0zLjI1Ii8+PC9zdmc+" alt="close-eyes">
+                        <img class="size-6 opacity-25" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWV5ZS1jbG9zZWQtaWNvbiBsdWNpZGUtZXllLWNsb3NlZCI+PHBhdGggZD0ibTE1IDE4LS43MjItMy4yNSIvPjxwYXRoIGQ9Ik0yIDhhMTAuNjQ1IDEwLjY0NSAwIDAgMCAyMCAwIi8+PHBhdGggZD0ibTIwIDE1LTEuNzI2LTIuMDUiLz48cGF0aCBkPSJtNCAxNSAxLjcyNi0yLjA1Ii8+PHBhdGggZD0ibTkgMTggLjcyMi0zLjI1Ii8+PC9zdmc+" alt="close-eyes"/>
                     </span>
                 </button>
             </div>
@@ -65,12 +65,11 @@
                 <input class=" size-4 cursor-pointer" type="checkbox" name="checkboxConected" id="checkboxConected">
                 <label class="text-base" for="checkboxConected">Marter conectado</label>
             </div>
-            <button
-                class=" border-[0.5px] text-lg bg-main border-gray-300 py-2 px-4 w-full rounded-sm cursor-pointer"
-                type="submit"
-            >
-                Entrar
-            </button>
+            @component('components/signup/button', {
+                main:true,
+                text:'Entrar'
+            })  
+            @end
         </div>
         <div class="animate-in text-main-blue">
             <p class="text-base">Fazer o login com:</p>
@@ -87,7 +86,7 @@
         <p class="text-base">Ainda não tem cadastro?</p>
         <a 
             class="text-base font-semibold text-main underline cursor-pointer"
-            hx-get="/signup/view/signup" 
+            hx-get="/signup/view/signup"
             hx-trigger="click"
             hx-swap="outerHTML"
             hx-target="#signupContent"

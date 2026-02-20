@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/signup.js'])
     <title>Emsync salon Sign Up</title>
 </head>
@@ -10,7 +11,9 @@
     <main class=" w-full h-full bg-white">
         <section 
             x-data class="w-full h-full"
-            hx-get="/signup/view/login" 
+            hx-get="/signup/view/login"
+            hx-on::before-swap="fadeoutAnimation()"
+            hx-on::after-swap="fadeinAnimation()"
             hx-trigger="load delay:1s"
             hx-swap="outerHTML"
             hx-target="#signupContent"

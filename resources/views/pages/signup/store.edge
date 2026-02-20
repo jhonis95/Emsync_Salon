@@ -76,25 +76,17 @@
         </div>
     </form>
     <div class=" w-full flex justify-evenly gap-3">
-        <button
-            class=" border-[0.5px] border-gray-300 bg-white py-2 px-4 w-full rounded-sm" 
-            hx-get="/signup/view/signup" 
-            hx-trigger="click"
-            hx-swap="outerHTML"
-            hx-target="#signupContent"
-            placeholder="loading..."
-        >
-            Voltar
-        </button>
-        <button
-            class=" border-[0.5px] bg-main border-gray-300 py-2 px-4 w-full rounded-sm"
-            hx-get="/signup/view/plan"
-            hx-trigger="click"
-            hx-swap="outerHTML"
-            hx-target="#signupContent"
-            placeholder="loading..."
-        >
-            Continuar
-        </button>
+        @component('components/signup/button', {
+            main:false,
+            getLink:'/signup/view/signup',
+            text:'Voltar'
+        })  
+        @end
+        @component('components/signup/button', {
+            main:true,
+            getLink:'/signup/view/plan',
+            text:'Continuar'
+        })  
+        @end
     </div>
 </div>

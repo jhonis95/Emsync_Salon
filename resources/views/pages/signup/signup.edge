@@ -1,4 +1,4 @@
-<div id="signupContent" class=" text-main-blue flex flex-col gap-7 justify-center items-center p-7 h-full">
+<div id="signupContent" class=" text-main-blue flex flex-col gap-7 font-ubuntu justify-center items-center p-7 h-full">
     <img class=" size-20" src="" alt="">
     <div class=" flex flex-col justify-center items-center">
         <h1 class=" text-4xl text-center">Bem vindo ao Emsync salon</h1>
@@ -59,14 +59,10 @@
             ir para a pagina de login
         </a>
     </div>
-    <button 
-        class=" border-[0.5px] bg-main border-gray-300 py-2 px-4 w-full rounded-sm cursor-pointer"
-        hx-get="/signup/view/store" 
-        hx-trigger="click"
-        hx-swap="outerHTML"
-        hx-target="#signupContent"
-        placeholder="loading..."
-    >
-        Continuar
-    </button>
+    @component('components/signup/button', {
+        main:true,
+        getLink:'/signup/view/store',
+        text:'Continuar'
+    })  
+    @end
 </div>

@@ -3,7 +3,7 @@ import Alpine from 'alpinejs'
 import mask from '@alpinejs/mask'
 import { animate, stagger } from 'motion'
 
-document.body.addEventListener('htmx:load', ()=> {
+function fadeinAnimation(){
     //const targets = document.querySelectorAll("#signupContent > .animate-in");
     const targets = document.querySelectorAll("#signupContent > *");
     if (targets.length > 0){
@@ -11,10 +11,13 @@ document.body.addEventListener('htmx:load', ()=> {
         // Opcional: remove a classe após animar para não repetir se o HTMX carregar algo interno
         //targets.forEach(el => el.classList.remove('animate-in'));
     }
-});
-document.body.addEventListener('htmx:beforeSwap',()=>{
+}
+function fadeoutAnimation(){
     animate("#signupContent",{ opacity:[1,0]},{ duration: 0.2 })
-})
+}
+
+window.fadeinAnimation = fadeinAnimation;
+window.fadeoutAnimation = fadeoutAnimation;
 
 Alpine.plugin(mask)
 
@@ -83,6 +86,10 @@ document.addEventListener('alpine:init', () => {
         setUserInfo(){
             console.log(`${this.userName}, ${this.userEmail}, ${this.userPhone}`)
         },
+
+        auth(){
+
+        }
     })
 })
 

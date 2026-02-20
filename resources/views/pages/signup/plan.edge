@@ -1,0 +1,62 @@
+<div id="signupContent" class=" flex flex-col gap-7 justify-center font-ubuntu items-center p-7 h-full">
+    <img class=" size-20" src="" alt="">
+    <div class="w-full flex flex-col justify-center items-center gap-1.5">
+        <h3 class=" font-poppins text-2xl">Escolha o seu plano</h3>
+        <p>Escolha a melhor opção para o seu salão</p>
+    </div>
+    <div class="flex flex-col">
+        <div class="w-full flex flex-col justify-center items-center gap-1">
+            <h4>Planos</h4>
+            <div>
+                <button>mensal</button>
+                <button>anual</button>
+            </div>
+        </div>
+        <div 
+            id="card container"
+            class=" flex"
+        >
+            <div 
+                id="card"
+                class=" border-1 rounded-lg"
+            >
+                <h6>Plano Essencial</h6>
+                <p>plano para empresas que estão começando</p>
+                <div class="flex flex-col gap-1">
+                    <div>
+                        <img src="" alt=""/>
+                        <p></p>
+                    </div>
+                </div>
+                <p>
+                    O foco é agendamento online e aumento da presença online sem burocracia técnica.
+                </p>
+                <div>
+                    <p>Duração do contrato: <span>Mensal</span></p>
+                    <p>R$97,00<span>/mês</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+
+    </div>
+    <div class="w-full flex flex-col justify-center items-center">
+        <p>Plano encolhido: <span>[ nome do plano ]</span></p>
+        <p>você deseja:</p>
+    </div>
+    <div class=" w-full flex justify-evenly gap-3">
+        @component('components/signup/button', {
+            main:false,
+            getLink:'/signup/view/store',
+            text:'Voltar'
+        })  
+        @end
+        @component('components/signup/button', {
+            main:true,
+            getLink:'/signup/view/payment',
+            text:'Continuar'
+        })  
+        @end
+    </div>
+</div>
