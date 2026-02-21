@@ -1,8 +1,8 @@
-<div id="signupContent" class=" flex flex-col gap-7 justify-center items-center p-7 h-full text-main-blue">
+<div id="signupContent" class=" flex flex-col gap-7 justify-center font-ubuntu items-center p-7 h-full text-main-dark">
     <img class=" size-20" src="" alt="">
     <div>
-        <h1 class=" text-2xl text-center text-main font-bold">
-            <span class="text-main-blue font-semibold" x-text="$store.signup.userName"></span><br> cadastro da loja
+        <h1 class=" text-2xl text-center text-main font-bold font-poppins">
+            <span class="text-main-dark font-semibold" x-text="$store.signup.userName"></span><br> cadastro da loja
         </h1>
     </div>
     <form action="" class="flex flex-col gap-5 w-full">
@@ -12,7 +12,7 @@
         <div class="flex flex-col gap-0.5">
             <label class=" text-[12px]" for="storeName">Name da Loja</label>
             <input 
-                class=" border-[0.5px] py-1 px-2 rounded-lg text-main-blue bg-main-gray border-gray-300 focus:outline-none focus:border-main" 
+                class=" border-[0.5px] py-1 px-2 rounded-lg text-main-dark bg-main-gray border-gray-300 focus:outline-none focus:border-main" 
                 type="text" 
                 name="storeName" 
                 id="storeName" 
@@ -22,7 +22,7 @@
         <div class="flex flex-col gap-0.5">
             <label class=" text-[12px]" for="storeCNPJ">CNPJ</label>
             <input 
-                class=" border-[0.5px] py-1 px-2 rounded-lg text-main-blue bg-main-gray border-gray-300 focus:outline-none focus:border-main"
+                class=" border-[0.5px] py-1 px-2 rounded-lg text-main-dark bg-main-gray border-gray-300 focus:outline-none focus:border-main"
                 :class="$store.signup.cnpjError ? 'border-red-500' : 'border-gray-300'"
                 type="text" 
                 name="storeCNPJ" 
@@ -41,7 +41,7 @@
         <div class="flex flex-col gap-0.5">
             <label class=" text-[12px]" for="storeEmail">Email</label>
             <input 
-                class=" border-[0.5px] py-1 px-2 rounded-lg text-main-blue bg-main-gray border-gray-300 focus:outline-none focus:border-main"
+                class=" border-[0.5px] py-1 px-2 rounded-lg text-main-dark bg-main-gray border-gray-300 focus:outline-none focus:border-main"
                 :class="$store.signup.emailError ? 'border-red-500' : 'border-gray-300'"  
                 type="email" 
                 name="storeEmail" 
@@ -62,9 +62,9 @@
         <div class="flex flex-col gap-0.5">
             <label class=" text-[12px]" for="storePhone">Whatsapp ou Whatsapp Business</label>
             <div class="w-full flex items-center gap-1">
-                <span class="h-full flex justify-center items-center border-[0.5px] py-1 px-2 rounded-lg text-main-blue bg-main-gray border-gray-300 text-sm">+55</span>
+                <span class="h-full flex justify-center items-center border-[0.5px] py-1 px-2 rounded-lg text-main-dark bg-main-gray border-gray-300 text-sm">+55</span>
                 <input 
-                    class=" w-full border-[0.5px] py-1 px-2 rounded-lg text-main-blue bg-main-gray border-gray-300 focus:outline-none focus:border-main" 
+                    class=" w-full border-[0.5px] py-1 px-2 rounded-lg text-main-dark bg-main-gray border-gray-300 focus:outline-none focus:border-main" 
                     type="tel" 
                     name="storePhone" 
                     id="storePhone"

@@ -16,26 +16,14 @@
             id="card container"
             class=" flex"
         >
-            <div 
-                id="card"
-                class=" border-1 rounded-lg"
-            >
-                <h6>Plano Essencial</h6>
-                <p>plano para empresas que estão começando</p>
-                <div class="flex flex-col gap-1">
-                    <div>
-                        <img src="" alt=""/>
-                        <p></p>
-                    </div>
-                </div>
-                <p>
-                    O foco é agendamento online e aumento da presença online sem burocracia técnica.
-                </p>
-                <div>
-                    <p>Duração do contrato: <span>Mensal</span></p>
-                    <p>R$97,00<span>/mês</span></p>
-                </div>
-            </div>
+            @component('components/signup/planCard', { 
+                title:'',
+                subtitle:'',
+                buletList:[],
+                content:'',
+                price:''
+             })
+            @end     
         </div>
     </div>
     <div>

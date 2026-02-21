@@ -40,10 +40,12 @@
   --font-grotesk: 'Space Grotesk', sans-serif;
   --font-dm: "DM Sans", sans-serif;
   --font-ubuntu: 'Ubuntu', sans-serif;
-  --color-borderGray: #D9D9D9;
   --color-main:#FCA311;
-  --color-main-blue:#14213D;
-  --color-main-gray:#E5E5E5;
+  --color-main-bg:#FFE5BB;
+  --color-main-dark:#14213D;
+  --color-unfocus-bg:#E5E5E5;
+  --color-unfocus:#666666;
+  --color-page-bg:#F8F8F8;
   
 }
 

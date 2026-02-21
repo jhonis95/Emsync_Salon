@@ -14,7 +14,7 @@ import SaasController from '#controllers/saas_controller'
 import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
 import PortalsController from '#controllers/portals_controller'
-import SingupsController from '#controllers/singups_controller'
+import SignupsController from '#controllers/signups_controller'
 
 // import env from '#start/env'
 
@@ -28,8 +28,8 @@ router.group(() => {
     router.get('/auth', [SaasController, 'login']).as('saas.auth.login.show')
     router.post('/auth', [SaasController, 'auth']).as('saas.auth.login')
     router.group(()=>{
-      router.get('/',[SingupsController,'index']).as('saas.singup')
-      router.get('/view/:page', [SingupsController, 'view']).as('saas.signup.view')
+      router.get('/',[SignupsController,'index']).as('saas.singup')
+      router.get('/view/:page', [SignupsController, 'view']).as('saas.signup.view')
     }).prefix('signup')
     router.get('/app', [SaasController, 'app'])
     //.use([middleware.auth({ guards: ['web'] })])
