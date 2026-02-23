@@ -3,28 +3,22 @@
     class=" bg-white border-1 text-main-dark border-unfocus-bg shadow-xl p-3.5 w-[250px] h-fit rounded-lg flex flex-col gap-5"
 >
     <div class="flex flex-col gap-1">
-        <h6 class=" text-center font-poppins font-bold text-lg">Plano Essencial</h6>
-        <p class=" text-xs font-light">plano para empresas que estão começando</p>
+        <h6 class=" text-center font-poppins font-bold text-lg">{{title}}</h6>
+        <p class=" text-xs font-light">{{subtitle}}</p>
     </div>
     <div class="flex flex-col gap-1">
-        <div class=" flex gap-2 items-center">
-            <svg class=" text-main size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big-icon lucide-circle-check-big"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
-            <p class=" font-medium text-sm">Sistema de agendamento</p>
-        </div>
-        <div class=" flex gap-2 items-center">
-            <svg class=" text-main size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big-icon lucide-circle-check-big"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
-            <p class=" font-medium text-sm">Página web da empresa</p>
-        </div>
-        <div class=" flex gap-2 items-center">
-            <svg class=" text-main size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big-icon lucide-circle-check-big"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
-            <p class=" font-medium text-sm">Portal do cliete</p>
-        </div>
+        @each(feature in features)
+            <div class=" flex gap-2 items-center">
+                <svg class=" text-main size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big-icon lucide-circle-check-big"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                <p class=" font-medium text-sm">{{feature.content}}</p>
+            </div>
+        @end
     </div>
     <p class=" text-xs font-light">
-        O foco é agendamento online e aumento da presença online sem burocracia técnica.
+        {{content}}
     </p>
     <div>
-        <p class=" text-xs font-bold">Duração do contrato: <span class="text-main">Mensal</span></p>
-        <p class=" text-main text-base font-medium">R$97,00<span class=" text-xs font-light text-main-dark">/mês</span></p>
+        <p class=" text-xs font-bold">Duração do contrato: <span class="text-main">{{billingCycle}}</span></p>
+        <p class=" text-main text-base font-medium">R${{price}}<span class=" text-xs font-light text-main-dark">/mês</span></p>
     </div>
 </div>

@@ -7,6 +7,8 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.uuid('id').primary()
       table.string('plan_name')
+      table.string('subtitle')
+      table.integer('sort_priority').notNullable()
       table.decimal('setup_value', 10, 2)
       table.decimal('subscription_value', 10, 2)
       table.enum('billing_cycle',['mensal','anual'])
