@@ -1,0 +1,11 @@
+@each(plan in component)
+    @component('components/signup/planCard', { 
+        title:plan.name,
+        subtitle:plan.subtitle,
+        features:plan.features,
+        content:plan.details,
+        price:plan.subscriptionValue,
+        billingCycle:plan.billingCycle
+     })
+    @end
+@end

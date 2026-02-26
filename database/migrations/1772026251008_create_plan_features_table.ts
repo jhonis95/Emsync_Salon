@@ -1,4 +1,3 @@
-
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
@@ -8,7 +7,7 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.uuid('id').primary()
       table.uuid('plan_id').references('id').inTable('plans').onDelete('CASCADE').notNullable()
-      table.text('content').notNullable()
+      table.uuid('feature_id').references('id').inTable('features').onDelete('CASCADE').notNullable()
 
       table.timestamp('created_at', { useTz: false }).defaultTo(this.now())
       table.timestamp('updated_at', { useTz: false }).notNullable().defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))

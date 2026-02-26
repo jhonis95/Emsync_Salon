@@ -9,8 +9,12 @@ export default class SingupsController {
         return view.render('pages/signup/index')
     }
     async view({ view,params}:HttpContext){
-        const content= await this.signupService.defineContentMain(params.page)
+        const content= await this.signupService.defineMainPage(params.page)
         return view.render(`pages/signup/${params.page}`,{ plans: content })
+    }
+    async component({view,params}:HttpContext){
+        const content= await this.signupService.defineComponent(params.component)
+        return view.render(`component/signup/${params.component}`,{ component: content })
     }
     /**
      * Display form to create a new record

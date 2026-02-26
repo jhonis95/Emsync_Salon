@@ -29,7 +29,8 @@ router.group(() => {
     router.post('/auth', [SaasController, 'auth']).as('saas.auth.login')
     router.group(()=>{
       router.get('/',[SignupsController,'index']).as('saas.singup')
-      router.get('/view/:page', [SignupsController, 'view']).as('saas.signup.view')
+      router.get('/page/:page', [SignupsController, 'view']).as('saas.signup.view')
+      router.get('/component/:component',[SignupsController, 'component']).as('saas.singup.component')
     }).prefix('signup')
     router.get('/app', [SaasController, 'app'])
     //.use([middleware.auth({ guards: ['web'] })])

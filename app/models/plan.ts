@@ -1,9 +1,9 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, beforeCreate, hasMany } from '@adonisjs/lucid/orm'
+import { BaseModel, column, beforeCreate, hasMany, manyToMany } from '@adonisjs/lucid/orm'
 import { v4 as uuidv4 } from 'uuid'
-import type { HasMany } from '@adonisjs/lucid/types/relations'
+import type { HasMany, ManyToMany } from '@adonisjs/lucid/types/relations'
 import Contract from './contract.js'
-import PlanFeature from './plan_feature.js'
+import Feature from './feature.js'
 
 export default class Plan extends BaseModel {
   @column({ isPrimary: true })
@@ -40,8 +40,12 @@ export default class Plan extends BaseModel {
   @hasMany(() => Contract,{foreignKey: 'planId'})
   declare contracts: HasMany<typeof Contract>
 
-  @hasMany(() => PlanFeature,{foreignKey: 'planId'})
-  declare features: HasMany<typeof PlanFeature>
+  @manyToMany(() => Feature,{
+    pivotTable: 'plan_features',
+    pivotForeignKey: 'plan_id',
+    pivotRelatedForeignKey: 'feature_id', 
+  })
+  declare public features: ManyToMany<typeof Feature>
   
   @beforeCreate()
   static assignUuid(plan: Plan) {

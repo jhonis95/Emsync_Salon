@@ -11,11 +11,11 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <title>Emsync salon Sign Up</title>
 </head>
-<body>
-    <main class=" w-full h-full bg-page-bg">
+<body class=" overflow-hidden fixed">
+    <main class=" w-full h-full bg-page-bg overflow-scroll overflow-x-hidden px-2.5">
         <section 
             x-data class="w-full h-full"
-            hx-get="/signup/view/plan"
+            hx-get="/signup/page/plan"
             hx-on::before-swap="fadeoutAnimation()"
             hx-on::after-swap="fadeinAnimation()"
             hx-trigger="load delay:1s"

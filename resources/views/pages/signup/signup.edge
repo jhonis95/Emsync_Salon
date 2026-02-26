@@ -50,7 +50,7 @@
         <p class="text-base">Já é cadastrado?</p>
         <a 
             class="text-base font-semibold text-main underline cursor-pointer"
-            hx-get="/signup/view/login" 
+            hx-get="/signup/page/login" 
             hx-trigger="click"
             hx-swap="outerHTML"
             hx-target="#signupContent"
@@ -61,7 +61,7 @@
     </div>
     @component('components/signup/button', {
         main:true,
-        getLink:'/signup/view/store',
+        getLink:'/signup/page/store',
         text:'Continuar'
     })  
     @end
