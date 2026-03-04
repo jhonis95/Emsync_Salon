@@ -9,19 +9,19 @@
             <h4 class=" text-base font-poppins font-medium">Planos</h4>
             <div class=" flex bg-unfocus-bg">
                 <button
-                    hx-get="/signup/component/monthlyPlan"
+                    hx-get="/signup/components/monthlyPlan"
                     hx-trigger="click"
-                    hx-swap="outerHTML"
+                    hx-swap="innerHTML"
                     hx-target="#cardContainer"
                     placeholder="loading..."
                 >
                     mensal
                 </button>
                 <button
-                    hx-get="/signup/component/annuallyPlan"
+                    hx-get="/signup/components/annuallyPlan"
                     hx-trigger="click"
-                    hx-swap="outerHTML"
-                    hx-target="#signupContent"
+                    hx-swap="innerHTML"
+                    hx-target="#cardContainer"
                     placeholder="loading..."
                 >
                     anual
@@ -44,9 +44,6 @@
                 @end
             @end
         </div>
-    </div>
-    <div>
-
     </div>
     <div class="w-full flex flex-col justify-center items-center">
         <p>Plano encolhido: <span>[ nome do plano ]</span></p>

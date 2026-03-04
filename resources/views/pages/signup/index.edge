@@ -16,8 +16,8 @@
         <section 
             x-data class="w-full h-full"
             hx-get="/signup/page/plan"
-            hx-on::before-swap="fadeoutAnimation()"
-            hx-on::after-swap="fadeinAnimation()"
+            hx-on::before-swap="if(event.detail.target.id === 'signupContent') fadeoutAnimation()"
+            hx-on::after-swap="if(event.detail.target.id === 'signupContent') fadeinAnimation()"
             hx-trigger="load delay:1s"
             hx-swap="outerHTML"
             hx-target="#signupContent"

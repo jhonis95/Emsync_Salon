@@ -4,12 +4,9 @@ import mask from '@alpinejs/mask'
 import { animate, stagger } from 'motion'
 
 function fadeinAnimation(){
-    //const targets = document.querySelectorAll("#signupContent > .animate-in");
     const targets = document.querySelectorAll("#signupContent > *");
     if (targets.length > 0){
         animate(targets,{ opacity: [0,1], y:[-20,0]},{ delay: stagger(0.05), duration: 0.4})
-        // Opcional: remove a classe após animar para não repetir se o HTMX carregar algo interno
-        //targets.forEach(el => el.classList.remove('animate-in'));
     }
 }
 function fadeoutAnimation(){

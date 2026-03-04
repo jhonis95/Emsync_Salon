@@ -30,7 +30,7 @@ router.group(() => {
     router.group(()=>{
       router.get('/',[SignupsController,'index']).as('saas.singup')
       router.get('/page/:page', [SignupsController, 'view']).as('saas.signup.view')
-      router.get('/component/:component',[SignupsController, 'component']).as('saas.singup.component')
+      router.get('/components/:component',[SignupsController, 'components']).as('saas.singup.component')
     }).prefix('signup')
     router.get('/app', [SaasController, 'app'])
     //.use([middleware.auth({ guards: ['web'] })])
