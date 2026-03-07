@@ -11,11 +11,14 @@ export default class extends BaseSchema {
       table.integer('sort_priority').notNullable()
       table.decimal('setup_value', 10, 2)
       table.decimal('subscription_value', 10, 2)
-      table.enum('billing_cycle',['mensal','anual'])
+      table.enum('billing_cycle', ['mensal', 'anual'])
       table.text('details')
 
       table.timestamp('created_at', { useTz: false }).defaultTo(this.now())
-      table.timestamp('updated_at', { useTz: false }).notNullable().defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+      table
+        .timestamp('updated_at', { useTz: false })
+        .notNullable()
+        .defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
     })
   }
 

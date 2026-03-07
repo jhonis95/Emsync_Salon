@@ -9,7 +9,7 @@ export default class Review extends BaseModel {
   public static table = 'review'
   @column({ isPrimary: true })
   declare id: string
-  
+
   @column({ columnName: 'tenant_id' })
   declare tenantId: string
 

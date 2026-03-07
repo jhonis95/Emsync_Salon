@@ -24,7 +24,7 @@ export default class Plan extends BaseModel {
   @column({ columnName: 'subscription_value' })
   declare subscriptionValue: number
 
-  @column({columnName:'billing_cycle'})
+  @column({ columnName: 'billing_cycle' })
   declare billingCycle: 'mensal' | 'anual'
 
   @column()
@@ -37,16 +37,16 @@ export default class Plan extends BaseModel {
   declare updatedAt: DateTime
 
   //relation
-  @hasMany(() => Contract,{foreignKey: 'planId'})
+  @hasMany(() => Contract, { foreignKey: 'planId' })
   declare contracts: HasMany<typeof Contract>
 
-  @manyToMany(() => Feature,{
+  @manyToMany(() => Feature, {
     pivotTable: 'plan_features',
     pivotForeignKey: 'plan_id',
-    pivotRelatedForeignKey: 'feature_id', 
+    pivotRelatedForeignKey: 'feature_id',
   })
   declare public features: ManyToMany<typeof Feature>
-  
+
   @beforeCreate()
   static assignUuid(plan: Plan) {
     plan.id = uuidv4()

@@ -16,7 +16,7 @@ export default class PortalsController {
     return view.render(`components/app/portal/${params.page}`, { content })
   }
 
-  async appoiment({view}:HttpContext){
+  async appoiment({ view }: HttpContext) {
     return view.render('')
   }
 }

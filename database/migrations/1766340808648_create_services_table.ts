@@ -9,12 +9,7 @@ export default class extends BaseSchema {
       table.uuid('public_id').notNullable().unique()
 
       // Chaves Estrangeiras (Relacionamentos)
-      table
-        .uuid('tenant_id')
-        .references('id')
-        .inTable('tenants')
-        .onDelete('CASCADE')
-        .notNullable()
+      table.uuid('tenant_id').references('id').inTable('tenants').onDelete('CASCADE').notNullable()
 
       table
         .uuid('status_id') // Alterado de status para status_id seguindo a convenção
@@ -39,7 +34,10 @@ export default class extends BaseSchema {
       table.boolean('active').defaultTo(true)
 
       table.timestamp('created_at', { useTz: false }).defaultTo(this.now())
-      table.timestamp('updated_at', { useTz: false }).notNullable().defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+      table
+        .timestamp('updated_at', { useTz: false })
+        .notNullable()
+        .defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
     })
   }
 

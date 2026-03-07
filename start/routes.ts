@@ -23,19 +23,21 @@ import SignupsController from '#controllers/signups_controller'
 router.get('/', [TenentsHomepagesController, 'index'])
 
 // SaaS principal
-router.group(() => {
+router
+  .group(() => {
     router.get('/', [SaasController, 'index'])
     router.get('/auth', [SaasController, 'login']).as('saas.auth.login.show')
     router.post('/auth', [SaasController, 'auth']).as('saas.auth.login')
-    router.group(()=>{
-      router.get('/',[SignupsController,'index']).as('saas.singup')
-      router.get('/page/:page', [SignupsController, 'view']).as('saas.signup.view')
-      router.get('/component/:component',[SignupsController, 'component']).as('saas.singup.component')
-    }).prefix('signup')
+    router
+      .group(() => {
+        router.get('/', [SignupsController, 'index']).as('saas.singup')
+        router.get('/page/:page', [SignupsController, 'view']).as('saas.signup.view')
+      })
+      .prefix('signup')
     router.get('/app', [SaasController, 'app'])
     //.use([middleware.auth({ guards: ['web'] })])
-})
-.domain('emsyncsalon.com.br')
+  })
+  .domain('emsyncsalon.com.br')
 // Portal do cliente (tenant)
 router.group(() => {
   router.get('/auth', [authController, 'index']).as('portal.auth.login.show')
@@ -46,10 +48,12 @@ router.group(() => {
       router
         .group(() => {
           router.get('/:page', [PortalsController, 'view']).as('portal.view')
-          router.get('/service/appoiment', [PortalsController, 'appoiment']).as('portal.view.service')
+          router
+            .get('/service/appoiment', [PortalsController, 'appoiment'])
+            .as('portal.view.service')
         })
         .prefix('view')
     })
     .prefix('portaldocliente')
-    //.use([middleware.auth({ guards: ['web'] })])
+  //.use([middleware.auth({ guards: ['web'] })])
 })

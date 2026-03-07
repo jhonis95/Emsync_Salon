@@ -1,6 +1,13 @@
 import { DateTime } from 'luxon'
-import { BaseModel, beforeCreate, belongsTo, column, manyToMany, hasMany } from '@adonisjs/lucid/orm'
-import type { BelongsTo, ManyToMany,HasMany } from '@adonisjs/lucid/types/relations'
+import {
+  BaseModel,
+  beforeCreate,
+  belongsTo,
+  column,
+  manyToMany,
+  hasMany,
+} from '@adonisjs/lucid/orm'
+import type { BelongsTo, ManyToMany, HasMany } from '@adonisjs/lucid/types/relations'
 import { v4 as uuidv4 } from 'uuid'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 import { compose } from '@adonisjs/core/helpers'
@@ -11,7 +18,6 @@ import Role from './role.js'
 import Contract from './contract.js'
 import Order from './order.js'
 import Review from './review.js'
-
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],

@@ -6,7 +6,7 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.uuid('id').primary()
-      
+
       table.uuid('status_id').references('id').inTable('user_status').onDelete('SET NULL')
 
       table.string('full_name').notNullable()
@@ -20,7 +20,10 @@ export default class extends BaseSchema {
       table.string('city')
 
       table.timestamp('created_at', { useTz: false }).notNullable().defaultTo(this.now())
-      table.timestamp('updated_at', { useTz: false }).notNullable().defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+      table
+        .timestamp('updated_at', { useTz: false })
+        .notNullable()
+        .defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
     })
   }
 

@@ -1,69 +1,101 @@
-<div id="signupContent" class=" flex flex-col gap-7 justify-center font-ubuntu items-center h-full w-full">
-    <img class=" size-20" src="" alt="">
-    <div class="w-full flex flex-col justify-center items-center gap-1.5">
-        <h3 class=" font-poppins text-2xl">Escolha o seu plano</h3>
-        <p>Escolha a melhor opção para o seu salão</p>
-    </div>
-    <div class="w-full flex flex-col gap-3">
-        <div class="w-full flex flex-col justify-center items-center gap-1">
-            <h4 class=" text-base font-poppins font-medium">Planos</h4>
-            <div class=" flex bg-unfocus-bg">
-                <button
-                    hx-get="/signup/component/monthlyPlan"
-                    hx-trigger="click"
-                    hx-swap="outerHTML"
-                    hx-target="#cardContainer"
-                    placeholder="loading..."
-                >
-                    mensal
-                </button>
-                <button
-                    hx-get="/signup/component/annuallyPlan"
-                    hx-trigger="click"
-                    hx-swap="outerHTML"
-                    hx-target="#signupContent"
-                    placeholder="loading..."
-                >
-                    anual
-                </button>
-            </div>
-        </div>
-        <div 
-            id="cardContainer"
-            class=" snap-x snap-mandatory w-full h-fit z-10 flex overflow-x-auto gap-4 no-scrollbar\"
+<div
+  id="signupContent"
+  class=" flex flex-col gap-7 justify-center font-ubuntu items-center h-full w-full"
+>
+  <img class=" size-20" src="" alt="" />
+  <div class="w-full flex flex-col justify-center items-center gap-1.5">
+    <h3 class=" font-poppins text-2xl">
+      Escolha o seu plano
+    </h3>
+    <p>
+      Escolha a melhor opção para o seu salão
+    </p>
+  </div>
+  <div
+    x-data="{ billing: 'monthly' }" 
+    class="w-full flex flex-col gap-3"
+  >
+    <div class="w-full flex flex-col justify-center items-center gap-1">
+      <h4 class=" text-base font-poppins font-medium">
+        Planos
+      </h4>
+      <div 
+        class=" w-fit flex bg-unfocus-bg p-1 rounded-2xl gap-2"
         >
-            @each(plan in plans)
-                @component('components/signup/planCard', { 
+        <button
+          @click="billing='monthly'"
+          :class="billing === 'monthly'
+            ? 'bg-white text-main-dark border-1 border-main rounded-2xl'
+            : 'bg-unfocus-bg text-unfocus'"
+        >
+          mensal
+        </button>
+        <button
+          @click="billing='annually'"
+          :class="billing === 'annually'
+            ? 'bg-white text-main-dark border-1 border-main rounded-2xl'
+            : 'bg-unfocus-bg text-unfocus'"
+        >
+          anual
+        </button>
+      </div>
+    </div>
+    <div
+      x-show="billing === 'monthly'"
+      class=" snap-x snap-mandatory w-full h-fit z-10 flex overflow-x-auto gap-4 no-scrollbar"
+    >
+      @each(plan in plansContent.monthlyBilling)
+        @component('components/signup/planCard', {
                     title:plan.name,
                     subtitle:plan.subtitle,
                     features:plan.features,
                     content:plan.details,
                     price:plan.subscriptionValue,
                     billingCycle:plan.billingCycle
-                 })
-                @end
-            @end
-        </div>
+        })
+        @end
+      @end
     </div>
-    <div>
+    <div
+      x-show="billing === 'annually'"
+      class=" snap-x snap-mandatory w-full h-fit z-10 flex overflow-x-auto gap-4 no-scrollbar"
+    >
+      @each(plan in plansContent.annuallyBilling)
+        @component('components/signup/planCard', {
+                    title:plan.name,
+                    subtitle:plan.subtitle,
+                    features:plan.features,
+                    content:plan.details,
+                    price:plan.subscriptionValue,
+                    billingCycle:plan.billingCycle
+        })
+        @end
+      @end
+    </div>
+  </div>
+  <div>
 
-    </div>
-    <div class="w-full flex flex-col justify-center items-center">
-        <p>Plano encolhido: <span>[ nome do plano ]</span></p>
-        <p>você deseja:</p>
-    </div>
-    <div class=" w-full flex justify-evenly gap-3">
-        @component('components/signup/button', {
+  </div>
+  <div class="w-full flex flex-col justify-center items-center">
+    <p>
+      Plano encolhido: <span>[ nome do plano ]</span>
+    </p>
+    <p>
+      você deseja:
+    </p>
+  </div>
+  <div class=" w-full flex justify-evenly gap-3">
+    @component('components/signup/button', {
             main:false,
             getLink:'/signup/page/store',
             text:'Voltar'
-        })  
-        @end
-        @component('components/signup/button', {
+    })
+    @end
+    @component('components/signup/button', {
             main:true,
             getLink:'/signup/page/payment',
             text:'Continuar'
-        })  
-        @end
-    </div>
+    })
+    @end
+  </div>
 </div>

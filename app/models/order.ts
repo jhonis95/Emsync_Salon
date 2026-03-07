@@ -27,13 +27,13 @@ export default class Order extends BaseModel {
   declare updatedAt: DateTime
 
   // --- Relacionamentos ---
-  @belongsTo(() => Tenant,{foreignKey: 'tenantId',})
+  @belongsTo(() => Tenant, { foreignKey: 'tenantId' })
   declare tenant: BelongsTo<typeof Tenant>
 
-  @belongsTo(() => User,{foreignKey: 'userId',})
+  @belongsTo(() => User, { foreignKey: 'userId' })
   declare user: BelongsTo<typeof User>
 
-  @hasMany(() => ScheduledProduct,{foreignKey: 'orderId',})
+  @hasMany(() => ScheduledProduct, { foreignKey: 'orderId' })
   declare scheduled_product: HasMany<typeof ScheduledProduct>
 
   @beforeCreate()

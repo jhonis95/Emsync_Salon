@@ -1,14 +1,8 @@
 {
-    "navbar":{
-        "logo":""
-    },
-    "header":{
-
-    },
-    "main":{
-
-    },
-    "footer":{
-
-    }
+  "navbar": {
+    "logo": ""
+  },
+  "header": {},
+  "main": {},
+  "footer": {}
 }

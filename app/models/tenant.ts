@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, beforeCreate, column, manyToMany, hasMany} from '@adonisjs/lucid/orm'
+import { BaseModel, beforeCreate, column, manyToMany, hasMany } from '@adonisjs/lucid/orm'
 import type { ManyToMany, HasMany } from '@adonisjs/lucid/types/relations'
 import { v4 as uuidv4 } from 'uuid'
 import User from './user.js'

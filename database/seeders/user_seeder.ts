@@ -14,38 +14,37 @@ export default class extends BaseSeeder {
     }
 
     for (const tenant of tenants) {
-
       // --- Criar outros usuários ---
       const extraUsersData = [
         {
           fullName: `Funcionário 1 - ${tenant.storeName}`,
           internalNote: 'Funcionário auxiliar',
           email: `func1@${tenant.domain || 'example.com'}`,
-          phone:'00000000000'
+          phone: '00000000000',
         },
         {
           fullName: `Funcionário 2 - ${tenant.storeName}`,
           internalNote: 'Funcionário auxiliar',
           email: `func2@${tenant.domain || 'example.com'}`,
-          phone:'00000000000'
+          phone: '00000000000',
         },
         {
           fullName: `Funcionário 3 - ${tenant.storeName}`,
           internalNote: 'Funcionário auxiliar',
           email: `func3@${tenant.domain || 'example.com'}`,
-          phone:'00000000000'
+          phone: '00000000000',
         },
       ]
 
       for (const data of extraUsersData) {
-        let user= await User.create({
+        let user = await User.create({
           ...data,
           password: await hash.make('senha123'),
         })
 
         await UserTenant.create({
-          tenantId:tenant.id,
-          userId:user.id
+          tenantId: tenant.id,
+          userId: user.id,
         })
       }
     }

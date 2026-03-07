@@ -94,9 +94,7 @@ export default defineConfig({
   ],
 
   hooks: {
-    init: [
-      indexEntities(),
-    ],
+    init: [indexEntities()],
     buildStarting: [() => import('@adonisjs/vite/build_hook')],
   },
 })

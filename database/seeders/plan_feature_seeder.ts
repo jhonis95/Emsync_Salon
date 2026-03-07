@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 export default class extends BaseSeeder {
   async run() {
-     // 1. Criar ou buscar as features (elas existirão apenas uma vez no banco)
+    // 1. Criar ou buscar as features (elas existirão apenas uma vez no banco)
     const fAgendamento = await Feature.firstOrCreate({ content: 'Sistema de agendamento' })
     const fPaginaWeb = await Feature.firstOrCreate({ content: 'Página web da empresa' })
     const fPortal = await Feature.firstOrCreate({ content: 'Portal do cliente' })
@@ -21,7 +21,7 @@ export default class extends BaseSeeder {
 
     // 3. Criar os vínculos (Tabela Pivô)
     const idsEssencial = [fAgendamento.id, fPaginaWeb.id, fPortal.id]
-    
+
     for (const plano of planosEssencial) {
       // O sync() remove vínculos antigos e coloca os novos, evitando duplicatas
       const syncData: Record<string, { id: string }> = {}
@@ -31,13 +31,13 @@ export default class extends BaseSeeder {
       await plano.related('features').sync(syncData)
     }
 
-    const idsMarketing = [fTudoEssencial.id, fMediaSocial.id, fEmail.id,fWebsite.id, fConteudo.id] // Exemplo de reuso
+    const idsMarketing = [fTudoEssencial.id, fMediaSocial.id, fEmail.id, fWebsite.id, fConteudo.id] // Exemplo de reuso
     for (const plano of planosMarketing) {
       const syncData: Record<string, { id: string }> = {}
       idsMarketing.forEach((id) => {
         syncData[id] = { id: uuidv4() } // Injetamos o ID da tabela pivô aqui
       })
-      
+
       await plano.related('features').sync(syncData)
     }
   }

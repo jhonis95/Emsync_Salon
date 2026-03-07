@@ -20,6 +20,6 @@ createIcons({
   },
 })
 window.animate = animate
-window.stagger=stagger
+window.stagger = stagger
 window.Alpine = Alpine
 Alpine.start()

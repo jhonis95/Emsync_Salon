@@ -9,7 +9,7 @@ export default class Feature extends BaseModel {
   declare id: string
 
   @column()
-  declare content:string
+  declare content: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
@@ -17,10 +17,10 @@ export default class Feature extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  @manyToMany(() => Plan,{
+  @manyToMany(() => Plan, {
     pivotTable: 'plan_features',
     pivotForeignKey: 'feature_id',
-    pivotRelatedForeignKey: 'plan_id', 
+    pivotRelatedForeignKey: 'plan_id',
   })
   declare public plans: ManyToMany<typeof Plan>
 

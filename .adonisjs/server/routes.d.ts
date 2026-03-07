@@ -15,7 +15,6 @@ export type ScannedRoutes = {
     'saas.auth.login': { paramsTuple?: []; params?: {} }
     'saas.singup': { paramsTuple?: []; params?: {} }
     'saas.signup.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
-    'saas.singup.component': { paramsTuple: [ParamValue]; params: {'component': ParamValue} }
     'saas.app': { paramsTuple?: []; params?: {} }
   }
   GET: {
@@ -28,7 +27,6 @@ export type ScannedRoutes = {
     'saas.auth.login.show': { paramsTuple?: []; params?: {} }
     'saas.singup': { paramsTuple?: []; params?: {} }
     'saas.signup.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
-    'saas.singup.component': { paramsTuple: [ParamValue]; params: {'component': ParamValue} }
     'saas.app': { paramsTuple?: []; params?: {} }
   }
   HEAD: {
@@ -41,7 +39,6 @@ export type ScannedRoutes = {
     'saas.auth.login.show': { paramsTuple?: []; params?: {} }
     'saas.singup': { paramsTuple?: []; params?: {} }
     'saas.signup.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
-    'saas.singup.component': { paramsTuple: [ParamValue]; params: {'component': ParamValue} }
     'saas.app': { paramsTuple?: []; params?: {} }
   }
   POST: {

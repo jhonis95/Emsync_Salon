@@ -38,7 +38,7 @@ export default class Product extends BaseModel {
   })
   declare category: BelongsTo<typeof ProductServiceCategory>
 
-  @hasMany(()=>ScheduledProduct,{ foreignKey:'productId'})
+  @hasMany(() => ScheduledProduct, { foreignKey: 'productId' })
   declare scheduledProducts: HasMany<typeof ScheduledProduct>
 
   @hasMany(() => Inventory, {

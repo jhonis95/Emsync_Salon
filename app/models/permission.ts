@@ -22,11 +22,11 @@ export default class Permission extends BaseModel {
 
   //relations
   @manyToMany(() => Role, {
-      pivotTable: 'permission_roles',
-      pivotForeignKey: 'permission_id',
-      pivotRelatedForeignKey: 'role_id',
-    })
-    declare roles: ManyToMany<typeof Role>
+    pivotTable: 'permission_roles',
+    pivotForeignKey: 'permission_id',
+    pivotRelatedForeignKey: 'role_id',
+  })
+  declare roles: ManyToMany<typeof Role>
 
   @beforeCreate()
   static assignUuid(permission: Permission) {

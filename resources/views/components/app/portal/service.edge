@@ -2,8 +2,10 @@
 <div class="flex flex-col items-center">
 
   @include('partials/portal/titleLg')
-  
-  <div class="flex flex-col w-full gap-2 mt-4 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs">
+
+  <div
+    class="flex flex-col w-full gap-2 mt-4 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs"
+  >
 
     <div x-data="{dropdownOpen:false}" class="flex flex-col mx-4">
 
@@ -48,8 +50,8 @@
         class="flex flex-wrap items-center justify-center gap-2 mt-2 h-full"
       >
         @each(service in content.services)
-          @app.portal.components.serviceCard({service}) 
-            
+          @app.portal.components.serviceCard({service})
+
           @end
         @end
       </div>
@@ -93,8 +95,8 @@
         x-transition:leave-start="opacity-100 transform translate-y-0"
         x-transition:leave-end="opacity-0 transform -translate-y-2"
       >
-        @portal.components.appoimentSection() 
-          
+        @portal.components.appoimentSection()
+
         @end
       </div>
     </div>
