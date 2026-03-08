@@ -1,5 +1,6 @@
 <div
   id="signupContent"
+  x-init="$store.signup.cleanPlanData()"
   class=" flex flex-col gap-7 justify-center font-ubuntu items-center h-full w-full"
 >
   <img class=" size-20" src="" alt="" />
@@ -11,76 +12,87 @@
       Escolha a melhor opção para o seu salão
     </p>
   </div>
-  <div
-    x-data="{ billing: 'monthly' }" 
-    class="w-full flex flex-col gap-3"
-  >
+  <div x-data="{ billing: 'monthly' }" class="w-full flex flex-col gap-3">
     <div class="w-full flex flex-col justify-center items-center gap-1">
       <h4 class=" text-base font-poppins font-medium">
         Planos
       </h4>
-      <div 
-        class=" w-fit flex bg-unfocus-bg p-1 rounded-2xl gap-2"
-        >
+      <div class=" w-fit h-fit flex justify-around items-center bg-unfocus-bg p-1 rounded-2xl gap-5">
         <button
           @click="billing='monthly'"
+          class="transition-colors duration-300 ease-in-out"
           :class="billing === 'monthly'
-            ? 'bg-white text-main-dark border-1 border-main rounded-2xl'
-            : 'bg-unfocus-bg text-unfocus'"
+            ? 'bg-white text-main-dark border-1 border-main rounded-2xl px-6 py-1 w-fit text-sm font-medium'
+            : 'bg-unfocus-bg text-unfocus px-6 py-1 w-fit text-sm font-medium'"
         >
-          mensal
+          Mensal
         </button>
         <button
           @click="billing='annually'"
+          class="transition-colors duration-300 ease-in-out"
           :class="billing === 'annually'
-            ? 'bg-white text-main-dark border-1 border-main rounded-2xl'
-            : 'bg-unfocus-bg text-unfocus'"
+            ? 'bg-white text-main-dark border-1 border-main rounded-2xl px-6 py-1 w-fit text-sm font-medium'
+            : 'bg-unfocus-bg text-unfocus px-6 py-1 w-fit text-sm font-medium'"
         >
-          anual
+          Anual
         </button>
       </div>
     </div>
-    <div
-      x-show="billing === 'monthly'"
-      class=" snap-x snap-mandatory w-full h-fit z-10 flex overflow-x-auto gap-4 no-scrollbar"
-    >
-      @each(plan in plansContent.monthlyBilling)
-        @component('components/signup/planCard', {
-                    title:plan.name,
-                    subtitle:plan.subtitle,
-                    features:plan.features,
-                    content:plan.details,
-                    price:plan.subscriptionValue,
-                    billingCycle:plan.billingCycle
-        })
+    <section class=" relative min-h-[414px] h-fit w-full overflow-y-hidden">
+      <div
+        x-show="billing === 'monthly'"
+        x-cloak
+        x-transition
+        class=" absolute snap-x snap-mandatory w-full h-fit py-2 z-10 flex overflow-x-auto gap-4 no-scrollbar"
+      >
+        @each(plan in plansContent.monthlyBilling)
+          @component('components/signup/planCard', {
+                      id:plan.id,
+                      title:plan.name,
+                      subtitle:plan.subtitle,
+                      features:plan.features,
+                      content:plan.details,
+                      price:plan.subscriptionValueFormatted,
+                      billingCycle:plan.billingCycle
+          })
+          @end
         @end
-      @end
-    </div>
-    <div
-      x-show="billing === 'annually'"
-      class=" snap-x snap-mandatory w-full h-fit z-10 flex overflow-x-auto gap-4 no-scrollbar"
-    >
-      @each(plan in plansContent.annuallyBilling)
-        @component('components/signup/planCard', {
-                    title:plan.name,
-                    subtitle:plan.subtitle,
-                    features:plan.features,
-                    content:plan.details,
-                    price:plan.subscriptionValue,
-                    billingCycle:plan.billingCycle
-        })
+      </div>
+      <div
+        x-show="billing === 'annually'"
+        x-cloak
+        x-transition
+        class="absolute snap-x snap-mandatory w-full h-fit py-2 z-10 flex overflow-x-auto gap-4 no-scrollbar"
+      >
+        @each(plan in plansContent.annuallyBilling)
+          @component('components/signup/planCard', {
+                      id:plan.id,
+                      title:plan.name,
+                      subtitle:plan.subtitle,
+                      features:plan.features,
+                      content:plan.details,
+                      price:plan.subscriptionValueFormatted,
+                      billingCycle:plan.billingCycle,
+                      discountPrice:plan.discountPrice,
+                      monthlyEquivalentPrice:plan.monthlyEquivalentPrice,
+                      annualSavings:plan.annualSavings
+          })
+          @end
         @end
-      @end
-    </div>
-  </div>
-  <div>
-
+      </div>
+    </section>
   </div>
   <div class="w-full flex flex-col justify-center items-center">
     <p>
-      Plano encolhido: <span>[ nome do plano ]</span>
+      Plano encolhido: 
+      <span
+        class="transition duration-300 ease-in-out font-medium"
+        :class="$store.signup.planSelected==''?' text-unfocus':' text-main font-bold'"
+        x-text="$store.signup.getPlan()"
+      >
+      </span>
     </p>
-    <p>
+    <p x-show="$store.signup.planSelected!==''" x-transition class=" text-lg text-main-dark">
       você deseja:
     </p>
   </div>

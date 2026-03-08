@@ -39,6 +39,25 @@ document.addEventListener('alpine:init', () => {
     passwordError: '',
     cnpjError: '',
 
+    planSelected: '',
+    planName: '',
+    planBillingCycle: '',
+
+    handlePlanSelected(id, name, billingCycle) {
+      ;((this.planSelected = id), (this.planName = name), (this.planBillingCycle = billingCycle))
+    },
+
+    getPlan() {
+      if (this.planSelected == '') {
+        return 'plano ainda não selecionado'
+      }
+      return `${this.planName} ${this.planBillingCycle}`
+    },
+
+    cleanPlanData() {
+      ;((this.planSelected = ''), (this.planName = ''), (this.planBillingCycle = ''))
+    },
+
     validateCNPJ(value) {
       // Remove os caracteres da máscara para validar apenas os números
       const digits = value.replace(/\D/g, '')
