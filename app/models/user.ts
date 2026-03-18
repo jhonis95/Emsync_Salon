@@ -6,6 +6,8 @@ import {
   column,
   manyToMany,
   hasMany,
+  beforeSave,
+  beforeUpdate,
 } from '@adonisjs/lucid/orm'
 import type { BelongsTo, ManyToMany, HasMany } from '@adonisjs/lucid/types/relations'
 import { v4 as uuidv4 } from 'uuid'
@@ -102,5 +104,30 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @beforeCreate()
   static assignUuid(user: User) {
     user.id = uuidv4()
+  }
+
+  @beforeSave()
+  static async hashPasswordOnCreate(user: User) {
+    /**
+     * 
+    console.log('ANTES DO HASH:', {
+      password: user.password,
+      length: user.password.length,
+      charCodes: user.password.split('').map(c => c.charCodeAt(0)),
+    })
+     * 
+     */
+    if (user.$dirty.password) {
+    // NÃO re-hashear se já for hash
+      if (!user.password.startsWith('$scrypt$')) {
+        user.password = await hash.make(user.password)
+      }
+    }
+  }
+  @beforeUpdate()
+  static async hashPasswordOnUpdate(user: User) {
+    if (user.$dirty.password) {
+      user.password = await hash.make(user.password)
+    }
   }
 }

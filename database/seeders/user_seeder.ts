@@ -2,7 +2,6 @@ import Tenant from '#models/tenant'
 import User from '#models/user'
 import UserTenant from '#models/user_tenant'
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
-import hash from '@adonisjs/core/services/hash'
 
 export default class extends BaseSeeder {
   public async run() {
@@ -39,7 +38,7 @@ export default class extends BaseSeeder {
       for (const data of extraUsersData) {
         let user = await User.create({
           ...data,
-          password: await hash.make('senha123'),
+          password: 'senha123',
         })
 
         await UserTenant.create({

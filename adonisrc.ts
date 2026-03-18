@@ -14,7 +14,6 @@ export default defineConfig({
   commands: [
     () => import('@adonisjs/core/commands'),
     () => import('@adonisjs/lucid/commands'),
-    () => import('@adocasts.com/dto/commands'),
   ],
 
   /*

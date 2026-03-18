@@ -58,7 +58,6 @@
     "youch": "^4.1.0"
   },
   "dependencies": {
-    "@adocasts.com/dto": "^0.0.9",
     "@adonisjs/auth": "^10.0.0",
     "@adonisjs/core": "^7.0.0",
     "@adonisjs/lucid": "^22.0.0",

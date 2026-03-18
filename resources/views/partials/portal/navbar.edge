@@ -1,130 +1,31 @@
 <header
   x-data="{dropdownOpen:false}"
-  class=" relative flex justify-center gap-x-2 rounded-lg border-b border-x border-gray-200 bg-white shadow-2xs"
+  class=" h-16 shrink-0 fixed w-full min-h-[64px] top-0 z-50 gap-x-2 rounded-b-2xl border-b border-x border-gray-200 bg-white shadow-2xs "
 >
-  <nav class=" max-w-[85rem] w-full mx-2 my-1">
-    <div class=" flex justify-between items-center">
+  <nav class=" max-w-[85rem] w-full h-full flex px-4 py-2.5">
+    <div class=" w-full flex justify-between items-center">
 
       {{-- container logo e texto --}}
-      <div class="flex gap-2">
-        <img
-          class=" object-contain"
-          src="https://cdn-icons-png.freepik.com/512/7005/7005177.png?ga=GA1.1.317771831.1756234613"
-          alt=""
-          width="35"
-          height="35"
-        />
-        <div class="flex flex-col text-2xl text-wrap gap-0">
-          {{-- {{ pagedata.storeName  }} --}}
-          Nome da loja
-          <span class=" text-base">
-            portal do cliente
+      <div class="flex items-center gap-3 font-poppins">
+        <div class=" size-12 flex items-center justify-center rounded-lg bg-unfocus-bg">
+          <!-- Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house text-unfocus"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        </div>
+
+        <div class="flex flex-col leading-tight">
+          <span class="font-semibold text-main-dark text-lg">
+            Nome da Loja
+          </span>
+          <span class="text-sm text-main font-medium">
+            Portal do cliente
           </span>
         </div>
       </div>
 
-      {{-- container navbar links e meu --}}
-      <div>
-        <button
-          x-on:click="dropdownOpen = !dropdownOpen;
-          animate(
-            $el.querySelector('.hamburger-icon'), 
-            { opacity: dropdownOpen ? 0 : 1, rotate: dropdownOpen ? 90 : 0 },
-            { duration: 0.3 }
-          ); 
-          animate(
-            $el.querySelector('.close-icon'), 
-            { opacity: dropdownOpen ? 1 : 0, rotate: dropdownOpen ? 0 : -90 },
-            { duration: 0.3 }
-          )
-          "
-          type="button"
-          class="relative size-9 flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
-        >
-          <svg
-            class="hamburger-icon shrink-0 size-4 absolute"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <line x1="3" x2="21" y1="6" y2="6" />
-            <line x1="3" x2="21" y1="12" y2="12" />
-            <line x1="3" x2="21" y1="18" y2="18" />
-          </svg>
-          <svg
-            class="close-icon shrink-0 size-4 absolute opacity-0"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M18 6 6 18" />
-            <path d="m6 6 12 12" />
-          </svg>
-        </button>
-        <div
-          x-cloak
-          x-show="dropdownOpen"
-          class=" z-10 absolute text-2xl flex flex-col items-center justify-center w-5/6 inset-x-2 gap-2 py-2 top-[70px] left-1/2 right-1/2 -translate-x-1/2 rounded-lg border border-gray-200 bg-white"
-          x-transition:enter="transition ease-out duration-300"
-          x-transition:enter-start="opacity-0 transform -translate-y-2"
-          x-transition:enter-end="opacity-100 transform translate-y-0"
-          x-transition:leave="transition ease-in duration-200"
-          x-transition:leave-start="opacity-100 transform translate-y-0"
-          x-transition:leave-end="opacity-0 transform -translate-y-2"
-        >
-          Menu
-          <div class="flex flex-col gap-1 w-full divide-y-4 divide-gray-200">
-            <a
-              class="text-base text-center w-full py-1 cursor-pointer"
-              hx-target="#main-content"
-              hx-get="/portaldocliente/view/home"
-              x-on:click="dropdownOpen=false"
-            >Home</a>
-            <a
-              class="text-base text-center w-full py-1 cursor-pointer"
-              hx-target="#main-content"
-              hx-get="/portaldocliente/view/service"
-              x-on:click="dropdownOpen=false"
-            >Serviços</a>
-            <a
-              class="text-base text-center w-full py-1 cursor-pointer"
-              hx-target="#main-content"
-              hx-get="/portaldocliente/view/product"
-              x-on:click="dropdownOpen=false"
-            >Produtos</a>
-            <a
-              class="text-base text-center w-full py-1 cursor-pointer"
-              hx-target="#main-content"
-              hx-get="/portaldocliente/view/order"
-              x-on:click="dropdownOpen=false"
-            >Meus Pedidos</a>
-            <a
-              class="text-base text-center w-full py-1 cursor-pointer"
-              hx-target="#main-content"
-              hx-get="/portaldocliente/view/review"
-              x-on:click="dropdownOpen=false"
-            >Avaliações</a>
-            <a
-              class="text-base text-center w-full py-1 cursor-pointer"
-              hx-target="#main-content"
-              hx-get="/portaldocliente/view/setting"
-              x-on:click="dropdownOpen=false"
-            >Configurações</a>
-          </div>
-        </div>
+      <div class="w-10 h-10 flex items-center justify-center rounded-full bg-unfocus-bg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user text-unfocus"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       </div>
+
     </div>
   </nav>
 </header>

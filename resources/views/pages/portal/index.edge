@@ -3,20 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/saas.js'])
     <title>
       App
     </title>
   </head>
-  <body>
+  <body x-data class=" h-screen flex flex-col font-ubuntu relative overflow-x-hidden">
     {{-- [tip]: caso data seja so o nome da pagina podemos trocar par um partial em vez de component --}}
 
     @include('partials/portal/navbar')
 
-    <main class="flex">
+    <main class=" flex-1 overflow-y-auto pt-16 pb-24">
       <section
         id="main-content"
-        class="w-full mx-5 my-7"
+        class="px-5 my-7"
         hx-get="/portaldocliente/view/home"
         hx-trigger="load"
         hx-target="#main-content"
@@ -40,5 +40,7 @@
         </div>
       </section>
     </main>
+
+    @include('partials/portal/footer')
   </body>
 </html>

@@ -68,13 +68,13 @@ export default class ServiceSeeder extends BaseSeeder {
     for (const tenant of tenants) {
       for (const service of services) {
         await Service.firstOrCreate(
-          { name: service.name, storeId: tenant.id },
+          { name: service.name, tenantId: tenant.id },
           {
             price: service.price,
             image: service.image,
             description: service.description,
             duration: service.duration,
-            storeId: tenant.id,
+            tenantId: tenant.id,
           }
         )
       }

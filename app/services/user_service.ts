@@ -16,7 +16,7 @@ export class UserService {
   }
   public async getTenant(id: UserDto['id'] | undefined) {
     const user = await User.find(id)
-    return user?.storeData
+    return user?.serialize()
   }
   async listUsers() {}
 

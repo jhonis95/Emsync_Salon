@@ -11,18 +11,11 @@
 @import 'tailwindcss';
 @import 'tailwindcss/utilities';
 
-/* :root {
-  --font-poppins: 'Poppins', sans-serif;
-  --font-space-grotesk: 'Space Grotesk', sans-serif;
-  --font-dm-sans: "DM Sans", sans-serif;
-} */
-/* @import "bulma"; */
-
 @layer base {
   html,
   body {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     box-sizing: border-box;
   }
   *,
@@ -49,20 +42,6 @@
   --color-unfocus: #666666;
   --color-page-bg: #f8f8f8;
 }
-
-/* @import 'flowbite'; */
-/* @plugin "daisyui"; */
-
-/* html {
-  height: 100vh;
-  width: 100vw;
-  box-sizing: border-box;
-}
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-} */
 
 [x-cloak] {
   display: none !important;

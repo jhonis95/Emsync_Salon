@@ -7,53 +7,48 @@
 |
 */
 
-import TenentsHomepagesController from '#controllers/tenents_homepages_controller'
-import authController from '#controllers/auth_controller'
-import SaasController from '#controllers/saas_controller'
-
 import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
-import PortalsController from '#controllers/portals_controller'
-import SignupsController from '#controllers/signups_controller'
+import { controllers } from '#generated/controllers'
 
 // import env from '#start/env'
 
 // const saasDomain = env.get('SAAS_DOMAIN_LOCAL', '') as string
 
-router.get('/', [TenentsHomepagesController, 'index'])
+router.get('/', [controllers.TenentsHomepages, 'index'])
 
 // SaaS principal
 router
   .group(() => {
-    router.get('/', [SaasController, 'index'])
-    router.get('/auth', [SaasController, 'login']).as('saas.auth.login.show')
-    router.post('/auth', [SaasController, 'auth']).as('saas.auth.login')
+    router.get('/', [controllers.Saas, 'index'])
+    router.get('/auth', [controllers.Saas, 'login']).as('saas.auth.login.show')
+    router.post('/auth', [controllers.Saas, 'auth']).as('saas.auth.login')
     router
       .group(() => {
-        router.get('/', [SignupsController, 'index']).as('saas.singup')
-        router.get('/page/:page', [SignupsController, 'view']).as('saas.signup.view')
+        router.get('/', [controllers.Signups, 'index']).as('saas.singup')
+        router.get('/page/:page', [controllers.Signups, 'view']).as('saas.signup.view')
       })
       .prefix('signup')
-    router.get('/app', [SaasController, 'app'])
+    router.get('/app', [controllers.Saas, 'app'])
     //.use([middleware.auth({ guards: ['web'] })])
   })
-  .domain('emsyncsalon.com.br')
+  .domain('emsyncsalon.com.br').use([middleware.guest()])
 // Portal do cliente (tenant)
 router.group(() => {
-  router.get('/auth', [authController, 'index']).as('portal.auth.login.show')
-  router.post('/auth', [authController, 'login']).as('portal.auth.login')
+  router.get('/auth', [controllers.Auth, 'index']).as('portal.auth.login.show')
+  router.post('/auth', [controllers.Auth, 'login']).as('portal.auth.login')
   router
     .group(() => {
-      router.get('/', [PortalsController, 'index']).as('portal.index')
+      router.get('/', [controllers.Portals, 'index']).as('portal.index')
       router
         .group(() => {
-          router.get('/:page', [PortalsController, 'view']).as('portal.view')
+          router.get('/:page', [controllers.Portals, 'view']).as('portal.view')
           router
-            .get('/service/appoiment', [PortalsController, 'appoiment'])
+            .get('/service/appoiment', [controllers.Portals, 'appoiment'])
             .as('portal.view.service')
         })
         .prefix('view')
     })
     .prefix('portaldocliente')
-  //.use([middleware.auth({ guards: ['web'] })])
+  .use([middleware.auth({ guards: ['web'] })])
 })
