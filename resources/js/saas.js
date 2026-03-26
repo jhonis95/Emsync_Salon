@@ -2,6 +2,7 @@ import 'htmx.org'
 import Alpine from 'alpinejs'
 import { animate, stagger } from 'motion'
 
+
 document.addEventListener('alpine:init',()=>{
     Alpine.store('portal',{
         portalPage:'Home',

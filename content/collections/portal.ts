@@ -12,7 +12,12 @@ const portalHomePageSchema = {
     quickActionCards: vine.array(vine.object({
             title: vine.string(),
             text: vine.string(),
-            icon: vine.string(),
+            icon: vine.object({
+                name: vine.string(),
+                width: vine.number(),
+                height: vine.number(),
+                color: vine.string()
+            }),
             buttonText: vine.string(),
             link: vine.string()
         })
