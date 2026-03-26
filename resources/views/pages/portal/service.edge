@@ -50,8 +50,8 @@
         class="flex flex-wrap items-center justify-center gap-2 mt-2 h-full"
       >
         @each(service in content.services)
-          @app.portal.components.serviceCard({service})
-
+          @component('serviceCard', { service:service })
+            
           @end
         @end
       </div>
@@ -95,8 +95,8 @@
         x-transition:leave-start="opacity-100 transform translate-y-0"
         x-transition:leave-end="opacity-0 transform -translate-y-2"
       >
-        @portal.components.appoimentSection()
-
+        @component('components/appoimentSection', {  })
+          
         @end
       </div>
     </div>

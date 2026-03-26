@@ -8,11 +8,10 @@
       App
     </title>
   </head>
-  <body x-data class=" h-screen flex flex-col font-ubuntu relative overflow-x-hidden">
+  <body x-data class=" h-screen flex flex-col font-ubuntu relative overflow-x-hidden bg-page-bg text-main-dark">
     {{-- [tip]: caso data seja so o nome da pagina podemos trocar par um partial em vez de component --}}
 
     @include('partials/portal/navbar')
-
     <main class=" flex-1 overflow-y-auto pt-16 pb-24">
       <section
         id="main-content"
@@ -30,7 +29,7 @@
               <div class="flex justify-between">
                 <p class=" flex-1 space-y-6 py-1 bg-gray-200">
                 </p>
-                <i class="w-[20px] h-[20px]" data-lucide="panel-top-open"></i>
+                <i class="w-5 h-5" data-lucide="panel-top-open"></i>
               </div>
               <div>
 

@@ -2,7 +2,7 @@
   <h3 class=" text-lg">
     Próximos Agendamentos
   </h3>
-  @each(card in content.nextAppointment)
+  @each(card in content.dynamicContent.nextAppointment)
     <div class="flex gap-1.5 h-21.75 rounded-sm border-[0.5px] border-unfocus-bg shadow-sm">
       <img
         class="min-w-16 w-16 h-full object-cover "

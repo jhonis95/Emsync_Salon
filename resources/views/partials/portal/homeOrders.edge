@@ -2,7 +2,7 @@
   <h3 class=" text-lg">
     Pedidos Recentes
   </h3>
-  @each(card in content.orders)
+  @each(card in content.dynamicContent.orders)
     <div class="flex gap-1.5 rounded-sm h-[87px] border-[0.5px] border-unfocus-bg shadow-sm">
       <img
         class=" min-w-[64px] w-[64px] h-full object-cover "

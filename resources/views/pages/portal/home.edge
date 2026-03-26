@@ -1,12 +1,12 @@
 <section class=" flex flex-col gap-7">
   @include('partials/portal/titleLg')
   <div class=" flex flex-col gap-2.5">
-    @each(card in content.infoCards)
+    @each(card in content.dynamicContent.infoCards)
       @include('partials/portal/homeInfoCard')
     @end
   </div>
   <div class="flex flex-col gap-3">
-    @each(card in content.quickActionCards)
+    @each(card in content.staticContent.quickActionCards)
       @include('partials/portal/homeQuickActionCard')
     @end
   </div>
