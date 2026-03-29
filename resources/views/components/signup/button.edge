@@ -6,18 +6,19 @@
 
 <button
   @if(main)
-        class="text-lg border-[0.5px] bg-main border-gray-300 py-2 px-4 w-full rounded-sm cursor-pointer font-medium text-white"
-    @else
-        class="text-lg border-[0.5px] bg-white border-gray-300 py-2 px-4 w-full rounded-sm cursor-pointer"
-    @end
+      class="text-lg border-[0.5px] bg-main border-gray-300 py-2 px-4 w-full rounded-sm cursor-pointer font-medium text-white"
+  @else
+      class="text-lg border-[0.5px] bg-white border-gray-300 py-2 px-4 w-full rounded-sm cursor-pointer"
+  @end
+  
   @if(!getLink)
-        @click="$store.signup.auth"
-    @else
-        hx-get={{getLink}}
-        hx-trigger="click"
-        hx-swap="outerHTML"
-        hx-target="#signupContent"
-        placeholder="loading..."
+      @click="$store.signup.auth"
+  @else
+      hx-get={{getLink}}
+      hx-trigger="click"
+      hx-swap="outerHTML"
+      hx-target="#signupContent"
+      placeholder="loading..."
   @end
 >
   {{ text }}

@@ -19,6 +19,7 @@ export default defineConfig({
     }),
   ],
   server: {
-    allowedHosts: ['estilobeleza.com.br', 'cortefino.com.br', 'emsyncsalon.com.br'],
+    host:true,
+    allowedHosts: true,
   },
 })

@@ -7,8 +7,8 @@ export class PortalService {
   public async defineContentMain(menu: string, tenant: Tenant | undefined) {
 
     if (menu == 'home') {
-      const homePageContent= await portalHomePageCollection.load()
-      const staticContent=await homePageContent.all()
+      const content= await portalHomePageCollection.load()
+      const staticContent=await content.all()
 
       const dynamicContent={
         infoCards: [

@@ -40,7 +40,8 @@ export default defineConfig({
     () => import('@adonisjs/static/static_provider'),
     () => import('@adonisjs/lucid/database_provider'),
     () => import('@adonisjs/auth/auth_provider'),
-    () => import('#providers/edge_iconify_provider')
+    () => import('#providers/edge_iconify_provider'),
+    () => import('@adonisjs/drive/drive_provider')
   ],
 
   /*

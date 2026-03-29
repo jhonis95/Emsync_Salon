@@ -40,6 +40,7 @@ import Service from '#models/service'
   .createMany(10)
  */
 
+/*
 export const ServiceFactory = factory
   .define(Service, async ({ faker }) => {
     return {
@@ -50,6 +51,37 @@ export const ServiceFactory = factory
       description: faker.commerce.productDescription(),
       duration: faker.helpers.arrayElement([30,20,60,90]),
       price: Number.parseInt(faker.commerce.price({ min: 80, max: 200 })),
+    }
+  })
+  .build()
+*/
+const servicesList = [
+  {
+    name: 'Corte Masculino',
+    price: 50,
+    image: '/images/services/corte-masculino.jpg',
+    description: 'Corte de cabelo masculino com acabamento na tesoura ou máquina.',
+    duration: 45,
+  },
+  {
+    name: 'Corte Feminino',
+    price: 80,
+    image: '/images/services/corte-feminino.jpg',
+    description: 'Corte de cabelo feminino com finalização escovada.',
+    duration: 60,
+  },
+]
+
+export const ServiceFactory = factory
+  .define(Service, async ({ faker }) => {
+    const randomService = faker.helpers.arrayElement(servicesList)
+    return {
+      name: randomService.name,
+      price: randomService.price,
+      image: randomService.image,
+      description: randomService.description,
+      duration: randomService.duration,
+      active: true,
     }
   })
   .build()
