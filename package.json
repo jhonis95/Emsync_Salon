@@ -60,6 +60,7 @@
   },
   "dependencies": {
     "@adonisjs/auth": "^10.0.0",
+    "@adonisjs/bouncer": "^4.0.0",
     "@adonisjs/content": "^1.6.1",
     "@adonisjs/core": "^7.0.0",
     "@adonisjs/drive": "^4.0.0",

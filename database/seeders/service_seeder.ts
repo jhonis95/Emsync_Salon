@@ -1,4 +1,5 @@
 import Service from '#models/service'
+import ServiceStatus from '#models/service_status'
 import Tenant from '#models/tenant'
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
 
@@ -10,6 +11,15 @@ export default class ServiceSeeder extends BaseSeeder {
       console.warn('Nenhum tenant encontrado. Rode primeiro o TenantSeeder.')
       return
     }
+
+    const serviceStatus= await ServiceStatus.all()
+
+    if(serviceStatus.length===0){
+      console.warn('Nenhum status encontrado. Rode primeiro o ServiceStatusSeeder.')
+      return
+    }
+
+    
 
     // Serviços comuns de salão/barbearia
     const services = [

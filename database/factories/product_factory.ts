@@ -1,9 +1,7 @@
 import factory from '@adonisjs/lucid/factories'
 import Product from '#models/product'
 
-export const ProductFactory = factory
-  .define(Product, async ({ faker }) => {
-    const products = [
+const products = [
       {
         name: 'Shampoo Profissional',
         price: 29.9,
@@ -46,6 +44,8 @@ export const ProductFactory = factory
       },
     ]
 
+export const ProductFactory = factory
+  .define(Product, async ({ faker }) => {
     const randomProduct = faker.helpers.arrayElement(products)
     return {
       name: randomProduct.name,

@@ -1,5 +1,6 @@
 import { defineConfig } from '@adonisjs/core/app'
 import { indexEntities } from '@adonisjs/core'
+import { indexPolicies } from '@adonisjs/bouncer'
 
 export default defineConfig({
   /*
@@ -14,6 +15,7 @@ export default defineConfig({
   commands: [
     () => import('@adonisjs/core/commands'),
     () => import('@adonisjs/lucid/commands'),
+    () => import('@adonisjs/bouncer/commands')
   ],
 
   /*
@@ -41,7 +43,8 @@ export default defineConfig({
     () => import('@adonisjs/lucid/database_provider'),
     () => import('@adonisjs/auth/auth_provider'),
     () => import('#providers/edge_iconify_provider'),
-    () => import('@adonisjs/drive/drive_provider')
+    () => import('@adonisjs/drive/drive_provider'),
+    () => import('@adonisjs/bouncer/bouncer_provider')
   ],
 
   /*
@@ -95,7 +98,7 @@ export default defineConfig({
   ],
 
   hooks: {
-    init: [indexEntities()],
+    init: [indexEntities(), indexPolicies()],
     buildStarting: [() => import('@adonisjs/vite/build_hook')],
   },
 })
