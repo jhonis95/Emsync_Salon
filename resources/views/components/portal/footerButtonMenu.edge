@@ -4,7 +4,7 @@
     :class="$store.portal.portalPage === '{{ title }}'
     ? ' text-main '
     : ' text-unfocus'"
-    x-on:click="$store.portal.setPortalPage({{title}}, {{getLink}})"
+    x-on:click="$store.portal.setPortalPage('{{title}}', '{{getLink}}')"
 >
     <div :class="$store.portal.portalPage === '{{ title }}' ? 'text-main' : 'text-unfocus'">
         {{{ await $slots.main() }}}

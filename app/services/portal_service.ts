@@ -4,7 +4,7 @@ import { portalHomePageCollection } from '../../content/collections/portal.ts'
 
 export class PortalService {
   // Your code here
-  public async defineContentMain(menu: string, tenant: Tenant | undefined) {
+  public async defineContentMain(menu: string, tenant: Tenant) {
 
     if (menu == 'home') {
       const content= await portalHomePageCollection.load()
@@ -54,11 +54,12 @@ export class PortalService {
       return {staticContent, dynamicContent }
     }
     if (menu == 'product') {
-      return {
-        section_name: 'Produtos',
-        menu_1: 'Seleção de produto',
-        products: [{ name: 'product1' }],
+      await tenant.load('products')
+      const products= tenant.products
+      const pageContent={
+        products: products.map((product) => product.serialize()),
       }
+      return pageContent
     }
 
     if (menu == 'service') {

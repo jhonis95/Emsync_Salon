@@ -1,6 +1,6 @@
 import Tenant from '#models/tenant'
 import User from '#models/user'
-import TenantDto from '../dtos/tenant.js'
+
 
 type TCreateTenantProps = {
   company_name: string
@@ -12,7 +12,7 @@ export class TenantService {
       storeName: data.company_name,
     })
   }
-  public async getAllUsers(id: TenantDto['id'] | undefined) {
+  public async getAllUsers(id: string | undefined) {
     return await User.findBy('tenantId', Tenant.find(id))
   }
 

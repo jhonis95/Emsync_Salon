@@ -49,7 +49,7 @@ export const ProductFactory = factory
     const randomProduct = faker.helpers.arrayElement(products)
     return {
       name: randomProduct.name,
-      price: randomProduct.price,
+      price: Number.parseInt(faker.commerce.price({ min: 10, max: 100, dec: 2})),
       image: randomProduct.image,
     }
   })

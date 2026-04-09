@@ -4,6 +4,7 @@ type ParamValue = string | number | bigint | boolean
 
 export type ScannedRoutes = {
   ALL: {
+    'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
     'tenents_homepages.index': { paramsTuple?: []; params?: {} }
     'portal.auth.login.show': { paramsTuple?: []; params?: {} }
     'portal.auth.login': { paramsTuple?: []; params?: {} }
@@ -18,6 +19,7 @@ export type ScannedRoutes = {
     'saas.app': { paramsTuple?: []; params?: {} }
   }
   GET: {
+    'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
     'tenents_homepages.index': { paramsTuple?: []; params?: {} }
     'portal.auth.login.show': { paramsTuple?: []; params?: {} }
     'portal.index': { paramsTuple?: []; params?: {} }
@@ -30,6 +32,7 @@ export type ScannedRoutes = {
     'saas.app': { paramsTuple?: []; params?: {} }
   }
   HEAD: {
+    'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
     'tenents_homepages.index': { paramsTuple?: []; params?: {} }
     'portal.auth.login.show': { paramsTuple?: []; params?: {} }
     'portal.index': { paramsTuple?: []; params?: {} }

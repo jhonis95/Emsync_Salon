@@ -253,7 +253,7 @@ export class ProductServiceCategorySchema extends BaseModel {
 }
 
 export class ProductSchema extends BaseModel {
-  static $columns = ['createdAt', 'id', 'image', 'name', 'price', 'productServiceCategoriesId', 'tenantId', 'updatedAt'] as const
+  static $columns = ['createdAt', 'id', 'image', 'name', 'price', 'productServiceCategoriesId', 'publicId', 'tenantId', 'updatedAt'] as const
   $columns = ProductSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
@@ -267,6 +267,8 @@ export class ProductSchema extends BaseModel {
   declare price: number | null
   @column()
   declare productServiceCategoriesId: string | null
+  @column()
+  declare publicId: string
   @column()
   declare tenantId: string
   @column.dateTime({ autoCreate: true, autoUpdate: true })

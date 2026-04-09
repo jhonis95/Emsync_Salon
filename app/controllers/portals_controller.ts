@@ -15,6 +15,10 @@ export default class PortalsController {
   }
 
   async view({ params, view, tenant }: HttpContext) {
+    if(!tenant){
+      console.log('tenant not found')
+      return view.render('errors/not_found')
+    }
     const content = await this.portalService.defineContentMain(params.page, tenant)
     return view.render(`pages/portal/${params.page}`, { content })
   }

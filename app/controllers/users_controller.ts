@@ -1,4 +1,3 @@
-import User from '#models/user'
 import UserPolicy from '#policies/user_policy'
 import { UserService } from '#services/user_service'
 import { createUserPropsValidator } from '#validators/user'

@@ -1,7 +1,6 @@
-import 'htmx.org'
+import htmx from 'htmx.org'
 import Alpine from 'alpinejs'
 import { animate, stagger } from 'motion'
-
 
 document.addEventListener('alpine:init',()=>{
     Alpine.store('portal',{
@@ -22,5 +21,6 @@ document.addEventListener('alpine:init',()=>{
 
 window.Alpine = Alpine
 window.Animate = animate
+window.htmx = htmx
 
 Alpine.start()
