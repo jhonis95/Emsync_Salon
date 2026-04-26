@@ -1,6 +1,7 @@
 import User from '#models/user'
 import { HttpContext } from '@adonisjs/core/http'
 import hash from '@adonisjs/core/services/hash'
+import { Exception } from '@adonisjs/core/exceptions'
 
 export class LoginService {
   // Your code here
@@ -36,6 +37,27 @@ export class LoginService {
         return response.redirect().back()
       }
     }
+  }
+
+  public async findUserByEmail(email: string,tenant:string) {
+    const user = await User.query()
+      .where('email', email)
+      .where('tenantId', tenant)
+      .first()
+
+    if (!user) {
+      //[fix] precisa criar Exception handler https://docs.adonisjs.com/guides/basics/exception-handling
+      throw new Exception('Credenciais inválidas', { status: 401 })
+    }
+    return user
+  }
+
+  public async verifyCredentials(user: User, password: string) {
+    const isValid = await hash.verify(user.password, password)
+
+      if (!isValid) {
+        throw new Exception('Credenciais inválidas', { status: 401 })
+      }
   }
 
   public async logout({ auth, response, session }: HttpContext) {

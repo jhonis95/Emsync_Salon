@@ -1,6 +1,8 @@
 import { LoginService } from '#services/login_service'
 import type { HttpContext } from '@adonisjs/core/http'
 import { inject } from '@adonisjs/core'
+import { loginUserVilidatorSchema } from '#validators/user'
+import vine from '@vinejs/vine'
 
 @inject()
 export default class AuthController {
@@ -21,6 +23,30 @@ export default class AuthController {
   async login(ctx: HttpContext) {
     await this.loginService.login(ctx)
   }
+
+  async signup({response, request, tenant, auth, session}:HttpContext){
+    const data = request.only(['email', 'password'])
+    const validator = vine.create(loginUserVilidatorSchema)
+    const payload = await validator.validate(data)
+    if (!tenant) {
+      return response.abort('Tenant não encontrado')
+    }
+    
+    try {
+      if(tenant){
+        const user = await this.loginService.findUserByEmail(payload.email,tenant.id)
+        await this.loginService.verifyCredentials(user,payload.password)
+        await auth.use('web').login(user)
+        session.put('pagedata', { storeName: tenant.$attributes.storeName, userName: user.fullName })
+        return response.redirect('/portaldocliente')
+      }
+      
+    } catch (error: any) { //[fix] corrigir erro de tipagem
+      session.flash('error', error.message)
+      return response.redirect().back() 
+    }
+  }
+
   /**
    * Display form to create a new record
    */

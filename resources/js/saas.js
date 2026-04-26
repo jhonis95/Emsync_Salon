@@ -13,7 +13,7 @@ document.addEventListener('alpine:init',()=>{
             // htmx.ajax(método, URL, contexto)
             htmx.ajax('GET', link, {
                 target: '#main-content',
-                swap: 'outerHTML'
+                swap: 'innerHTML'
             });
         }
     })

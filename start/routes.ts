@@ -21,8 +21,10 @@ router.get('/', [controllers.TenentsHomepages, 'index'])
 router
   .group(() => {
     router.get('/', [controllers.Saas, 'index'])
-    router.get('/auth', [controllers.Saas, 'login']).as('saas.auth.login.show')
-    router.post('/auth', [controllers.Saas, 'auth']).as('saas.auth.login')
+    router.group(()=>{
+      router.get('/', [controllers.Saas, 'login']).as('saas.auth.login.show')
+      router.post('/', [controllers.Saas, 'auth']).as('saas.auth.login')
+    }).prefix('auth')
     router
       .group(() => {
         router.get('/', [controllers.Signups, 'index']).as('saas.singup')
@@ -30,7 +32,7 @@ router
       })
       .prefix('signup')
     router.get('/app', [controllers.Saas, 'app'])
-    //.use([middleware.auth({ guards: ['web'] })])
+    .use([middleware.auth({ guards: ['web'] })])
   })
   .domain('emsyncsalon.com.br').use([middleware.guest()])
 // Portal do cliente (tenant)
