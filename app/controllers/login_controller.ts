@@ -6,11 +6,11 @@ import type { HttpContext } from '@adonisjs/core/http'
 export default class SingupsController {
   constructor(protected signupService: SignupService) {}
   async index({ view }: HttpContext) {
-    return view.render('pages/signup/index')
+    return view.render('pages/auth/index')
   }
   async view({ view, params }: HttpContext) {
     const content = await this.signupService.defineMainPage(params.page)
-    return view.render(`pages/signup/${params.page}`, { plansContent: content })
+    return view.render(`pages/auth/${params.page}`, { plansContent: content })
   }
   /**
    * Display form to create a new record

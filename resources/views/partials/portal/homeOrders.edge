@@ -3,46 +3,42 @@
     <h3 class=" text-lg font-poppins font-bold">
       Pedidos Recentes
     </h3>
-    <p class="text-sm font-bold text-main">Ver tudo</p>
+    <p class="text-sm font-bold text-main">
+      Ver tudo
+    </p>
   </div>
   @each(card in content.dynamicContent.orders)
     <div class="flex gap-1.5 rounded-sm h-28.75 border-[0.5px] border-unfocus-bg shadow-sm">
-      <img
-        class=" w-21.75 h-full object-cover rounded-l-lg "
-        width="854"
-        height="480"
-        src=""
-        alt=""
-      />
+      <img class=" w-21.75 h-full object-cover rounded-l-lg " width="854" height="480" src="" alt="" />
       <div class="flex flex-col w-full gap-2.5 py-5 px-2.5">
         <div>
           <h4 class=" text-base font-poppins font-bold">
             {{ card.title }}
           </h4>
-          @component('components/portal/status', { 
-            status: 'focus', 
+          @component('components/portal/status', {
+            status: 'focus',
             text: 'Confirmado'
           })
-      
+
           @end
         </div>
         <div class="flex justify-between items-center text-sm font-light">
-           <div class="flex gap-1">
+          <div class="flex gap-1">
             @svg('lucide:calendar',{
               width: 18,
               height: 18,
               class: 'text-main'
             })
             <p class=" font-normal text-sm">
-              {{card.date}}
+              {{ card.date }}
             </p>
 
           </div>
-          @component('components/portal/status', { 
-            status: 'focus', 
+          @component('components/portal/status', {
+            status: 'focus',
             text: card.time
           })
-      
+
           @end
         </div>
       </div>

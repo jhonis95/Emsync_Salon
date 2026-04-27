@@ -6,47 +6,47 @@ export type ScannedRoutes = {
   ALL: {
     'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
     'tenents_homepages.index': { paramsTuple?: []; params?: {} }
-    'portal.auth.login.show': { paramsTuple?: []; params?: {} }
-    'portal.auth.login': { paramsTuple?: []; params?: {} }
+    'auth.show': { paramsTuple?: []; params?: {} }
+    'auth.login': { paramsTuple?: []; params?: {} }
+    'auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'portal.index': { paramsTuple?: []; params?: {} }
     'portal.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'portal.view.service': { paramsTuple?: []; params?: {} }
     'saas.index': { paramsTuple?: []; params?: {} }
-    'saas.auth.login.show': { paramsTuple?: []; params?: {} }
-    'saas.auth.login': { paramsTuple?: []; params?: {} }
-    'saas.singup': { paramsTuple?: []; params?: {} }
-    'saas.signup.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
+    'emsyncsalon.com.br@auth.show': { paramsTuple?: []; params?: {} }
+    'emsyncsalon.com.br@auth.login': { paramsTuple?: []; params?: {} }
+    'emsyncsalon.com.br@auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'saas.app': { paramsTuple?: []; params?: {} }
   }
   GET: {
     'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
     'tenents_homepages.index': { paramsTuple?: []; params?: {} }
-    'portal.auth.login.show': { paramsTuple?: []; params?: {} }
+    'auth.show': { paramsTuple?: []; params?: {} }
+    'auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'portal.index': { paramsTuple?: []; params?: {} }
     'portal.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'portal.view.service': { paramsTuple?: []; params?: {} }
     'saas.index': { paramsTuple?: []; params?: {} }
-    'saas.auth.login.show': { paramsTuple?: []; params?: {} }
-    'saas.singup': { paramsTuple?: []; params?: {} }
-    'saas.signup.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
+    'emsyncsalon.com.br@auth.show': { paramsTuple?: []; params?: {} }
+    'emsyncsalon.com.br@auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'saas.app': { paramsTuple?: []; params?: {} }
   }
   HEAD: {
     'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
     'tenents_homepages.index': { paramsTuple?: []; params?: {} }
-    'portal.auth.login.show': { paramsTuple?: []; params?: {} }
+    'auth.show': { paramsTuple?: []; params?: {} }
+    'auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'portal.index': { paramsTuple?: []; params?: {} }
     'portal.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'portal.view.service': { paramsTuple?: []; params?: {} }
     'saas.index': { paramsTuple?: []; params?: {} }
-    'saas.auth.login.show': { paramsTuple?: []; params?: {} }
-    'saas.singup': { paramsTuple?: []; params?: {} }
-    'saas.signup.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
+    'emsyncsalon.com.br@auth.show': { paramsTuple?: []; params?: {} }
+    'emsyncsalon.com.br@auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'saas.app': { paramsTuple?: []; params?: {} }
   }
   POST: {
-    'portal.auth.login': { paramsTuple?: []; params?: {} }
-    'saas.auth.login': { paramsTuple?: []; params?: {} }
+    'auth.login': { paramsTuple?: []; params?: {} }
+    'emsyncsalon.com.br@auth.login': { paramsTuple?: []; params?: {} }
   }
 }
 declare module '@adonisjs/core/types/http' {

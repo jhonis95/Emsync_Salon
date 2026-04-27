@@ -5,14 +5,16 @@ const servicesList = [
   {
     name: 'Corte Masculino',
     price: 50,
-    image: 'https://img.freepik.com/free-photo/young-man-barbershop-trimming-hair_1303-26254.jpg?t=st=1775616259~exp=1775619859~hmac=284784340033c9ce8f377ffb2f8429f70bfb8f094e00a2d88310ac2272416855&w=1480',
+    image:
+      'https://img.freepik.com/free-photo/young-man-barbershop-trimming-hair_1303-26254.jpg?t=st=1775616259~exp=1775619859~hmac=284784340033c9ce8f377ffb2f8429f70bfb8f094e00a2d88310ac2272416855&w=1480',
     description: 'Corte de cabelo masculino com acabamento na tesoura ou máquina.',
     duration: 45,
   },
   {
     name: 'Corte Feminino',
     price: 80,
-    image: 'https://img.freepik.com/premium-photo/woman-is-cutting-hair-with-comb-another-woman-is-wearing-black-jacket_1034910-67248.jpg?w=1480',
+    image:
+      'https://img.freepik.com/premium-photo/woman-is-cutting-hair-with-comb-another-woman-is-wearing-black-jacket_1034910-67248.jpg?w=1480',
     description: 'Corte de cabelo feminino com finalização escovada.',
     duration: 60,
   },
@@ -58,7 +60,7 @@ export const ServiceFactory = factory
     const randomService = faker.helpers.arrayElement(servicesList)
     return {
       name: randomService.name,
-      price: Number.parseInt(faker.commerce.price({ min: 10, max: 100, dec: 2})),
+      price: Number.parseInt(faker.commerce.price({ min: 10, max: 100, dec: 2 })),
       image: randomService.image,
       description: randomService.description,
       duration: randomService.duration,

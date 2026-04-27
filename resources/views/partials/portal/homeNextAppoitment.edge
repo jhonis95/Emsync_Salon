@@ -3,7 +3,9 @@
     <h3 class=" text-lg font-poppins font-bold">
       Próximos Agendamentos
     </h3>
-    <p class="text-sm font-bold text-main">Ver tudo</p>
+    <p class="text-sm font-bold text-main">
+      Ver tudo
+    </p>
   </div>
   @each(card in content.dynamicContent.nextAppointment)
     <div class="flex h-28.75 rounded-lg border-[0.5px] border-unfocus-bg shadow-sm">
@@ -31,16 +33,16 @@
               class: 'text-main'
             })
             <p class=" font-normal text-sm">
-              {{card.date}}
+              {{ card.date }}
             </p>
 
           </div>
 
-          @component('components/portal/status', { 
-            status: 'focus', 
+          @component('components/portal/status', {
+            status: 'focus',
             text: card.time
           })
-      
+
           @end
         </div>
       </div>

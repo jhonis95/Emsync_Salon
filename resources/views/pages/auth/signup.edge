@@ -68,7 +68,7 @@
     </p>
     <a
       class="text-base font-semibold text-main underline cursor-pointer"
-      hx-get="/signup/page/login"
+      hx-get={{route('auth.view',{page:'login'})}}
       hx-trigger="click"
       hx-swap="outerHTML"
       hx-target="#signupContent"
@@ -79,7 +79,7 @@
   </div>
   @component('components/signup/button', {
         main:true,
-        getLink:'/signup/page/store',
+        getLink:route('auth.view',{page:'store'}),
         text:'Continuar'
   })
   @end

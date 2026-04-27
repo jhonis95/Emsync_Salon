@@ -13,12 +13,12 @@
       <section
         x-data
         class="w-full h-full"
-        hx-get="/signup/page/plan"
+        hx-get="{{ route('auth.view', { page: 'login' }) }}"
         hx-on::before-swap="fadeoutAnimation()"
         hx-on::after-swap="fadeinAnimation()"
         hx-trigger="load delay:1s"
-        hx-swap="outerHTML"
         hx-target="#signupContent"
+        hx-swap="innerHTML"
         placeholder="loading..."
       >
         <div id="signupContent" class=" flex flex-col gap-7 justify-center items-center p-7 h-full">

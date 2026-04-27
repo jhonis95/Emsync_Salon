@@ -8,14 +8,14 @@ export default class PortalsController {
   constructor(protected portalService: PortalService) {}
   async index({ session, view }: HttpContext) {
     const pagedata = session.get('pagedata')
-    if(!pagedata){
+    if (!pagedata) {
       return view.render('pages/portal/index', { pagedata: { storeName: 'Nome da loja' } })
     }
     return view.render('pages/portal/index', { pagedata })
   }
 
   async view({ params, view, tenant }: HttpContext) {
-    if(!tenant){
+    if (!tenant) {
       console.log('tenant not found')
       return view.render('errors/not_found')
     }

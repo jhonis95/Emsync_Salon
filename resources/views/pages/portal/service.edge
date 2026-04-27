@@ -51,7 +51,7 @@
       >
         @each(service in content.services)
           @component('serviceCard', { service:service })
-            
+
           @end
         @end
       </div>
@@ -96,7 +96,7 @@
         x-transition:leave-end="opacity-0 transform -translate-y-2"
       >
         @component('components/appoimentSection', {  })
-          
+
         @end
       </div>
     </div>

@@ -15,7 +15,7 @@ export default defineConfig({
   commands: [
     () => import('@adonisjs/core/commands'),
     () => import('@adonisjs/lucid/commands'),
-    () => import('@adonisjs/bouncer/commands')
+    () => import('@adonisjs/bouncer/commands'),
   ],
 
   /*
@@ -44,7 +44,8 @@ export default defineConfig({
     () => import('@adonisjs/auth/auth_provider'),
     () => import('#providers/edge_iconify_provider'),
     () => import('@adonisjs/drive/drive_provider'),
-    () => import('@adonisjs/bouncer/bouncer_provider')
+    () => import('@adonisjs/bouncer/bouncer_provider'),
+    () => import('@adonisjs/cors/cors_provider')
   ],
 
   /*

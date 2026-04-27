@@ -1,10 +1,9 @@
 import User from '#models/user'
 import { TcreatUserInputs } from '#validators/user'
 
-
 export class UserService {
-  public async getUser(id: string): Promise<User>{
-    const user=await User.findOrFail(id)
+  public async getUser(id: string): Promise<User> {
+    const user = await User.findOrFail(id)
     return user
   }
   // [fix]correção de TCreateUserProps, melhor chamar pelo validator TcreatUserInputs

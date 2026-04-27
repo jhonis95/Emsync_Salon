@@ -1,7 +1,6 @@
 import Tenant from '#models/tenant'
 import User from '#models/user'
 
-
 type TCreateTenantProps = {
   company_name: string
 }

@@ -5,12 +5,11 @@ import { portalHomePageCollection } from '../../content/collections/portal.ts'
 export class PortalService {
   // Your code here
   public async defineContentMain(menu: string, tenant: Tenant) {
-
     if (menu == 'home') {
-      const content= await portalHomePageCollection.load()
-      const staticContent=await content.all()
+      const content = await portalHomePageCollection.load()
+      const staticContent = await content.all()
 
-      const dynamicContent={
+      const dynamicContent = {
         infoCards: [
           {
             title: 'Suas Avaliações',
@@ -51,12 +50,12 @@ export class PortalService {
           },
         ],
       }
-      return {staticContent, dynamicContent }
+      return { staticContent, dynamicContent }
     }
     if (menu == 'product') {
       await tenant.load('products')
-      const products= tenant.products
-      const pageContent={
+      const products = tenant.products
+      const pageContent = {
         products: products.map((product) => product.serialize()),
       }
       return pageContent

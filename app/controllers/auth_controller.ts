@@ -24,28 +24,54 @@ export default class AuthController {
     await this.loginService.login(ctx)
   }
 
-  async signup({response, request, tenant, auth, session}:HttpContext){
-    const data = request.only(['email', 'password'])
-    const validator = vine.create(loginUserVilidatorSchema)
-    const payload = await validator.validate(data)
+  async loginPortal({ response, request, tenant, auth, session }: HttpContext) {
     if (!tenant) {
       return response.abort('Tenant não encontrado')
     }
-    
+
     try {
-      if(tenant){
-        const user = await this.loginService.findUserByEmail(payload.email,tenant.id)
-        await this.loginService.verifyCredentials(user,payload.password)
+      if (tenant) {
+        const data = request.only(['email', 'password'])
+        const validator = vine.create(loginUserVilidatorSchema)
+        const payload = await validator.validate(data)
+     
+        const user = await this.loginService.findUserByEmail(payload.email, tenant.id)
+        
+        await this.loginService.verifyCredentials(user, payload.password)
         await auth.use('web').login(user)
-        session.put('pagedata', { storeName: tenant.$attributes.storeName, userName: user.fullName })
+        session.put('pagedata', {
+          storeName: tenant.$attributes.storeName,
+          userName: user.fullName,
+        })
         return response.redirect('/portaldocliente')
       }
+    } catch (error: any) {
+      //[fix] corrigir erro de tipagem
+      session.flash('error', error.message)
+      return response.redirect().back()
+    }
+  }
+  /**
+   * 
+  async signupApp({response, request, auth, session}:HttpContext){  
+    const data = request.only(['email', 'password'])
+    const validator = vine.create(loginUserVilidatorSchema)
+    const payload = await validator.validate(data)
+    try {
+      const user = await this.loginService.findUserByEmail(payload.email)
+      await this.loginService.verifyCredentials(user,payload.password)
+      await auth.use('web').login(user)
+  
+      session.put('pagedata', { storeName: 'Emsync Salon', userName: user.fullName })
+      return response.redirect('/app')
       
     } catch (error: any) { //[fix] corrigir erro de tipagem
       session.flash('error', error.message)
       return response.redirect().back() 
     }
   }
+
+   */
 
   /**
    * Display form to create a new record

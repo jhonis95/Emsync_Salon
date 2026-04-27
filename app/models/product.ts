@@ -11,7 +11,7 @@ export default class Product extends BaseModel {
   public static table = 'products'
   @column({ isPrimary: true })
   declare id: string
-  
+
   @column({ columnName: 'tenant_id' })
   declare tenantId: string
 
@@ -46,7 +46,6 @@ export default class Product extends BaseModel {
     foreignKey: 'tenantId',
   })
   declare tenant: BelongsTo<typeof Tenant>
-
 
   @hasMany(() => ScheduledProduct, { foreignKey: 'productId' })
   declare scheduledProducts: HasMany<typeof ScheduledProduct>

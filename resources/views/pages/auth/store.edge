@@ -87,13 +87,13 @@
   <div class=" w-full flex justify-evenly gap-3">
     @component('components/signup/button', {
             main:false,
-            getLink:'/signup/page/signup',
+            getLink:route('auth.view',{page:'signup'}),
             text:'Voltar'
     })
     @end
     @component('components/signup/button', {
             main:true,
-            getLink:'/signup/page/plan',
+            getLink:route('auth.view',{page:'plan'}),
             text:'Continuar'
     })
     @end
