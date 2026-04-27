@@ -2,6 +2,7 @@ import User from '#models/user'
 import { HttpContext } from '@adonisjs/core/http'
 import hash from '@adonisjs/core/services/hash'
 import { Exception } from '@adonisjs/core/exceptions'
+import UserTenant from '#models/user_tenant'
 
 export class LoginService {
   // Your code here
@@ -52,12 +53,16 @@ export class LoginService {
     return user
   }
 
-  public async verifyCredentials(user: User, password: string) {
-    const isValid = await hash.verify(user.password, password)
-
-    if (!isValid) {
+  public async verifyCredentials( password: string, email: string) {
+    const user = await User.verifyCredentials(email, password)
+    if (!user) {
       throw new Exception('Credenciais inválidas', { status: 401 })
     }
+    return user
+  }
+
+  public async verifyUserToTenant(user: string, tenant: string) {
+      await UserTenant.query().where('userId', user).where('tenantId', tenant).firstOrFail()
   }
 
   public async logout({ auth, response, session }: HttpContext) {

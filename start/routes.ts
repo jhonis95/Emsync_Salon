@@ -57,5 +57,5 @@ router.group(() => {
         .prefix('view')
     })
     .prefix('portaldocliente')
-  //.use([middleware.auth({ guards: ['web'] })])
+    .use([middleware.auth({ guards: ['web'] })])
 })

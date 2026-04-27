@@ -29,7 +29,6 @@ export const loginUserVilidatorSchema = {
     .string()
     .maxLength(32)
     .minLength(8)
-    .regex(/^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/),
 }
 
 export type TcreatUserInputs = Infer<typeof createUserPropsValidator>

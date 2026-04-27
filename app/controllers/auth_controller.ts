@@ -34,10 +34,9 @@ export default class AuthController {
         const data = request.only(['email', 'password'])
         const validator = vine.create(loginUserVilidatorSchema)
         const payload = await validator.validate(data)
-     
-        const user = await this.loginService.findUserByEmail(payload.email, tenant.id)
         
-        await this.loginService.verifyCredentials(user, payload.password)
+        const user =await this.loginService.verifyCredentials(payload.password, payload.email)
+        await this.loginService.verifyUserToTenant(user.id, tenant.id)
         await auth.use('web').login(user)
         session.put('pagedata', {
           storeName: tenant.$attributes.storeName,
