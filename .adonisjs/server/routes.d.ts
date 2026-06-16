@@ -17,6 +17,7 @@ export type ScannedRoutes = {
     'emsyncsalon.com.br@auth.login': { paramsTuple?: []; params?: {} }
     'emsyncsalon.com.br@auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'saas.app': { paramsTuple?: []; params?: {} }
+    'saas.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
   }
   GET: {
     'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
@@ -30,6 +31,7 @@ export type ScannedRoutes = {
     'emsyncsalon.com.br@auth.show': { paramsTuple?: []; params?: {} }
     'emsyncsalon.com.br@auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'saas.app': { paramsTuple?: []; params?: {} }
+    'saas.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
   }
   HEAD: {
     'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
@@ -43,6 +45,7 @@ export type ScannedRoutes = {
     'emsyncsalon.com.br@auth.show': { paramsTuple?: []; params?: {} }
     'emsyncsalon.com.br@auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'saas.app': { paramsTuple?: []; params?: {} }
+    'saas.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
   }
   POST: {
     'auth.login': { paramsTuple?: []; params?: {} }

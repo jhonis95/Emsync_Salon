@@ -29,7 +29,13 @@ router
       })
       .prefix('auth')
       .use([middleware.guest()])
-    router.get('/app', [controllers.Saas, 'app']).use([middleware.auth({ guards: ['web'] })])
+      
+    router.group(() => {
+      router.get('', [controllers.Saas, 'app'])
+      router.get('/:page', [controllers.Saas, 'view']).as('saas.view')
+    })
+    .prefix('app')
+    .use([middleware.guest()])  
   })
   .domain('emsyncsalon.com.br')
   .use([middleware.guest()])

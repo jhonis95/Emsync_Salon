@@ -3,97 +3,185 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @vite(['resources/css/saas.css', 'resources/js/saas.js'])
+    @vite(['resources/css/app.css', 'resources/js/saas.js'])
     <title>
       Emsync Salon App
     </title>
   </head>
-  <body>
-    <header class=" w-full h-[51px] flex justify-center items-center">
-      <nav class=" max-w-[1200px] w-full flex justify-between">
-        <div class="flex gap-2">
-          <img class=" size-8" src="" alt="" />
-          <div class="flex gap-4">
-            <h3>
-              Emsync salon
-            </h3>
-            <p>
-              Nome da loja
-            </p>
-          </div>
-        </div>
-        <div class="flex gap-3">
-          <a class=" flex justify-center items-center bg-gray-400 px-4 py-1 rounded-sm" href="">
-            <button class=" cursor-pointer">ir para o website</button>
-          </a>
-          <img class=" size-11 border rounded-full" src="" alt="" />
-        </div>
-      </nav>
-    </header>
-    <main class="w-full h-full flex">
-      <aside>
-        <div>
-          <h3>
-            menu
-          </h3>
-        </div>
-        <div>
-          <ul>
-            <li>
-              home
-            </li>
-            <li>
-              serviços
-            </li>
-            <li>
-              inventario
-            </li>
-            <li>
-              gerenciamento de staff
-            </li>
-            <li>
-              agendamentos
-            </li>
-            <li>
-              clientes
-            </li>
-            <li>
-              configurções
-            </li>
-          </ul>
-        </div>
-        <div>
-        </div>
-      </aside>
-      <section>
-        <div>
-          <h2>
-            Home Dashboard
-          </h2>
-        </div>
-        <div class="">
-          <h4>
-            Aplicações
-          </h4>
-          <div
-            class="flex justify-center items-center gap-3.5 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs"
-          >
-            <button>
-              <img class=" size-9" src="" alt="" />
-            </button>
-            <button>
-              <img class=" size-9" src="" alt="" />
-            </button>
-          </div>
-        </div>
-        <div>
-        </div>
-        <div>
-        </div>
-      </section>
-    </main>
-    <footer>
+  <body class="bg-[var(--color-page-bg)] font-['Poppins'] text-[var(--color-main-dark)] antialiased min-h-screen pb-24">
 
-    </footer>
+    <header class="bg-white px-4 py-3 flex items-center justify-between shadow-sm rounded-b-2xl border-b border-gray-100">
+      <div class="flex items-center gap-3">
+        <div class="bg-gray-50 p-2.5 rounded-xl border border-gray-100 text-[var(--color-main-dark)]">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-base font-bold leading-tight">Emsync Salon</h1>
+          <p class="text-xs font-semibold text-[var(--color-main)]">Nome da loja</p>
+        </div>
+      </div>
+
+      <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 border border-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+        </svg>
+      </div>
+    </header>
+
+    <main class="px-4 pt-6 max-w-md mx-auto">
+
+      <h2 class="text-2xl font-bold mb-5 tracking-tight">Home Dashbord</h2>
+
+      <div class="space-y-4 mb-6">
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex justify-between items-start relative overflow-hidden">
+          <div>
+            <p class="text-sm font-semibold text-[var(--color-main-dark)]">Agendamentos hoje</p>
+            <p class="text-3xl font-bold mt-1 mb-1">00</p>
+            <p class="text-[10px] font-medium text-emerald-500"><span class="font-bold">00%</span> mais que o mes passado</p>
+          </div>
+          <div class="w-6 h-6 bg-gray-100 rounded opacity-40"></div>
+        </div>
+
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex justify-between items-start relative overflow-hidden">
+          <div>
+            <p class="text-sm font-semibold text-[var(--color-main-dark)]">Receita mensal</p>
+            <p class="text-2xl font-extrabold mt-1 mb-1 tracking-tight">R$ 00.000,00</p>
+            <p class="text-[10px] font-medium text-emerald-500"><span class="font-bold">00%</span> mais que o mes passado</p>
+          </div>
+          <div class="w-6 h-6 bg-gray-100 rounded opacity-40"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex justify-between items-start">
+            <div>
+              <p class="text-xs font-semibold text-[var(--color-main-dark)]">Novos clientes</p>
+              <p class="text-2xl font-bold mt-1 mb-1">00</p>
+              <p class="text-[10px] font-bold text-emerald-500">+2 hoje</p>
+            </div>
+            <div class="w-5 h-5 bg-gray-100 rounded opacity-40"></div>
+          </div>
+
+          <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex justify-between items-start">
+            <div>
+              <p class="text-xs font-semibold text-[var(--color-main-dark)]">Cancelamentos</p>
+              <p class="text-2xl font-bold mt-1 mb-1">01</p>
+              <p class="text-[10px] font-bold text-red-500">-50% vs ontem</p>
+            </div>
+            <div class="w-5 h-5 bg-gray-100 rounded opacity-40"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-[var(--color-main-dark)]">Ações rápidas</h3>
+        <p class="text-xs text-[var(--color-unfocus)] font-medium mb-4">Agilize a suas atividades</p>
+
+        <div class="grid grid-cols-2 gap-3">
+          <button class="bg-white border border-gray-100 rounded-xl p-3 flex items-center gap-3 text-left shadow-sm active:scale-95 transition-transform">
+            <div class="text-[var(--color-main)]">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+              </svg>
+            </div>
+            <span class="text-xs font-bold leading-tight text-[var(--color-main-dark)]">novo agendamento</span>
+          </button>
+
+          <button class="bg-white border border-gray-100 rounded-xl p-3 flex items-center gap-3 text-left shadow-sm active:scale-95 transition-transform">
+            <div class="text-[var(--color-main)]">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5a3 3 0 11-6 0 3 3 0 016 0zM12 15.75a7.44 7.44 0 00-6 3H18a7.44 7.44 0 00-6-3zM6 6h.008v.008H6V6z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c.132 0 .263 0 .393.007a7.5 7.5 0 00-7.92 12.446a9 9 0 1115.114-6.183A4.5 4.5 0 0012 3z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9" />
+              </svg>
+            </div>
+            <span class="text-xs font-bold leading-tight text-[var(--color-main-dark)]">cadastrar cliente</span>
+          </button>
+
+          <button class="bg-white border border-gray-100 rounded-xl p-3 flex items-center gap-3 text-left shadow-sm active:scale-95 transition-transform">
+            <div class="text-[var(--color-main)]">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7.864 4.243A4 4 0 1113.5 9.758l-1.42 1.42a1.5 1.5 0 00-.439 1.061v1.127m0 3.375h.007v.008H12v-.008z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12H4.5M12 15v4.5M15 12h4.5M12 9V4.5" />
+              </svg>
+            </div>
+            <span class="text-xs font-bold leading-tight text-[var(--color-main-dark)]">novo serviço</span>
+          </button>
+
+          <button class="bg-white border border-gray-100 rounded-xl p-3 flex items-center gap-3 text-left shadow-sm active:scale-95 transition-transform">
+            <div class="text-[var(--color-main)]">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+              </svg>
+            </div>
+            <span class="text-xs font-bold leading-tight text-[var(--color-main-dark)]">adicionar produto</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <div class="flex items-center gap-2 mb-4 text-[var(--color-main-dark)]">
+          <div class="text-[var(--color-main)]">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold">Próximos agendamentos</h3>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+            <div class="flex justify-between items-start mb-2">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-[var(--color-main-dark)] flex items-center justify-center text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm tracking-tight text-[var(--color-main-dark)]">Rodrigo dos Santo...</h4>
+                  <div class="flex items-center gap-2 mt-0.5">
+                    <span class="bg-[var(--color-main-bg)] text-[var(--color-main)] font-bold text-[9px] px-1.5 py-0.5 rounded">Hoje</span>
+                    <span class="text-[10px] text-[var(--color-unfocus)] font-medium">00/00/00</span>
+                  </div>
+                </div>
+              </div>
+              <span class="text-lg font-bold text-[var(--color-main)]">00:00</span>
+            </div>
+            <div class="pt-2 border-t border-gray-50">
+              <p class="text-xs font-bold text-[var(--color-main-dark)]">Nome do serviço ou produto</p>
+              <p class="text-[11px] text-[var(--color-unfocus)] mt-0.5">com Profissional ainda a definir</p>
+            </div>
+          </div>
+
+          <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+            <div class="flex justify-between items-start mb-2">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-[var(--color-main-dark)] flex items-center justify-center text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm tracking-tight text-[var(--color-main-dark)]">Jonatan de Oliveira</h4>
+                  <div class="flex items-center gap-2 mt-0.5">
+                    <span class="bg-[var(--color-unfocus-bg)] text-[var(--color-unfocus)] font-bold text-[9px] px-1.5 py-0.5 rounded">Amanhã</span>
+                    <span class="text-[10px] text-[var(--color-unfocus)] font-medium">00/00/00</span>
+                  </div>
+                </div>
+              </div>
+              <span class="text-lg font-bold text-gray-500">00:00</span>
+            </div>
+            <div class="pt-2 border-t border-gray-50">
+              <p class="text-xs font-bold text-[var(--color-main-dark)]">Nome do serviço ou produto</p>
+              <p class="text-[11px] text-[var(--color-unfocus)] mt-0.5">com Profissional ainda a definir</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    @include('partials/app/bottomMenu')
   </body>
 </html>

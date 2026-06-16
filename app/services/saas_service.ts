@@ -1,7 +1,8 @@
-import User from '#models/user'
+//import User from '#models/user'
 import { HttpContext } from '@adonisjs/core/http'
 
 export class SaasService {
+  /*
   public async login(ctx: HttpContext) {
     const { request, auth, response, session } = ctx
     const { email, password } = request.only(['email', 'password'])
@@ -23,10 +24,15 @@ export class SaasService {
       return response.redirect('/auth')
     }
   }
+  */
 
   public async logout({ auth, response, session }: HttpContext) {
     await auth.use('web').logout()
     session.clear()
     return response.redirect('/auth')
+  }
+
+  public async defineContentMain(page: string, tenant: any) {
+    return []
   }
 }
