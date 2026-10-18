@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @vite(['resources/css/app.css', 'resources/js/signup.js'])
+    <title>
+      Emsync salon Sign Up
+    </title>
+  </head>
+  <body class=" overflow-hidden fixed">
+    <main class=" w-full h-full bg-page-bg overflow-scroll overflow-x-hidden px-2.5">
+      <section
+        x-data
+        class="w-full h-full"
+        hx-get="{{ route('auth.view', { page: 'login' }) }}"
+        hx-on::before-swap="fadeoutAnimation()"
+        hx-on::after-swap="fadeinAnimation()"
+        hx-trigger="load delay:1s"
+        hx-target="#signupContent"
+        hx-swap="outerHTML"
+        placeholder="loading..."
+      >
+        <div id="signupContent" class=" flex flex-col gap-7 justify-center items-center p-7 h-full">
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

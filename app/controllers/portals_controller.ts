@@ -8,15 +8,22 @@ export default class PortalsController {
   constructor(protected portalService: PortalService) {}
   async index({ session, view }: HttpContext) {
     const pagedata = session.get('pagedata')
+    if (!pagedata) {
+      return view.render('pages/portal/index', { pagedata: { storeName: 'Nome da loja' } })
+    }
     return view.render('pages/portal/index', { pagedata })
   }
 
   async view({ params, view, tenant }: HttpContext) {
+    if (!tenant) {
+      console.log('tenant not found')
+      return view.render('errors/not_found')
+    }
     const content = await this.portalService.defineContentMain(params.page, tenant)
-    return view.render(`components/app/portal/${params.page}`, { content })
+    return view.render(`pages/portal/${params.page}`, { content })
   }
 
-  async appoiment({view}:HttpContext){
+  async appoiment({ view }: HttpContext) {
     return view.render('')
   }
 }

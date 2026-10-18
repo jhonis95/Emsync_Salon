@@ -6,7 +6,12 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.uuid('id').primary()
-      table.uuid('signed_by_user_id').notNullable().references('id').inTable('users').onDelete('CASCADE')
+      table
+        .uuid('signed_by_user_id')
+        .notNullable()
+        .references('id')
+        .inTable('users')
+        .onDelete('CASCADE')
       table.uuid('tenant_id').notNullable().references('id').inTable('tenants').onDelete('CASCADE')
       table.uuid('plan_id').notNullable().references('id').inTable('plans').onDelete('CASCADE')
       // Dates
@@ -20,7 +25,10 @@ export default class extends BaseSchema {
       table.enum('contract_status', ['pago', 'nao_pago'])
       // Timestamps
       table.timestamp('created_at', { useTz: false }).defaultTo(this.now())
-      table.timestamp('updated_at', { useTz: false }).notNullable().defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+      table
+        .timestamp('updated_at', { useTz: false })
+        .notNullable()
+        .defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
     })
   }
 

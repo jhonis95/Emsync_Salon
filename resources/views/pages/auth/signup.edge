@@ -1,0 +1,86 @@
+<div
+  id="signupContent"
+  class=" text-main-dark flex flex-col gap-7 font-ubuntu justify-center items-center p-7 h-full"
+>
+  <img class=" size-20" src="" alt="" />
+  <div class=" flex flex-col justify-center items-center">
+    <h1 class=" text-4xl text-center">
+      Bem vindo ao Emsync salon
+    </h1>
+    <p class=" text-xl">
+      Vamos fazer seu cadastro
+    </p>
+  </div>
+  <form action="" class="flex flex-col gap-5 w-full">
+    <div class="flex flex-col gap-0.5">
+      <label class=" text-[12px]" for="userName">Nome Completo</label>
+      <input
+        class=" border-[0.5px] py-1 px-2 rounded-lg text-main-dark bg-main-gray border-gray-300 focus:outline-none focus:border-main"
+        type="text"
+        name="userName"
+        id="userName"
+        x-model="$store.signup.userName"
+      />
+    </div>
+    <div class="flex flex-col gap-0.5">
+      <label class=" text-[12px]" for="storeEmail">Email</label>
+      <input
+        class=" border-[0.5px] py-1 px-2 rounded-lg text-main-dark bg-main-gray border-gray-300 focus:outline-none focus:border-main"
+        :class="$store.signup.emailError ? 'border-red-500' : 'border-gray-300'"
+        type="email"
+        name="storeEmail"
+        id="storeEmail"
+        required
+        autocomplete="email"
+        placeholder="exemplo@email.com"
+        x-model="$store.signup.storeEmail"
+        @input="$store.signup.validateEmail($event.target.value)"
+        @blur="$store.signup.validateEmail($event.target.value)"
+      />
+      <span
+        x-show="$store.signup.emailError"
+        class="text-red-500 text-[10px] mt-1"
+        x-text="$store.signup.emailError"
+      >
+      </span>
+    </div>
+    <div class="flex flex-col gap-0.5">
+      <label class=" text-[12px]" for="userPhone">Whatsapp</label>
+      <div class="w-full flex items-center gap-1">
+        <span
+          class="h-full flex justify-center items-center border-[0.5px] py-1 px-2 rounded-lg text-main-dark bg-main-gray border-gray-300 text-sm"
+        >+55</span>
+        <input
+          class=" w-full border-[0.5px] py-1 px-2 rounded-lg bg-main-gray border-gray-300 focus:outline-none focus:border-main"
+          type="tel"
+          name="userPhone"
+          id="userPhone"
+          placeholder="(11) 99999-9999"
+          x-mask="(99) 99999-9999"
+          x-model="$store.signup.userPhone"
+        />
+      </div>
+    </div>
+  </form>
+  <div class="flex flex-col justify-center items-center">
+    <p class="text-base">
+      Já é cadastrado?
+    </p>
+    <a
+      class="text-base font-semibold text-main underline cursor-pointer"
+      hx-get={{route('auth.view',{page:'login'})}}
+      hx-trigger="click"
+      hx-swap="outerHTML"
+      hx-target="#signupContent"
+      placeholder="loading..."
+    >
+      ir para a pagina de login
+        </a>
+  </div>
+  @component('components/signup/button', {
+        main:true,
+        getLink:route('auth.view',{page:'store'}),
+        text:'Continuar'
+  })
+  @end
+</div>

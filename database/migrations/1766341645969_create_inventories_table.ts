@@ -7,12 +7,7 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.uuid('id').primary()
       // Relacionamentos
-      table
-        .uuid('tenant_id')
-        .references('id')
-        .inTable('tenants')
-        .onDelete('CASCADE')
-        .notNullable()
+      table.uuid('tenant_id').references('id').inTable('tenants').onDelete('CASCADE').notNullable()
 
       table
         .uuid('product_id') // Alterado de product para product_id
@@ -39,7 +34,10 @@ export default class extends BaseSchema {
       table.boolean('active').defaultTo(true)
 
       table.timestamp('created_at', { useTz: false }).defaultTo(this.now())
-      table.timestamp('updated_at', { useTz: false }).notNullable().defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+      table
+        .timestamp('updated_at', { useTz: false })
+        .notNullable()
+        .defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
     })
   }
 

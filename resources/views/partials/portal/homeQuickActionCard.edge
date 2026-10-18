@@ -1,10 +1,21 @@
-<div class="flex flex-col gap-1.5 rounded-sm border-[0.5px] border-unfocus-bg p-2.5 shadow-lg">
-    <div class="flex gap-1">
-        <img class=" size-6" src={{card.image}} alt="">
-        <h4 class=" text-base">{{ card.title}}</h4>
-    </div>
-    <p class=" text-sm font-light">{{ card.text }}</p>
-    <a class=" bg-gray-300 w-full h-fit py-1 rounded-sm flex justify-center items-center" href="">
-        <button class=" text-sm font-light">{{card.buttonText}}</button>
-    </a>
+<div class="flex flex-col gap-1.5 rounded-lg border-[0.5px] border-unfocus-bg p-5 shadow-lg">
+  <div class="flex gap-1">
+    @svg(card.icon.name,{
+      width: card.icon.width,
+      height: card.icon.height,
+      class: card.icon.color
+    })
+    <h4 class=" text-base font-semibold font-poppins">
+      {{ card.title }}
+    </h4>
+  </div>
+  <p class=" text-sm font-light">
+    {{ card.text }}
+  </p>
+  @component('components/portal/button', {
+    text: card.buttonText
+  })
+
+  @end
 </div>
+

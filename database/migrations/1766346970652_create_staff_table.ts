@@ -8,20 +8,10 @@ export default class extends BaseSchema {
       table.uuid('id').primary()
 
       // Relacionamento com Tenant
-      table
-        .uuid('tenant_id')
-        .references('id')
-        .inTable('tenants')
-        .onDelete('CASCADE')
-        .notNullable()
+      table.uuid('tenant_id').references('id').inTable('tenants').onDelete('CASCADE').notNullable()
 
       // Relacionamento com Usuário
-      table
-        .uuid('user_id')
-        .references('id')
-        .inTable('users')
-        .onDelete('CASCADE')
-        .notNullable()
+      table.uuid('user_id').references('id').inTable('users').onDelete('CASCADE').notNullable()
 
       // Departamento
       table
@@ -40,15 +30,16 @@ export default class extends BaseSchema {
         .nullable()
 
       // Status do funcionário
-      table
-        .enum('status', ['active', 'inactive', 'in licence'])
-        .defaultTo('active')
+      table.enum('status', ['active', 'inactive', 'in licence']).defaultTo('active')
 
       // Salário em centavos (integer é melhor para cálculos financeiros)
       table.integer('salary').nullable()
 
       table.timestamp('created_at', { useTz: false }).defaultTo(this.now())
-      table.timestamp('updated_at', { useTz: false }).notNullable().defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+      table
+        .timestamp('updated_at', { useTz: false })
+        .notNullable()
+        .defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
     })
   }
 

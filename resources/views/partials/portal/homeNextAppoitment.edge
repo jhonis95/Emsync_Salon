@@ -1,18 +1,51 @@
-<div class="flex flex-col gap-1.5 rounded-sm border-[0.5px] border-unfocus-bg p-2.5">
-    <h3 class=" text-lg">Próximos Agendamentos</h3>
-    @each(card in content.nextAppointment)
-        <div class="flex gap-1.5 h-[87px] rounded-sm border-[0.5px] border-unfocus-bg shadow-sm">
-            <img class="min-w-[64px] w-[64px] h-full object-cover " width="854" height="480" src="https://img.freepik.com/fotos-gratis/jovem-no-barbeiro-a-cortar-o-cabelo_1303-26254.jpg?t=st=1766536429~exp=1766540029~hmac=6805f95d7fbacf06ea212717079d10c77ae6bc7fa6e9383bbd8708a953fb34c9&w=1480" alt="">
-            <div class="flex flex-col w-full gap-1 p-2.5">
-                <div>
-                    <h4 class=" text-base">{{ card.title}}</h4>
-                    <p class=" text-sm font-light">{{ card.text}}</p>
-                </div>
-                <div class="flex justify-between text-sm font-light">
-                    <p>Data: {{card.date}}</p>
-                    <p>Horario: {{card.time}}</p>
-                </div>
-            </div>
+<div class="flex flex-col gap-1.5">
+  <div class="flex justify-between items-baseline">
+    <h3 class=" text-lg font-poppins font-bold">
+      Próximos Agendamentos
+    </h3>
+    <p class="text-sm font-bold text-main">
+      Ver tudo
+    </p>
+  </div>
+  @each(card in content.dynamicContent.nextAppointment)
+    <div class="flex h-28.75 rounded-lg border-[0.5px] border-unfocus-bg shadow-sm">
+      <img
+        class=" w-21.75 h-full object-cover rounded-l-lg "
+        width="854"
+        height="480"
+        src="https://img.freepik.com/fotos-gratis/jovem-no-barbeiro-a-cortar-o-cabelo_1303-26254.jpg?t=st=1766536429~exp=1766540029~hmac=6805f95d7fbacf06ea212717079d10c77ae6bc7fa6e9383bbd8708a953fb34c9&w=1480"
+        alt=""
+      />
+      <div class="flex flex-col w-full gap-2.5 py-5 px-2.5">
+        <div>
+          <h4 class=" text-base font-poppins font-semibold">
+            {{ card.title }}
+          </h4>
+          <p class=" text-sm font-light font-poppins line-clamp-1">
+            {{ card.text }}
+          </p>
         </div>
-    @end
+        <div class="flex justify-between items-center text-sm font-light">
+          <div class="flex gap-1">
+            @svg('lucide:calendar',{
+              width: 18,
+              height: 18,
+              class: 'text-main'
+            })
+            <p class=" font-normal text-sm">
+              {{ card.date }}
+            </p>
+
+          </div>
+
+          @component('components/portal/status', {
+            status: 'focus',
+            text: card.time
+          })
+
+          @end
+        </div>
+      </div>
+    </div>
+  @end
 </div>

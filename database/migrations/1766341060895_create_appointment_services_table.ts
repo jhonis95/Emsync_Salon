@@ -19,15 +19,13 @@ export default class extends BaseSchema {
         .notNullable()
 
       // Relacionamento com a tabela 'orders'
-      table
-        .uuid('order_id')
-        .references('id')
-        .inTable('orders')
-        .onDelete('CASCADE')
-        .notNullable()
+      table.uuid('order_id').references('id').inTable('orders').onDelete('CASCADE').notNullable()
 
       table.timestamp('created_at', { useTz: false }).defaultTo(this.now())
-      table.timestamp('updated_at', { useTz: false }).notNullable().defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+      table
+        .timestamp('updated_at', { useTz: false })
+        .notNullable()
+        .defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
     })
   }
 

@@ -7,7 +7,7 @@ import ServiceStatus from './service_status.js'
 import ProductServiceCategory from './product_service_category.js'
 
 export default class Service extends BaseModel {
-  public static table = 'service'
+  public static table = 'services'
 
   @column({ isPrimary: true })
   declare id: string

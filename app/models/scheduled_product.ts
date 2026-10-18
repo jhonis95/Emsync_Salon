@@ -9,16 +9,16 @@ export default class ScheduledProduct extends BaseModel {
   public static table = 'scheduled_product'
   @column({ isPrimary: true })
   declare id: string
-  
+
   @column({ columnName: 'order_id' })
   declare orderId: string
-  
+
   @column({ columnName: 'product_id' })
   declare productId: string
 
   @column({ columnName: 'pickup_date' })
   declare pickupDate: DateTime
-  
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 

@@ -27,9 +27,9 @@ export default class PlanFeature extends BaseModel {
 
   @belongsTo(() => Feature)
   declare feature: BelongsTo<typeof Feature>
-  
+
   @beforeCreate()
-  static assignUuid(planFeature:PlanFeature){
-    planFeature.id=uuidv4()
+  static assignUuid(planFeature: PlanFeature) {
+    planFeature.id = uuidv4()
   }
 }

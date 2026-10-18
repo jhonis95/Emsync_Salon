@@ -11,7 +11,10 @@ export default class extends BaseSchema {
       table.text('description').notNullable()
 
       table.timestamp('created_at', { useTz: false }).defaultTo(this.now())
-      table.timestamp('updated_at', { useTz: false }).notNullable().defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+      table
+        .timestamp('updated_at', { useTz: false })
+        .notNullable()
+        .defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
     })
   }
 

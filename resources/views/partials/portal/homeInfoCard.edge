@@ -1,7 +1,13 @@
-<div class="flex flex-col rounded-sm border-[0.5px] border-unfocus-bg p-2 shadow-lg">
-    <div class="flex justify-between gap-2.5">
-        <h4 class=" text-sm">{{ card.title}}</h4>
-        <img class=" size-4" src={{card.image}} alt="">
+<div class="rounded-sm border-[0.5px] bg-white border-unfocus-bg shadow-lg">
+  <div class="flex justify-between p-5">
+    <div class=" flex gap-2">
+      <img class=" size-6" src=card.image alt="" />
+      <h4 class=" font-poppins font-semibold text-base">
+        {{ card.title }}
+      </h4>
     </div>
-    <p class=" text-sm">{{ card.content }}</p>
+    <p class=" text-base font-bold text-main">
+      {{ card.number }}
+    </p>
+  </div>
 </div>

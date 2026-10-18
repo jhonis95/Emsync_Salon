@@ -1,0 +1,32 @@
+{
+  "headerText": {
+    "title": "Bem-vindo, Cliente!",
+    "subtitle": "Aqui está um resumo das suas atividades e agendamentos."
+  },
+  "quickActionCards": [
+    {
+      "title": "Suas Agender Serviço",
+      "text": "Reserve um horário para seu serviços",
+      "icon": {
+        "name": "lucide:calendar-check-2",
+        "width": 24,
+        "height": 24,
+        "color": "text-main"
+      },
+      "buttonText": "Agendar Agora",
+      "link": ""
+    },
+    {
+      "title": "Comprar Produtos",
+      "text": "Adquira produtos profissionais",
+      "icon": {
+        "name": "lucide:shopping-bag",
+        "width": 24,
+        "height": 24,
+        "color": "text-main"
+      },
+      "buttonText": "Ver Produtos",
+      "link": ""
+    }
+  ]
+}

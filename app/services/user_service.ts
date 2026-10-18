@@ -1,10 +1,10 @@
 import User from '#models/user'
 import { TcreatUserInputs } from '#validators/user'
-import UserDto from '../dtos/user.js'
 
 export class UserService {
-  public async getUser(id: UserDto['id']) {
-    return await User.find(id)
+  public async getUser(id: string): Promise<User> {
+    const user = await User.findOrFail(id)
+    return user
   }
   // [fix]correção de TCreateUserProps, melhor chamar pelo validator TcreatUserInputs
   public async createUser(data: TcreatUserInputs) {
@@ -14,9 +14,9 @@ export class UserService {
       password: data.password,
     })
   }
-  public async getTenant(id: UserDto['id'] | undefined) {
+  public async getTenant(id: string | undefined) {
     const user = await User.find(id)
-    return user?.storeData
+    return user?.serialize()
   }
   async listUsers() {}
 

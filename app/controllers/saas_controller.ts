@@ -21,8 +21,18 @@ export default class SaasController {
     const flash = session.flashMessages.get('errorsBag') // CORRETO: após redirect, no próximo request
     return view.render('pages/auth/login', { flash })
   }
+  /*
   async auth(ctx: HttpContext) {
     await this.saasService.login(ctx)
+  }
+  */
+  async view({ params, view, tenant }: HttpContext) {
+    if (!tenant) {
+      console.log('tenant not found')
+      return view.render('errors/not_found')
+    }
+    const content = await this.saasService.defineContentMain(params.page, tenant)
+    return view.render(`pages/portal/${params.page}`, { content })
   }
   /**
    * Display form to create a new record

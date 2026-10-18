@@ -16,7 +16,7 @@ export default class Contract extends BaseModel {
   declare signedByUserId: string
 
   @column({ columnName: 'tenant_id' })
-  declare tenantId: string 
+  declare tenantId: string
 
   @column({ columnName: 'plan_id' })
   declare planId: string

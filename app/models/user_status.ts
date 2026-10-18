@@ -7,7 +7,7 @@ export default class UserStatus extends BaseModel {
   declare id: string
 
   @column()
-  declare name:string 
+  declare name: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
@@ -16,7 +16,7 @@ export default class UserStatus extends BaseModel {
   declare updatedAt: DateTime
 
   @beforeCreate()
-  static assignUuid(userStatus:UserStatus){
-    userStatus.id=uuidv4()
+  static assignUuid(userStatus: UserStatus) {
+    userStatus.id = uuidv4()
   }
 }

@@ -1,4 +1,6 @@
 import { defineConfig } from '@adonisjs/core/app'
+import { indexEntities } from '@adonisjs/core'
+import { indexPolicies } from '@adonisjs/bouncer'
 
 export default defineConfig({
   /*
@@ -13,7 +15,7 @@ export default defineConfig({
   commands: [
     () => import('@adonisjs/core/commands'),
     () => import('@adonisjs/lucid/commands'),
-    () => import('@adocasts.com/dto/commands'),
+    () => import('@adonisjs/bouncer/commands'),
   ],
 
   /*
@@ -40,6 +42,10 @@ export default defineConfig({
     () => import('@adonisjs/static/static_provider'),
     () => import('@adonisjs/lucid/database_provider'),
     () => import('@adonisjs/auth/auth_provider'),
+    () => import('#providers/edge_iconify_provider'),
+    () => import('@adonisjs/drive/drive_provider'),
+    () => import('@adonisjs/bouncer/bouncer_provider'),
+    () => import('@adonisjs/cors/cors_provider')
   ],
 
   /*
@@ -68,12 +74,12 @@ export default defineConfig({
   tests: {
     suites: [
       {
-        files: ['tests/unit/**/*.spec(.ts|.js)'],
+        files: ['tests/unit/**/*.spec.{ts,js}'],
         name: 'unit',
         timeout: 2000,
       },
       {
-        files: ['tests/functional/**/*.spec(.ts|.js)'],
+        files: ['tests/functional/**/*.spec.{ts,js}'],
         name: 'functional',
         timeout: 30000,
       },
@@ -92,8 +98,8 @@ export default defineConfig({
     },
   ],
 
-  assetsBundler: false,
   hooks: {
-    onBuildStarting: [() => import('@adonisjs/vite/build_hook')],
+    init: [indexEntities(), indexPolicies()],
+    buildStarting: [() => import('@adonisjs/vite/build_hook')],
   },
 })

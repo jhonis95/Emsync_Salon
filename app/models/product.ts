@@ -5,11 +5,15 @@ import ProductServiceCategory from './product_service_category.js'
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 import ScheduledProduct from './scheduled_product.js'
 import Inventory from './inventory.js'
+import Tenant from './tenant.ts'
 
 export default class Product extends BaseModel {
   public static table = 'products'
   @column({ isPrimary: true })
   declare id: string
+
+  @column({ columnName: 'tenant_id' })
+  declare tenantId: string
 
   @column({ columnName: 'public_id' })
   declare publicId: string
@@ -38,7 +42,12 @@ export default class Product extends BaseModel {
   })
   declare category: BelongsTo<typeof ProductServiceCategory>
 
-  @hasMany(()=>ScheduledProduct,{ foreignKey:'productId'})
+  @belongsTo(() => Tenant, {
+    foreignKey: 'tenantId',
+  })
+  declare tenant: BelongsTo<typeof Tenant>
+
+  @hasMany(() => ScheduledProduct, { foreignKey: 'productId' })
   declare scheduledProducts: HasMany<typeof ScheduledProduct>
 
   @hasMany(() => Inventory, {
@@ -49,9 +58,6 @@ export default class Product extends BaseModel {
   @beforeCreate()
   static assignUuid(product: Product) {
     product.id = uuidv4()
-    // Gera o public_id apenas se ele não tiver sido definido manualmente
-    if (!product.publicId) {
-      product.publicId = uuidv4()
-    }
+    product.publicId = uuidv4()
   }
 }

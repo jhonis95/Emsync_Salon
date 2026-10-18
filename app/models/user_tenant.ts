@@ -14,10 +14,10 @@ export default class UserTenant extends BaseModel {
 
   @column({ columnName: 'tenant_id' })
   declare tenantId: string
-  
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
-  
+
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 

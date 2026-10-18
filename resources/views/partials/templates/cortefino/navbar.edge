@@ -1,15 +1,26 @@
 <nav class=" text-white w-full h-24 max-w-[1200px] flex flex-row justify-between items-center">
   <div class=" w-fit h-fit flex">
-    <img src="" alt="" sizes="" srcset="">
+    <img src="" alt="" sizes="" srcset="" />
     Logo {{ tenant.storeName }}
   </div>
   <ul class="flex gap-11">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Serviços</a></li>
-    <li><a href="#">Produtos</a></li>
-    <li><a href="#">Contatos</a></li>
+    <li>
+      <a href="#">Home</a>
+    </li>
+    <li>
+      <a href="#">Serviços</a>
+    </li>
+    <li>
+      <a href="#">Produtos</a>
+    </li>
+    <li>
+      <a href="#">Contatos</a>
+    </li>
   </ul>
-  <a class="h-full w-fit flex justify-center items-center" href="{{ route('portal.auth.login.show') }}">
+  <a
+    class="h-full w-fit flex justify-center items-center"
+    href=""
+  >
     <button class="cursor-pointer px-5 bg-gray-500 h-full" type="button">Portal do cliente</button>
   </a>
 </nav>

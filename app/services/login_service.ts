@@ -1,6 +1,8 @@
 import User from '#models/user'
 import { HttpContext } from '@adonisjs/core/http'
 import hash from '@adonisjs/core/services/hash'
+import { Exception } from '@adonisjs/core/exceptions'
+import UserTenant from '#models/user_tenant'
 
 export class LoginService {
   // Your code here
@@ -8,30 +10,59 @@ export class LoginService {
     const { request, auth, response, tenant, session } = ctx
     const { email, password } = request.only(['email', 'password'])
 
-    const user = await User.query()
-      .where('store', tenant.id) // tenant.id, não o objeto inteiro
-      .andWhere('email', email) // filtra também pelo email
-      .first()
+    if (tenant) {
+      const user = await User.query()
+        .whereHas('tenants', (query) => {
+          query.where('tenants.id', tenant.id)
+        }) // tenant.id, não o objeto inteiro
+        .andWhere('email', email) // filtra também pelo email
+        .first()
+
+      if (!user) {
+        throw new Error('Usuário não encontrado para este tenant')
+      }
+
+      const isValid = await hash.verify(user.password, password)
+
+      if (!isValid) {
+        session.flash('error', 'Senha incorreta')
+        return response.redirect().back()
+      }
+      // Login e salvar dados na sessão
+      try {
+        await auth.use('web').login(user)
+        session.put('pagedata', {
+          storeName: tenant?.$attributes.storeName,
+          userName: user.fullName,
+        })
+        return response.redirect('/portaldocliente')
+      } catch (error) {
+        session.flash('error', 'Não foi possível logar')
+        return response.redirect().back()
+      }
+    }
+  }
+
+  public async findUserByEmail(email: string, tenant: string) {
+    const user = await User.query().where('email', email).where('tenantId', tenant).first()
 
     if (!user) {
-      throw new Error('Usuário não encontrado para este tenant')
+      //[fix] precisa criar Exception handler https://docs.adonisjs.com/guides/basics/exception-handling
+      throw new Exception('Credenciais inválidas', { status: 401 })
     }
+    return user
+  }
 
-    const isValid = await hash.verify(user.password, password)
-    if (!isValid) {
-      session.flash('error', 'Senha incorreta')
-      return response.redirect().back()
+  public async verifyCredentials( password: string, email: string) {
+    const user = await User.verifyCredentials(email, password)
+    if (!user) {
+      throw new Exception('Credenciais inválidas', { status: 401 })
     }
+    return user
+  }
 
-    // Login e salvar dados na sessão
-    try {
-      await auth.use('web').login(user)
-      session.put('pagedata', { storeName: tenant?.$attributes.storeName, userName: user.fullName })
-      return response.redirect('/portaldocliente')
-    } catch (error) {
-      session.flash('error', 'Não foi possível logar')
-      return response.redirect().back()
-    }
+  public async verifyUserToTenant(user: string, tenant: string) {
+      await UserTenant.query().where('userId', user).where('tenantId', tenant).firstOrFail()
   }
 
   public async logout({ auth, response, session }: HttpContext) {

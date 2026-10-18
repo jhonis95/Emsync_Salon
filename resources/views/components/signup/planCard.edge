@@ -1,23 +1,67 @@
-<div 
-    class="snap-start flex-shrink-1 bg-white border-1 text-main-dark border-unfocus-bg shadow-xl p-3.5 w-fit min-w-[250px] h-fit rounded-lg flex flex-col gap-5"
+<div
+  @click="$store.signup.handlePlanSelected('{{ id }}','{{ title }}','{{ billingCycle }}')"
+  class="snap-start flex-shrink-1 bg-white border-1 text-main-dark shadow-xl p-3.5 w-fit min-w-[255px] h-fit rounded-lg flex flex-col gap-5 transition-all duration-200"
+  :class="$store.signup.planSelected === '{{ id }}'
+    ? 'border-2 border-main '
+    : 'border-unfocus-bg'"
 >
-    <div class="flex flex-col gap-1">
-        <h6 class=" text-center font-poppins font-bold text-lg">{{title}}</h6>
-        <p class=" text-xs font-light">{{subtitle}}</p>
-    </div>
-    <div class="flex flex-col gap-1">
-        @each(feature in features)
-            <div class=" flex gap-2 items-center">
-                <svg class=" text-main size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big-icon lucide-circle-check-big"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
-                <p class=" font-medium text-sm">{{feature.content}}</p>
-            </div>
-        @end
-    </div>
+  <div class="flex flex-col gap-1">
+    <h6 class=" text-center font-poppins font-bold text-lg">
+      {{ title }}
+    </h6>
     <p class=" text-xs font-light">
-        {{content}}
+      {{ subtitle }}
     </p>
+  </div>
+  <div class="flex flex-col gap-1">
+    @each(feature in features)
+      <div class=" flex gap-2 items-center">
+        <svg
+          class=" text-main size-4"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-circle-check-big-icon lucide-circle-check-big"
+        >
+          <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+          <path d="m9 11 3 3L22 4" />
+        </svg>
+        <p class=" font-medium text-sm">
+          {{ feature.content }}
+        </p>
+      </div>
+    @end
+  </div>
+  <p class=" text-xs font-light">
+    {{ content }}
+  </p>
+  @if(billingCycle=='anual')
     <div>
-        <p class=" text-xs font-bold">Duração do contrato: <span class="text-main">{{billingCycle}}</span></p>
-        <p class=" text-main text-base font-medium">R${{price}}<span class=" text-xs font-light text-main-dark">/mês</span></p>
+      <p class=" text-xs font-bold">
+        Duração do contrato: <span class="text-main">{{ billingCycle }}</span>
+      </p>
+      <span class=" line-through font-light text-xs">R${{price}}</span>
+      <p class=" text-main text-base font-medium">
+        R${{discountPrice}}<span class=" text-xs font-light text-main-dark">( {{monthlyEquivalentPrice}} /mês)</span>
+      </p>
+      <p class=" font-light text-xs">
+        Economia de {{ annualSavings }} no plano anual
+      </p>
     </div>
+  @else
+    <div>
+      <p class=" text-xs font-bold">
+        Duração do contrato: <span class="text-main">{{ billingCycle }}</span>
+      </p>
+      <p class=" text-main text-base font-medium">
+        R${{price}}<span class=" text-xs font-light text-main-dark">/mês</span>
+      </p>
+    </div>
+  @end
 </div>
