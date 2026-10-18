@@ -16,7 +16,7 @@ export type ScannedRoutes = {
     'emsyncsalon.com.br@auth.show': { paramsTuple?: []; params?: {} }
     'emsyncsalon.com.br@auth.login': { paramsTuple?: []; params?: {} }
     'emsyncsalon.com.br@auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
-    'saas.app': { paramsTuple?: []; params?: {} }
+    'saas.appPage': { paramsTuple?: []; params?: {} }
     'saas.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
   }
   GET: {
@@ -30,7 +30,7 @@ export type ScannedRoutes = {
     'saas.index': { paramsTuple?: []; params?: {} }
     'emsyncsalon.com.br@auth.show': { paramsTuple?: []; params?: {} }
     'emsyncsalon.com.br@auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
-    'saas.app': { paramsTuple?: []; params?: {} }
+    'saas.appPage': { paramsTuple?: []; params?: {} }
     'saas.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
   }
   HEAD: {
@@ -44,7 +44,7 @@ export type ScannedRoutes = {
     'saas.index': { paramsTuple?: []; params?: {} }
     'emsyncsalon.com.br@auth.show': { paramsTuple?: []; params?: {} }
     'emsyncsalon.com.br@auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
-    'saas.app': { paramsTuple?: []; params?: {} }
+    'saas.appPage': { paramsTuple?: []; params?: {} }
     'saas.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
   }
   POST: {

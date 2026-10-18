@@ -31,8 +31,8 @@ router
       .use([middleware.guest()])
       
     router.group(() => {
-      router.get('', [controllers.Saas, 'app'])
-      router.get('/:page', [controllers.Saas, 'view']).as('saas.view')
+      router.get('', [controllers.Saas, 'app']).as('saas.appPage')
+      router.get('page/:page', [controllers.Saas, 'view']).as('saas.view')
     })
     .prefix('app')
     .use([middleware.guest()])  

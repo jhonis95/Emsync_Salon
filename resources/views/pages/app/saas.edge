@@ -8,26 +8,71 @@
       Emsync Salon App
     </title>
   </head>
-  <body class="bg-[var(--color-page-bg)] font-['Poppins'] text-[var(--color-main-dark)] antialiased min-h-screen pb-24">
+  <body 
+    x-data
+    class=" h-screen flex flex-col font-ubuntu relative overflow-x-hidden bg-page-bg text-main-dark"
+  > 
+    {{-- [fix] fazer com que esse header vire um componente --}}
+    <header
+      x-data="{dropdownOpen:false}"
+      class=" h-16 shrink-0 fixed w-full min-h-[64px] top-0 z-50 gap-x-2 rounded-b-2xl border-b border-x border-gray-200 bg-white shadow-2xs "
+    >
+      <nav class=" max-w-[85rem] w-full h-full flex px-4 py-2.5">
+        <div class=" w-full flex justify-between items-center">
+        
+          {{-- container logo e texto --}}
+          <div class="flex items-center gap-3 font-poppins">
+            <div class=" size-12 flex items-center justify-center rounded-lg bg-unfocus-bg">
+              <!-- Icon -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-house-icon lucide-house text-unfocus"
+              >
+                <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                <path
+                  d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                />
+              </svg>
+            </div>
 
-    <header class="bg-white px-4 py-3 flex items-center justify-between shadow-sm rounded-b-2xl border-b border-gray-100">
-      <div class="flex items-center gap-3">
-        <div class="bg-gray-50 p-2.5 rounded-xl border border-gray-100 text-[var(--color-main-dark)]">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-          </svg>
-        </div>
-        <div>
-          <h1 class="text-base font-bold leading-tight">Emsync Salon</h1>
-          <p class="text-xs font-semibold text-[var(--color-main)]">Nome da loja</p>
-        </div>
-      </div>
+            <div class="flex flex-col leading-tight">
+              <span class="font-semibold text-main-dark text-lg">
+                Emsync Salon
+              </span>
+              <span class="text-sm text-main font-medium">
+                Nome da loja
+              </span>
+            </div>
+          </div>
 
-      <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 border border-gray-300">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-        </svg>
-      </div>
+          <div class="w-10 h-10 flex items-center justify-center rounded-full bg-unfocus-bg">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-user-icon lucide-user text-unfocus"
+            >
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </div>
+
+        </div>
+      </nav>
     </header>
 
     <main class="px-4 pt-6 max-w-md mx-auto">
