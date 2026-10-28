@@ -13,9 +13,9 @@ export type ScannedRoutes = {
     'portal.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'portal.view.service': { paramsTuple?: []; params?: {} }
     'saas.index': { paramsTuple?: []; params?: {} }
-    'emsyncsalon.com.br@auth.show': { paramsTuple?: []; params?: {} }
-    'emsyncsalon.com.br@auth.login': { paramsTuple?: []; params?: {} }
-    'emsyncsalon.com.br@auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
+    'localhost@auth.show': { paramsTuple?: []; params?: {} }
+    'localhost@auth.login': { paramsTuple?: []; params?: {} }
+    'localhost@auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'saas.appPage': { paramsTuple?: []; params?: {} }
     'saas.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
   }
@@ -28,8 +28,8 @@ export type ScannedRoutes = {
     'portal.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'portal.view.service': { paramsTuple?: []; params?: {} }
     'saas.index': { paramsTuple?: []; params?: {} }
-    'emsyncsalon.com.br@auth.show': { paramsTuple?: []; params?: {} }
-    'emsyncsalon.com.br@auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
+    'localhost@auth.show': { paramsTuple?: []; params?: {} }
+    'localhost@auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'saas.appPage': { paramsTuple?: []; params?: {} }
     'saas.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
   }
@@ -42,14 +42,14 @@ export type ScannedRoutes = {
     'portal.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'portal.view.service': { paramsTuple?: []; params?: {} }
     'saas.index': { paramsTuple?: []; params?: {} }
-    'emsyncsalon.com.br@auth.show': { paramsTuple?: []; params?: {} }
-    'emsyncsalon.com.br@auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
+    'localhost@auth.show': { paramsTuple?: []; params?: {} }
+    'localhost@auth.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
     'saas.appPage': { paramsTuple?: []; params?: {} }
     'saas.view': { paramsTuple: [ParamValue]; params: {'page': ParamValue} }
   }
   POST: {
     'auth.login': { paramsTuple?: []; params?: {} }
-    'emsyncsalon.com.br@auth.login': { paramsTuple?: []; params?: {} }
+    'localhost@auth.login': { paramsTuple?: []; params?: {} }
   }
 }
 declare module '@adonisjs/core/types/http' {

@@ -1,4 +1,5 @@
 import Tenant from '#models/tenant'
+import env from '#start/env'
 import type { HttpContext } from '@adonisjs/core/http'
 import type { NextFn } from '@adonisjs/core/types/http'
 
@@ -27,7 +28,7 @@ export default class DetectTenantMiddleware {
     }
 
     // 🔹 Se for o domínio principal (do SaaS), não tenta detectar tenant
-    if (hostname === 'emsyncsalon.com.br') {
+    if (hostname === env.get('SAAS_DOMAIN')) {
       return next()
     }
 

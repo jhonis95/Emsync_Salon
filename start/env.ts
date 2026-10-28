@@ -42,4 +42,13 @@ export default await Env.create(new URL('../', import.meta.url), {
   |----------------------------------------------------------
   */
   DRIVE_DISK: Env.schema.enum(['fs'] as const),
+
+  /*
+  |----------------------------------------------------------
+  | Domínio principal do SaaS
+  | Em produção: emsyncsalon.com.br
+  | Em dev local: localhost
+  |----------------------------------------------------------
+  */
+  SAAS_DOMAIN: Env.schema.string(),
 })

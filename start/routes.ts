@@ -10,29 +10,11 @@
 import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
 import { controllers } from '#generated/controllers'
-
-// import env from '#start/env'
-
-// const saasDomain = env.get('SAAS_DOMAIN_LOCAL', '') as string
+import env from '#start/env'
 
 router.get('/', [controllers.TenentsHomepages, 'index'])
 
 // SaaS principal
-<<<<<<< HEAD
-router.group(() => {
-    router.get('/', [SaasController, 'index'])
-    router.get('/auth', [SaasController, 'login']).as('saas.auth.login.show')
-    router.post('/auth', [SaasController, 'auth']).as('saas.auth.login')
-    router.group(()=>{
-      router.get('/',[SignupsController,'index']).as('saas.singup')
-      router.get('/page/:page', [SignupsController, 'view']).as('saas.signup.view')
-      router.get('/components/:component',[SignupsController, 'components']).as('saas.singup.component')
-    }).prefix('signup')
-    router.get('/app', [SaasController, 'app'])
-    //.use([middleware.auth({ guards: ['web'] })])
-})
-.domain('emsyncsalon.com.br')
-=======
 router
   .group(() => {
     router.get('', [controllers.Saas, 'index'])
@@ -44,17 +26,18 @@ router
       })
       .prefix('auth')
       .use([middleware.guest()])
-      
-    router.group(() => {
-      router.get('', [controllers.Saas, 'app']).as('saas.appPage')
-      router.get('page/:page', [controllers.Saas, 'view']).as('saas.view')
-    })
-    .prefix('app')
-    .use([middleware.guest()])  
+
+    router
+      .group(() => {
+        router.get('', [controllers.Saas, 'app']).as('saas.appPage')
+        router.get('page/:page', [controllers.Saas, 'view']).as('saas.view')
+      })
+      .prefix('app')
+      .use([middleware.guest()])
   })
-  .domain('emsyncsalon.com.br')
+  .domain(env.get('SAAS_DOMAIN'))
   .use([middleware.guest()])
->>>>>>> adonisV7
+
 // Portal do cliente (tenant)
 router.group(() => {
   router

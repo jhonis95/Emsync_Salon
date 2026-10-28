@@ -10,6 +10,7 @@ export const controllers = {
   Orders: () => import('#controllers/orders_controller'),
   Portals: () => import('#controllers/portals_controller'),
   Saas: () => import('#controllers/saas_controller'),
+  Signups: () => import('#controllers/signups_controller'),
   Tenants: () => import('#controllers/tenants_controller'),
   TenentsHomepages: () => import('#controllers/tenents_homepages_controller'),
   Tests: () => import('#controllers/tests_controller'),

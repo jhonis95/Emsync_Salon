@@ -19,11 +19,13 @@ export default defineConfig({
     }),
   ],
   server: {
-    host: '0.0.0.0', // Garante que o Vite ouça em todas as interfaces
-    port: 5173,      // Porta padrão do Vite
+    host: '0.0.0.0',
+    port: 5173,
     strictPort: true,
     hmr: {
-        host: 'cortefino.com.br', // Mude para o domínio que está testando ou use localhost se estiver via SSH tunnel
+      host: 'localhost',
+      port: 24678,
+      protocol: 'ws',
     },
     allowedHosts: true,
   },

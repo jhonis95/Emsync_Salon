@@ -8,16 +8,7 @@ import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
 export class AppointmentServiceSchema extends BaseModel {
-  static $columns = [
-    'createdAt',
-    'endTime',
-    'id',
-    'lastChange',
-    'orderId',
-    'serviceId',
-    'startTime',
-    'updatedAt',
-  ] as const
+  static $columns = ['createdAt', 'endTime', 'id', 'lastChange', 'orderId', 'serviceId', 'startTime', 'updatedAt'] as const
   $columns = AppointmentServiceSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
@@ -38,20 +29,7 @@ export class AppointmentServiceSchema extends BaseModel {
 }
 
 export class ContractSchema extends BaseModel {
-  static $columns = [
-    'contractStatus',
-    'createdAt',
-    'documentLink',
-    'endDay',
-    'id',
-    'paymentMethod',
-    'planId',
-    'receiptLink',
-    'signedByUserId',
-    'startDay',
-    'tenantId',
-    'updatedAt',
-  ] as const
+  static $columns = ['contractStatus', 'createdAt', 'documentLink', 'endDay', 'id', 'paymentMethod', 'planId', 'receiptLink', 'signedByUserId', 'startDay', 'tenantId', 'updatedAt'] as const
   $columns = ContractSchema.$columns
   @column()
   declare contractStatus: string | null
@@ -93,19 +71,7 @@ export class FeatureSchema extends BaseModel {
 }
 
 export class InventorySchema extends BaseModel {
-  static $columns = [
-    'active',
-    'createdAt',
-    'id',
-    'minStock',
-    'minStockAlert',
-    'productId',
-    'quantity',
-    'statusId',
-    'tenantId',
-    'unit',
-    'updatedAt',
-  ] as const
+  static $columns = ['active', 'createdAt', 'id', 'minStock', 'minStockAlert', 'productId', 'quantity', 'statusId', 'tenantId', 'unit', 'updatedAt'] as const
   $columns = InventorySchema.$columns
   @column()
   declare active: boolean | null
@@ -145,17 +111,7 @@ export class InventoryStatusSchema extends BaseModel {
 }
 
 export class NotificationSchema extends BaseModel {
-  static $columns = [
-    'createdAt',
-    'id',
-    'message',
-    'receiverId',
-    'senderId',
-    'sentEmailTo',
-    'status',
-    'tenantId',
-    'updatedAt',
-  ] as const
+  static $columns = ['createdAt', 'id', 'message', 'receiverId', 'senderId', 'sentEmailTo', 'status', 'tenantId', 'updatedAt'] as const
   $columns = NotificationSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
@@ -178,15 +134,7 @@ export class NotificationSchema extends BaseModel {
 }
 
 export class OpenHourSchema extends BaseModel {
-  static $columns = [
-    'closeTime',
-    'createdAt',
-    'dayOfWeek',
-    'id',
-    'openTime',
-    'tenantId',
-    'updatedAt',
-  ] as const
+  static $columns = ['closeTime', 'createdAt', 'dayOfWeek', 'id', 'openTime', 'tenantId', 'updatedAt'] as const
   $columns = OpenHourSchema.$columns
   @column()
   declare closeTime: string
@@ -267,18 +215,7 @@ export class PlanFeatureSchema extends BaseModel {
 }
 
 export class PlanSchema extends BaseModel {
-  static $columns = [
-    'billingCycle',
-    'createdAt',
-    'details',
-    'id',
-    'planName',
-    'setupValue',
-    'sortPriority',
-    'subscriptionValue',
-    'subtitle',
-    'updatedAt',
-  ] as const
+  static $columns = ['billingCycle', 'createdAt', 'details', 'id', 'planName', 'setupValue', 'sortPriority', 'subscriptionValue', 'subtitle', 'updatedAt'] as const
   $columns = PlanSchema.$columns
   @column()
   declare billingCycle: string | null
@@ -316,17 +253,7 @@ export class ProductServiceCategorySchema extends BaseModel {
 }
 
 export class ProductSchema extends BaseModel {
-  static $columns = [
-    'createdAt',
-    'id',
-    'image',
-    'name',
-    'price',
-    'productServiceCategoriesId',
-    'publicId',
-    'tenantId',
-    'updatedAt',
-  ] as const
+  static $columns = ['createdAt', 'id', 'image', 'name', 'price', 'productServiceCategoriesId', 'publicId', 'tenantId', 'updatedAt'] as const
   $columns = ProductSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
@@ -413,21 +340,7 @@ export class ServiceStatusSchema extends BaseModel {
 }
 
 export class ServiceSchema extends BaseModel {
-  static $columns = [
-    'active',
-    'categoryId',
-    'createdAt',
-    'description',
-    'duration',
-    'id',
-    'image',
-    'name',
-    'price',
-    'publicId',
-    'statusId',
-    'tenantId',
-    'updatedAt',
-  ] as const
+  static $columns = ['active', 'categoryId', 'createdAt', 'description', 'duration', 'id', 'image', 'name', 'price', 'publicId', 'statusId', 'tenantId', 'updatedAt'] as const
   $columns = ServiceSchema.$columns
   @column()
   declare active: boolean | null
@@ -458,17 +371,7 @@ export class ServiceSchema extends BaseModel {
 }
 
 export class StaffSchema extends BaseModel {
-  static $columns = [
-    'createdAt',
-    'id',
-    'salary',
-    'staffDepartmentsId',
-    'staffJobTitleId',
-    'status',
-    'tenantId',
-    'updatedAt',
-    'userId',
-  ] as const
+  static $columns = ['createdAt', 'id', 'salary', 'staffDepartmentsId', 'staffJobTitleId', 'status', 'tenantId', 'updatedAt', 'userId'] as const
   $columns = StaffSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
@@ -517,16 +420,7 @@ export class StaffJobTitleSchema extends BaseModel {
 }
 
 export class StaffScheduleSchema extends BaseModel {
-  static $columns = [
-    'createdAt',
-    'dayOfWeek',
-    'endTime',
-    'id',
-    'isDayOff',
-    'staffId',
-    'startTime',
-    'updatedAt',
-  ] as const
+  static $columns = ['createdAt', 'dayOfWeek', 'endTime', 'id', 'isDayOff', 'staffId', 'startTime', 'updatedAt'] as const
   $columns = StaffScheduleSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
@@ -547,19 +441,7 @@ export class StaffScheduleSchema extends BaseModel {
 }
 
 export class TenantSchema extends BaseModel {
-  static $columns = [
-    'adress',
-    'cnpj',
-    'createdAt',
-    'domain',
-    'email',
-    'id',
-    'logoUrl',
-    'phone',
-    'storeDescriprion',
-    'storeName',
-    'updatedAt',
-  ] as const
+  static $columns = ['adress', 'cnpj', 'createdAt', 'domain', 'email', 'id', 'logoUrl', 'phone', 'storeDescriprion', 'storeName', 'updatedAt'] as const
   $columns = TenantSchema.$columns
   @column()
   declare adress: string | null
@@ -629,21 +511,7 @@ export class UserTenantSchema extends BaseModel {
 }
 
 export class UserSchema extends BaseModel {
-  static $columns = [
-    'adress',
-    'city',
-    'createdAt',
-    'email',
-    'fullName',
-    'gender',
-    'id',
-    'internalNote',
-    'observation',
-    'password',
-    'phone',
-    'statusId',
-    'updatedAt',
-  ] as const
+  static $columns = ['adress', 'city', 'createdAt', 'email', 'fullName', 'gender', 'id', 'internalNote', 'observation', 'password', 'phone', 'statusId', 'updatedAt'] as const
   $columns = UserSchema.$columns
   @column()
   declare adress: string | null

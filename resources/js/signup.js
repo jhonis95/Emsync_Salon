@@ -3,13 +3,7 @@ import Alpine from 'alpinejs'
 import mask from '@alpinejs/mask'
 import { animate, stagger } from 'motion'
 
-<<<<<<< HEAD
-function fadeinAnimation(){
-    const targets = document.querySelectorAll("#signupContent > *");
-    if (targets.length > 0){
-        animate(targets,{ opacity: [0,1], y:[-20,0]},{ delay: stagger(0.05), duration: 0.4})
-    }
-=======
+
 function fadeinAnimation() {
   //const targets = document.querySelectorAll("#signupContent > .animate-in");
   const targets = document.querySelectorAll('#signupContent > *')
@@ -18,7 +12,6 @@ function fadeinAnimation() {
     // Opcional: remove a classe após animar para não repetir se o HTMX carregar algo interno
     //targets.forEach(el => el.classList.remove('animate-in'));
   }
->>>>>>> adonisV7
 }
 function fadeoutAnimation() {
   animate('#signupContent', { opacity: [1, 0] }, { duration: 0.2 })
